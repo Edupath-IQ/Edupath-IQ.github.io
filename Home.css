@@ -1,0 +1,191 @@
+body
+{
+    display:flex;
+    min-height:100vh;
+    flex-direction: column;
+    padding:0px;
+    margin:0px;
+}
+#this
+{
+    padding:0px 20px;
+}
+
+.header
+{
+height:150px;
+width:100%;
+position:relative;
+}
+.logo
+{
+height:120px;
+width:120px;
+border-radius:5px;
+position:absolute;
+left:40px;
+top:10px;
+background-image:url("logo1.png");
+background-size:cover;
+background-repeat:no-repeat;
+background-position:center;
+
+}
+
+li
+{
+    list-style: none;
+    font-size:25px; 
+    padding:5px 30px 5px 30px;
+    line-height:35px;
+    text-align:center;
+    position:relative;
+    border:1px solid black;
+    min-width:max-content;
+    color:white;
+    background-color:#1E293B;
+}
+a
+{
+    text-decoration:none;
+    
+}
+.nav
+{
+
+margin:2px 0px 2px 0px;
+padding:0px;
+display:flex;
+justify-content:center;
+
+}
+
+.dropdown 
+{
+
+position:absolute;
+left:50%;
+top:100%;
+display:none;
+}
+
+.dropdown li
+{
+   min-width: max-content;
+   padding:0px 10px;
+}
+
+.nav li a
+{
+    display:block;
+    color:white;
+}
+
+li:hover
+{
+background-color:red;
+}
+.nav li:hover .dropdown 
+{
+display:block;
+}
+
+.footer
+{
+margin-top: 2px;
+height:150px;
+width:100%;
+border:1px solid black;
+background-color:#1E293B;
+margin-left:0px;
+}
+
+.main
+{
+width:70%;
+margin:auto;
+flex:1;
+}
+
+.about 
+{
+    height:500px;
+    width:100%;
+    background-image:url("image.png");
+    background-repeat:no-repeat;
+    background-size:100% auto;
+    background-position:top;
+ 
+}
+
+.outer
+{
+width:100%;
+margin:auto;
+border:solid 1px black;
+background-image:url("bg.jpeg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+background-position:top center;
+padding-bottom:410px;
+}
+
+.boxes
+{
+display:flex;
+justify-content:center;
+width:100%;
+}
+.grid
+{
+    display:grid;
+    grid-template-columns:repeat(2,350px);
+    gap:60px 200px;
+    justify-content:center;
+    margin:40px 0px;
+
+
+}
+
+.grid-box
+{
+    height:350px;
+    width:350px;
+    border:1px solid black;
+    border-radius:5px;
+    position:relative;
+    display:inline-block;
+
+}
+.oval-link
+{
+    position:absolute;
+    top:78%;
+    left:15%;
+    width:71%;
+    height:22%;
+    border-radius:30%;
+    background-color:transparent;
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+.oval-link:hover
+{
+background-color:rgba(0,0,255,0.3);
+
+
+}
+.grid-box img
+{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
+
+
+a
+{
+    text-decoration:none;
+}
