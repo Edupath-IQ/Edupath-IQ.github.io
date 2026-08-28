@@ -1,5 +1,5 @@
-import * as pdfjsLib from "https://cdnjs.cloudeflare.com/ajax/libs/pdfjs/4.0.379/pdf.min..mjs";
-pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudeflare.com/ajax/libs/pdfjs/4.0.379/pdf.min..mjs";
+import * as pdfjsLib from "./pdfjs/pdf.min..mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc="./pdfjs/pdf.min..mjs";
 let pdfDoc=null;
 const container=document.getElementById("pdfContainer");
 
