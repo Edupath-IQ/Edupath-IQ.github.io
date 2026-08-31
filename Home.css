@@ -107,6 +107,19 @@ margin:auto;
 flex:1;
 }
 
+
+.outer
+{
+width:100%;
+margin:auto;
+border:solid 1px black;
+background-image:url("bg1.png");
+background-size:100% 100%;
+background-repeat:no-repeat;
+background-position:top center;
+padding-bottom:410px;
+}
+
 .about 
 {
     height:900px;
