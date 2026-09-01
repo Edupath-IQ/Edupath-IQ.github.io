@@ -58,7 +58,10 @@ a
 margin:2px 0px 2px 0px;
 padding:0px;
 display:flex;
-justify-content:center;
+justify-content:flex-start;
+overflow-x:auto;
+width:100%;
+box-sizing:border-box;
 
 }
 
@@ -81,6 +84,11 @@ display:none;
 {
     display:block;
     color:white;
+}
+
+.nav > li:nth-child(2)
+{
+    order:6;
 }
 
 .nav li:hover
