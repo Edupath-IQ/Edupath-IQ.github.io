@@ -102,15 +102,14 @@ margin-left:0px;
 
 .main
 {
-width:100%;
+width:70%;
 margin:auto;
 flex:1;
 }
 
-
 .about 
 {
-    height:900px;
+    height:500px;
     width:100%;
     background-image:url("image.png");
     background-repeat:no-repeat;
