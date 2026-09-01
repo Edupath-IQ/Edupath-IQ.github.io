@@ -107,16 +107,20 @@ margin:auto;
 flex:1;
 }
 
+/* Full-width Home banner */
 .about
 {
-    width:100%;
-    aspect-ratio:3 / 2;
-    height:auto;
-    background-image:url("image.png");
-    background-repeat:no-repeat;
-    background-size:100% 100%;
-    background-position:top center;
-
+width:100vw;
+aspect-ratio:3 / 2;
+height:auto;
+position:relative;
+left:50%;
+transform:translateX(-50%);
+background-image:url("image.png");
+background-repeat:no-repeat;
+background-size:cover;
+background-position:center top;
+overflow:hidden;
 }
 
 .outer
