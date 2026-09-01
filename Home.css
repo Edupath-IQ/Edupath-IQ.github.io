@@ -107,15 +107,16 @@ margin:auto;
 flex:1;
 }
 
-.about 
+.about
 {
-    height:500px;
     width:100%;
+    aspect-ratio:3 / 2;
+    height:auto;
     background-image:url("image.png");
     background-repeat:no-repeat;
-    background-size:100% auto;
-    background-position:top;
- 
+    background-size:100% 100%;
+    background-position:top center;
+
 }
 
 .outer
