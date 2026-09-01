@@ -36,6 +36,8 @@ background-position:center;
 
 .nav li
 {
+    flex:0 0 auto;
+
     list-style: none;
     font-size:25px; 
     padding:5px 30px 5px 30px;
@@ -59,8 +61,9 @@ margin:2px 0px 2px 0px;
 padding:0px;
 display:flex;
 justify-content:flex-start;
-overflow-x:auto;
-width:100%;
+overflow-x:visible;
+width:max-content;
+min-width:100%;
 box-sizing:border-box;
 
 }
@@ -84,11 +87,6 @@ display:none;
 {
     display:block;
     color:white;
-}
-
-.nav > li:nth-child(2)
-{
-    order:6;
 }
 
 .nav li:hover
