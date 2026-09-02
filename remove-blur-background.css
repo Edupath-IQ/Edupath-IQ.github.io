@@ -1,0 +1,5 @@
+/* EduPath IQ — Remove the blurred decorative background only */
+.outer {
+    background-image: none !important;
+    background-color: #ffffff !important;
+}
