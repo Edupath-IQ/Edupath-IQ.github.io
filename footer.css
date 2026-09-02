@@ -1,0 +1,279 @@
+/* =========================================================
+   EduPath IQ - Creative Footer
+   Add this file to the website and include it after Home.css:
+   <link rel="stylesheet" href="footer.css">
+   ========================================================= */
+
+.ep-footer{
+  width:100%;
+  box-sizing:border-box;
+  margin:0;
+  color:#eef3ff;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(124,92,255,.18), transparent 28%),
+    radial-gradient(circle at 85% 25%, rgba(76,130,255,.12), transparent 25%),
+    linear-gradient(135deg,#071a3a 0%,#0b2147 55%,#111047 100%);
+  position:relative;
+  overflow:hidden;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.ep-footer:before{
+  content:"";
+  position:absolute;
+  top:-42px;
+  left:-5%;
+  width:110%;
+  height:85px;
+  background:#fff;
+  border-radius:0 0 50% 50%;
+}
+
+.ep-footer-inner{
+  width:min(1180px,92%);
+  margin:auto;
+  padding:90px 0 0;
+  position:relative;
+  z-index:1;
+}
+
+.ep-footer-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr 1fr 1.15fr;
+  gap:42px;
+}
+
+.ep-footer-brand{padding-right:10px}
+
+.ep-brand-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.ep-footer-logo{
+  width:72px;
+  height:72px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.ep-brand-name{
+  font-size:30px;
+  font-weight:800;
+  color:#fff;
+}
+
+.ep-brand-name span{color:#a78bfa}
+
+.ep-tagline{
+  margin-top:4px;
+  color:#c9d4ee;
+  font-size:14px;
+  font-style:italic;
+}
+
+.ep-footer-brand > p{
+  margin:0;
+  color:#cbd6eb;
+  line-height:1.75;
+  font-size:15px;
+}
+
+.ep-footer-brand > p strong{
+  color:#f5c95b;
+}
+
+.ep-creative-box,
+.ep-help-box{
+  margin-top:22px;
+  padding:16px;
+  border:1px solid rgba(167,139,250,.55);
+  border-radius:14px;
+  background:rgba(92,72,180,.16);
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+}
+
+.ep-creative-icon,
+.ep-help-icon{
+  min-width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#7c5cff,#9b7bff);
+  font-size:21px;
+}
+
+.ep-creative-box h4{
+  margin:0 0 5px;
+  color:#c7b5ff;
+  font-size:16px;
+}
+
+.ep-creative-box p{
+  margin:0;
+  color:#d5def0;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.ep-footer-column h3{
+  margin:0 0 17px;
+  font-size:19px;
+  color:#fff;
+}
+
+.ep-footer-column h3:after{
+  content:"";
+  display:block;
+  width:34px;
+  height:3px;
+  margin-top:8px;
+  border-radius:10px;
+  background:#9b7bff;
+}
+
+.ep-footer-column > a{
+  display:block;
+  padding:9px 0;
+  color:#d7e0f0;
+  text-decoration:none;
+  font-size:14px;
+  border-bottom:1px dashed rgba(255,255,255,.10);
+  transition:.2s ease;
+}
+
+.ep-footer-column > a:hover{
+  color:#bca7ff;
+  padding-left:5px;
+}
+
+.ep-social{
+  display:flex !important;
+  align-items:center;
+  gap:12px;
+  border-bottom:0 !important;
+  padding:9px 0 !important;
+}
+
+.ep-social-icon{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:21px;
+  background:#5140b5;
+}
+
+.ep-instagram .ep-social-icon{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}
+.ep-whatsapp .ep-social-icon{background:#20c96b}
+.ep-phone .ep-social-icon{background:#2787e8}
+
+.ep-social b,
+.ep-social small{
+  display:block;
+}
+
+.ep-social b{color:#fff;font-size:15px}
+.ep-social small{color:#aebfe0;margin-top:3px;font-size:12px}
+
+.ep-help-box{margin-top:18px}
+
+.ep-help-box b,
+.ep-help-box span{display:block}
+
+.ep-help-box b{font-size:14px;color:#fff}
+.ep-help-box span{font-size:12px;color:#b9c8e2;margin-top:4px}
+
+.ep-feature-bar{
+  margin-top:44px;
+  padding:17px 18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(167,139,250,.45);
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+}
+
+.ep-feature-bar > div{
+  padding:6px 20px;
+  display:grid;
+  grid-template-columns:42px 1fr;
+  column-gap:10px;
+  align-items:center;
+}
+
+.ep-feature-bar > div + div{
+  border-left:1px solid rgba(255,255,255,.15);
+}
+
+.ep-feature-bar span{
+  grid-row:1 / span 2;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(124,92,255,.22);
+  font-size:18px;
+}
+
+.ep-feature-bar b{font-size:13px;color:#cbbcff}
+.ep-feature-bar small{font-size:11px;color:#b7c5dd;margin-top:2px}
+
+.ep-footer-bottom{
+  margin-top:32px;
+  padding:20px 0 25px;
+  border-top:1px solid rgba(255,255,255,.15);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  color:#b9c7df;
+  font-size:12px;
+}
+
+.ep-footer-bottom strong{color:#a78bfa}
+
+.ep-legal{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:17px;
+}
+
+.ep-legal a{
+  color:#cbd6eb;
+  text-decoration:none;
+}
+
+.ep-legal a:hover{color:#bca7ff}
+
+.ep-heart{color:#c084fc;font-size:16px}
+
+@media(max-width:900px){
+  .ep-footer-grid{grid-template-columns:1fr 1fr}
+  .ep-feature-bar{grid-template-columns:1fr 1fr}
+  .ep-feature-bar > div:nth-child(3){border-left:0}
+  .ep-footer-bottom{flex-direction:column;text-align:center}
+}
+
+@media(max-width:600px){
+  .ep-footer:before{top:-25px;height:55px}
+  .ep-footer-inner{padding-top:70px}
+  .ep-footer-grid{grid-template-columns:1fr;gap:28px}
+  .ep-feature-bar{grid-template-columns:1fr}
+  .ep-feature-bar > div + div{
+    border-left:0;
+    border-top:1px solid rgba(255,255,255,.12);
+    padding-top:15px;
+  }
+  .ep-footer-logo{width:62px;height:62px}
+  .ep-brand-name{font-size:25px}
+}
