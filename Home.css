@@ -61,13 +61,19 @@ justify-content:center;
 
 }
 
-.dropdown 
+.dropdown
 {
 z-index:2000;
 position:absolute;
 left:50%;
 top:100%;
 display:none;
+}
+
+.dropdown .dropdown
+{
+left:100%;
+top:0;
 }
 
 .dropdown li
@@ -86,7 +92,12 @@ li:hover
 {
 background-color:red;
 }
-.nav li:hover .dropdown 
+.nav > li:hover > .dropdown
+{
+display:block;
+}
+
+.dropdown > li:hover > .dropdown
 {
 display:block;
 }
@@ -192,4 +203,12 @@ background-color:rgba(0,0,255,0.3);
 a
 {
     text-decoration:none;
+}
+
+/* Compact CBSE PYQ navigation items */
+.nav > li:nth-last-child(2),
+.nav > li:last-child
+{
+    font-size:20px;
+    padding:5px 18px 5px 18px;
 }
