@@ -1,11 +1,21 @@
-/* EduPath IQ — Safe Class 10 Resources Loader
-   Loads the isolated Class 10 resources section without modifying
-   the existing navigation, homepage, or footer structure.
+/* EduPath IQ — Safe Class 10 Resources Loader v2
+   Places the resources section inside the existing .main content,
+   immediately before .boxes, without changing navigation or footer.
 */
 (function () {
     function loadClass10Resources() {
         var mount = document.getElementById("ep10-resources-mount");
         if (!mount) return;
+
+        var main = document.querySelector(".main");
+        var boxes = document.querySelector(".boxes");
+
+        /* Move the empty mount into the main content area before existing boxes. */
+        if (main && boxes && boxes.parentElement === main) {
+            main.insertBefore(mount, boxes);
+        } else if (main) {
+            main.appendChild(mount);
+        }
 
         var css = document.createElement("link");
         css.rel = "stylesheet";
