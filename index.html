@@ -134,25 +134,63 @@
 
     </div>
   
-    <div class="boxes">  
-     <div class="grid">
-        <div class="grid-box"><img src="6th_eng.jpeg" alt=""><a href="6th_science_english.html" class="oval-link"></a></div>
-        <div class="grid-box">box1</div>
+    <div class="boxes">
+      <style>
+        .ep-class-hub{
+          width:92%;
+          max-width:1100px;
+          margin:35px auto 45px;
+          padding:28px 22px 34px;
+          border:2px solid #d8c8ff;
+          border-radius:24px;
+          background:linear-gradient(135deg,#ffffff,#f8f5ff);
+          box-shadow:0 8px 25px rgba(30,41,59,.10);
+          box-sizing:border-box;
+        }
+        .ep-class-hub h2{margin:0;text-align:center;font-size:32px;color:#1e293b}
+        .ep-hub-sub{text-align:center;margin:8px 0 24px;color:#64748b;font-size:17px}
+        .ep-class-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+        .ep-class-card{
+          display:block;text-decoration:none;color:#1e293b;padding:22px 14px;text-align:center;
+          border:1px solid #e2e8f0;border-radius:18px;background:#fff;
+          box-shadow:0 5px 15px rgba(30,41,59,.08);
+          transition:transform .2s ease,box-shadow .2s ease;
+        }
+        .ep-class-card:hover{transform:translateY(-5px);box-shadow:0 10px 22px rgba(30,41,59,.15)}
+        .ep-class-number{font-size:38px;font-weight:800;line-height:1;margin-bottom:8px;color:#4f46e5}
+        .ep-class-card h3{margin:0 0 8px;font-size:21px}
+        .ep-class-card p{margin:0;font-size:14px;color:#64748b;line-height:1.5}
+        @media(max-width:800px){.ep-class-cards{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:480px){.ep-class-hub{width:94%;padding:22px 14px}.ep-class-hub h2{font-size:26px}.ep-class-cards{gap:10px}.ep-class-card{padding:18px 8px}}
+      </style>
 
-        <div class="grid-box"><img src="7th_eng.jpeg" alt=""><a href="7th_science_english.html" class="oval-link"></a></div>
-        <div class="grid-box">box1</div>
-        
-        <div class="grid-box"><img src="8th_eng.jpeg" alt=""><a href="8th_science_english.html" class="oval-link"></a></div>
-        <div class="grid-box">box1</div>
-        
-        <div class="grid-box"><img src="9th_eng.jpeg" alt=""><a href="9th_science_english.html" class="oval-link"></a></div>
-        <div class="grid-box">box1</div>
-        
-        <div class="grid-box"><img src="10th_eng.jpeg" alt=""><a href="10th_science_english.html" class="oval-link"></a></div>
-        <div class="grid-box">box1</div>
-    
-     </div>
-    </div>    
+      <section class="ep-class-hub">
+        <h2>Explore Your Class</h2>
+        <div class="ep-hub-sub">Science Notes • Solutions • Test Series</div>
+        <div class="ep-class-cards">
+          <a class="ep-class-card" href="6th_science_english.html">
+            <div class="ep-class-number">06</div>
+            <h3>Class 6 Science</h3>
+            <p>Notes • Solutions • Tests</p>
+          </a>
+          <a class="ep-class-card" href="7th_science_english.html">
+            <div class="ep-class-number">07</div>
+            <h3>Class 7 Science</h3>
+            <p>Notes • Solutions • Tests</p>
+          </a>
+          <a class="ep-class-card" href="8th_science_english.html">
+            <div class="ep-class-number">08</div>
+            <h3>Class 8 Science</h3>
+            <p>Notes • Solutions • Tests</p>
+          </a>
+          <a class="ep-class-card" href="9th_science_english.html">
+            <div class="ep-class-number">09</div>
+            <h3>Class 9 Science</h3>
+            <p>Notes • Solutions • Tests</p>
+          </a>
+        </div>
+      </section>
+    </div>
    
 </div>
 </div>
