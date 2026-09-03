@@ -1,199 +1,255 @@
-
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="Home.css">
-    <link rel="stylesheet" href="remove-blur-background.css">
-    <link rel="stylesheet" href="footer.css">
-<script src="class10-resources-safe-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPath IQ | Science Learning Platform</title>
+  <link rel="stylesheet" href="Home.css">
+  <link rel="stylesheet" href="remove-blur-background.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="class10-resources-safe-loader.js"></script>
+  <style>
+    /* ===== EduPath IQ Homepage Refresh ===== */
+    :root{
+      --ep-navy:#071a3d;
+      --ep-blue:#1769e0;
+      --ep-blue2:#2d8cff;
+      --ep-yellow:#ffd54a;
+      --ep-text:#13213c;
+      --ep-muted:#66748b;
+      --ep-bg:#f6f9ff;
+      --ep-card:#ffffff;
+      --ep-border:#e3eaf5;
+      --ep-shadow:0 14px 40px rgba(18,48,94,.10);
+      --ep-radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ep-bg);color:var(--ep-text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+    a{text-decoration:none}
+
+    /* Header */
+    .header{display:none!important}
+    .nav{display:none!important}
+    .ep-topbar{position:relative;z-index:1000;background:linear-gradient(120deg,#06183a,#0b285b 60%,#103c7a);color:#fff;box-shadow:0 8px 24px rgba(4,18,46,.18)}
+    .ep-nav-inner{max-width:1240px;margin:auto;min-height:78px;padding:10px 24px;display:flex;align-items:center;gap:24px}
+    .ep-brand{display:flex;align-items:center;gap:11px;min-width:230px;color:#fff}
+    .ep-brand img{width:50px;height:50px;object-fit:contain;filter:drop-shadow(0 4px 7px rgba(0,0,0,.2))}
+    .ep-brand-name{font-size:22px;font-weight:800;letter-spacing:-.4px;line-height:1.05}
+    .ep-brand-name span{color:var(--ep-yellow)}
+    .ep-brand-tag{font-size:10px;color:#c8d7f3;margin-top:4px;letter-spacing:.6px}
+    .ep-nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+    .ep-nav > a,.ep-menu > summary{color:#eaf1ff;padding:11px 13px;border-radius:11px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;white-space:nowrap}
+    .ep-nav > a:hover,.ep-menu > summary:hover,.ep-nav > a.active{background:rgba(255,255,255,.09);color:#fff}
+    .ep-nav > a.active{box-shadow:inset 0 -2px 0 var(--ep-yellow)}
+    .ep-menu{position:relative}
+    .ep-menu > summary::-webkit-details-marker{display:none}
+    .ep-menu > summary:after{content:'⌄';font-size:11px;margin-left:6px;color:#a9c2e8}
+    .ep-dropdown{position:absolute;top:calc(100% + 10px);left:0;min-width:210px;padding:9px;background:#071a3d;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 18px 40px rgba(2,12,31,.28)}
+    .ep-dropdown a,.ep-dropdown .ep-dd-label{display:block;padding:10px 12px;border-radius:9px;color:#dce8ff;font-size:13px;font-weight:500}
+    .ep-dropdown a:hover{background:rgba(255,255,255,.09);color:#fff}
+    .ep-dd-label{color:#8fb0df!important;font-size:11px!important;text-transform:uppercase;letter-spacing:.7px;cursor:default}
+    .ep-mobile-toggle{display:none}
+
+    /* Hero */
+    .ep-hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(125deg,#071b40 0%,#0c3470 58%,#1254a0 100%);color:#fff}
+    .ep-hero:before,.ep-hero:after{content:'';position:absolute;border-radius:50%;pointer-events:none;z-index:-1}
+    .ep-hero:before{width:430px;height:430px;right:-160px;top:-170px;background:rgba(57,142,255,.18);filter:blur(2px)}
+    .ep-hero:after{width:340px;height:340px;left:-170px;bottom:-180px;background:rgba(255,213,74,.07)}
+    .ep-hero-inner{max-width:1240px;margin:auto;min-height:500px;padding:66px 24px 58px;display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center}
+    .ep-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(255,255,255,.20);background:rgba(255,255,255,.07);border-radius:999px;color:#f8fbff;font-size:11px;font-weight:700;letter-spacing:.7px}
+    .ep-kicker i{width:7px;height:7px;border-radius:50%;background:var(--ep-yellow);display:block}
+    .ep-hero h1{font-size:clamp(38px,5.2vw,66px);line-height:1.02;letter-spacing:-2.2px;margin:18px 0 18px;font-weight:800}
+    .ep-hero h1 .gold{color:var(--ep-yellow)}
+    .ep-hero-copy{max-width:650px;color:#dce8fb;font-size:17px;line-height:1.7;margin:0 0 24px}
+    .ep-hero-copy strong{color:#fff}
+    .ep-points{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 28px}
+    .ep-point{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);font-size:12px;color:#eef5ff;font-weight:600}
+    .ep-point b{color:var(--ep-yellow);font-size:14px}
+    .ep-actions{display:flex;gap:11px;flex-wrap:wrap}
+    .ep-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:13px;font-size:14px;font-weight:800;transition:transform .18s ease,box-shadow .18s ease}
+    .ep-btn:hover{transform:translateY(-2px)}
+    .ep-btn-primary{background:var(--ep-yellow);color:#152544;box-shadow:0 10px 25px rgba(255,213,74,.22)}
+    .ep-btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);color:#fff}
+    .ep-hero-art{min-height:360px;position:relative;display:grid;place-items:center}
+    .ep-art-glow{position:absolute;width:330px;height:330px;border-radius:50%;background:rgba(92,177,255,.20);filter:blur(12px)}
+    .ep-study-scene{position:relative;width:min(440px,100%);height:340px}
+    .ep-bulb{position:absolute;left:50%;top:8px;transform:translateX(-50%);font-size:88px;filter:drop-shadow(0 0 20px rgba(255,213,74,.42))}
+    .ep-book{position:absolute;left:50%;bottom:50px;transform:translateX(-50%) rotate(-2deg);width:250px;height:115px;background:linear-gradient(160deg,#fff,#dcecff);border-radius:15px 17px 13px 17px;box-shadow:0 20px 35px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;gap:8px;color:#174c9d;font-weight:800;font-size:16px}
+    .ep-book:before{content:'';position:absolute;left:50%;top:10px;bottom:10px;width:2px;background:#b9cce8}
+    .ep-microscope{position:absolute;left:17px;bottom:62px;font-size:70px;transform:rotate(-8deg)}
+    .ep-books{position:absolute;right:15px;bottom:46px;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+    .ep-books span{height:34px;border-radius:7px 9px 9px 7px;padding:7px 13px;min-width:145px;font-size:12px;font-weight:800;letter-spacing:.5px;box-shadow:0 8px 14px rgba(0,0,0,.17)}
+    .ep-books .b1{background:#4b8fe8}.ep-books .b2{background:#f2b84b;color:#25324d}.ep-books .b3{background:#5dbf8d}
+    .ep-plant{position:absolute;right:70px;bottom:8px;font-size:45px}
+    .ep-doodle{position:absolute;color:rgba(255,255,255,.17);font-size:27px}
+    .d1{left:7%;top:13%}.d2{right:5%;top:25%}.d3{left:13%;bottom:10%}.d4{right:17%;bottom:8%}
+
+    /* Quick features */
+    .ep-feature-wrap{max-width:1240px;margin:-28px auto 0;padding:0 24px;position:relative;z-index:5}
+    .ep-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .ep-feature-card{background:#fff;border:1px solid var(--ep-border);border-radius:19px;padding:22px;box-shadow:var(--ep-shadow);display:flex;gap:15px;align-items:flex-start;transition:transform .2s ease,box-shadow .2s ease}
+    .ep-feature-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(18,48,94,.14)}
+    .ep-feature-icon{width:48px;height:48px;flex:0 0 48px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:#edf5ff}
+    .ep-feature-card:nth-child(2) .ep-feature-icon{background:#fff6d8}.ep-feature-card:nth-child(3) .ep-feature-icon{background:#e9f8f0}
+    .ep-feature-card h3{margin:0 0 6px;font-size:17px;color:#152646}.ep-feature-card p{margin:0;color:var(--ep-muted);font-size:12px;line-height:1.55}
+    .ep-feature-card .mini-link{display:inline-block;margin-top:9px;color:var(--ep-blue);font-size:12px;font-weight:800}
+
+    /* Main content / loader mount */
+    .outer{background:transparent!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+    .main{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important}
+    .about{display:none!important}
+    .boxes{width:100%!important;margin:0!important;padding:0!important;background:transparent!important}
+
+    /* Class 6-9 section - class 10 is injected immediately before .boxes by the safe loader */
+    .ep-class-hub{width:min(1240px,calc(100% - 48px));max-width:none!important;margin:46px auto 54px!important;padding:10px 0 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+    .ep-class-heading{text-align:center;margin-bottom:26px}
+    .ep-class-heading .eyebrow{display:inline-block;color:var(--ep-blue);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+    .ep-class-hub h2{margin:0!important;text-align:center;font-size:clamp(28px,3.2vw,40px)!important;color:#102246!important;letter-spacing:-1px}
+    .ep-hub-sub{margin:9px 0 0!important;color:var(--ep-muted)!important;font-size:14px!important}
+    .ep-class-cards{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:16px!important}
+    .ep-class-card{position:relative;overflow:hidden;display:block;text-decoration:none;color:#1b2944;padding:24px 16px 20px!important;text-align:left;border:1px solid var(--ep-border)!important;border-radius:20px!important;background:#fff!important;box-shadow:0 9px 28px rgba(18,48,94,.07)!important;transition:transform .2s ease,box-shadow .2s ease!important}
+    .ep-class-card:before{content:'';position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#4b8fe8,#72b6ff)}
+    .ep-class-card:nth-child(2):before{background:linear-gradient(90deg,#8b63e8,#b89bff)}
+    .ep-class-card:nth-child(3):before{background:linear-gradient(90deg,#f0a64a,#ffd27a)}
+    .ep-class-card:nth-child(4):before{background:linear-gradient(90deg,#44b77b,#8ce0ad)}
+    .ep-class-card:hover{transform:translateY(-5px)!important;box-shadow:0 17px 36px rgba(18,48,94,.13)!important}
+    .ep-class-number{font-size:34px!important;font-weight:800!important;line-height:1!important;margin-bottom:10px!important;color:var(--ep-blue)!important}
+    .ep-class-card:nth-child(2) .ep-class-number{color:#7b55dc!important}.ep-class-card:nth-child(3) .ep-class-number{color:#e88d2d!important}.ep-class-card:nth-child(4) .ep-class-number{color:#2c9b67!important}
+    .ep-class-card h3{margin:0 0 7px!important;font-size:18px!important}.ep-class-card p{margin:0!important;font-size:12px!important;color:var(--ep-muted)!important;line-height:1.5!important}
+    .ep-explore{display:inline-block;margin-top:15px;font-size:12px;font-weight:800;color:var(--ep-blue)}
+
+    /* Small promise strip */
+    .ep-why{background:#fff;border-top:1px solid #e8eef7;border-bottom:1px solid #e8eef7;padding:52px 24px}
+    .ep-why-inner{max-width:1240px;margin:auto}
+    .ep-section-title{text-align:center;margin-bottom:28px}.ep-section-title h2{margin:0;color:#102246;font-size:32px;letter-spacing:-.7px}.ep-section-title p{margin:8px 0 0;color:var(--ep-muted);font-size:13px}
+    .ep-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .ep-why-item{padding:20px 16px;text-align:center;border:1px solid var(--ep-border);border-radius:18px;background:#fbfdff}
+    .ep-why-item .icon{font-size:25px;margin-bottom:10px}.ep-why-item h3{margin:0 0 6px;font-size:15px}.ep-why-item p{margin:0;color:var(--ep-muted);font-size:11px;line-height:1.5}
+
+    /* Stats */
+    .ep-stats{max-width:1240px;margin:36px auto 58px;padding:0 24px}.ep-stats-box{background:linear-gradient(120deg,#071a3d,#123c7d);border-radius:24px;padding:24px;display:grid;grid-template-columns:repeat(4,1fr);color:#fff;box-shadow:0 16px 38px rgba(7,26,61,.16)}
+    .ep-stat{text-align:center;padding:8px 15px;border-right:1px solid rgba(255,255,255,.15)}.ep-stat:last-child{border-right:0}.ep-stat strong{display:block;color:var(--ep-yellow);font-size:27px;font-weight:800}.ep-stat span{display:block;color:#d7e4fa;font-size:11px;margin-top:5px}
+
+    /* Footer spacing */
+    .ep-footer{margin-top:0!important}
+
+    @media(max-width:1000px){
+      .ep-nav-inner{padding:10px 18px}.ep-nav{gap:0}.ep-nav > a,.ep-menu > summary{padding:10px 8px;font-size:12px}.ep-brand{min-width:205px}.ep-hero-inner{grid-template-columns:1fr .8fr}.ep-hero h1{font-size:48px}.ep-feature-card{padding:18px}.ep-class-cards{grid-template-columns:repeat(2,1fr)!important}.ep-why-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:760px){
+      .ep-nav{display:none}.ep-mobile-toggle{display:block;margin-left:auto}.ep-mobile-toggle summary{list-style:none;cursor:pointer;width:42px;height:42px;border:1px solid rgba(255,255,255,.18);border-radius:12px;display:grid;place-items:center;font-size:23px}.ep-mobile-toggle summary::-webkit-details-marker{display:none}.ep-mobile-menu{position:absolute;right:18px;top:68px;width:min(310px,calc(100vw - 36px));background:#071a3d;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px;box-shadow:0 18px 40px rgba(2,12,31,.35)}.ep-mobile-menu a,.ep-mobile-menu summary{display:block;padding:11px 12px;color:#e7efff;font-size:13px;border-radius:9px;list-style:none;cursor:pointer}.ep-mobile-menu a:hover,.ep-mobile-menu summary:hover{background:rgba(255,255,255,.08)}.ep-mobile-sub{padding:3px 8px 7px 20px}.ep-mobile-sub a{font-size:12px;padding:8px 10px;color:#bcd0ee}
+      .ep-hero-inner{grid-template-columns:1fr;min-height:auto;padding:48px 20px 55px}.ep-hero-copy{font-size:15px}.ep-hero-art{min-height:265px;order:2}.ep-study-scene{height:250px;transform:scale(.83)}.ep-bulb{font-size:72px}.ep-feature-wrap{padding:0 14px;margin-top:-20px}.ep-feature-grid{grid-template-columns:1fr}.ep-feature-card{padding:17px}.ep-class-hub{width:calc(100% - 28px)!important;margin:38px auto 45px!important}.ep-class-cards{gap:12px!important}.ep-class-card{padding:21px 13px 18px!important}.ep-why{padding:42px 14px}.ep-why-grid{grid-template-columns:1fr 1fr}.ep-stats{padding:0 14px}.ep-stats-box{grid-template-columns:1fr 1fr;gap:0}.ep-stat:nth-child(2){border-right:0}.ep-stat:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.15)}
+    }
+    @media(max-width:480px){
+      .ep-nav-inner{min-height:68px;padding:8px 14px}.ep-brand img{width:43px;height:43px}.ep-brand-name{font-size:19px}.ep-brand-tag{font-size:8px}.ep-hero-inner{padding:40px 16px 48px}.ep-hero h1{font-size:39px;letter-spacing:-1.4px}.ep-kicker{font-size:9px}.ep-actions .ep-btn{width:100%}.ep-points{gap:6px}.ep-point{font-size:10px;padding:7px 9px}.ep-class-cards{grid-template-columns:repeat(2,1fr)!important}.ep-class-card h3{font-size:15px!important}.ep-class-card p{font-size:10px!important}.ep-class-number{font-size:29px!important}.ep-explore{font-size:10px;margin-top:12px}.ep-section-title h2{font-size:27px}.ep-why-grid{gap:10px}.ep-why-item{padding:16px 9px}.ep-why-item h3{font-size:13px}.ep-why-item p{font-size:10px}.ep-stat strong{font-size:22px}.ep-stat span{font-size:9px}.ep-books{right:-6px}.ep-microscope{left:-3px}
+    }
+  </style>
 </head>
 <body>
-<div class="header">
- <div class="logo">
-    
- </div>   
-</div>    
-<ul class="nav">
- <li><a href="index.html" alt="">HOME</a>
- </li>
- <li>6th Class
-      <ul class="dropdown">
-          <li><a href="6th_science_english.html" alt=" "">6th Science English Notes</a></li>
-          <li><a href="6th_science_hindi.html" alt="">6th Science Hindi Notes</a></li>
-          <li><a href="6th_science_english_S.html" alt=" "">6th Science English Solutions</a></li>
-          <li><a href="6th_science_hindi_S.html" alt="">9th Science Hindi Solutions</a></li>
 
-    </ul>
- </li>
- <li>7th Class
-      <ul class="dropdown">
-         <li><a href="7th_science_english.html" alt="">7th Science English Notes</a></li>
-         <li><a href="7th_science_hindi.html" alt="">7th Science Hindi Notes</a></li>
-         <li><a href="7th_science_english_S.html" alt=" "">7th Science English Solutions</a></li>
-          <li><a href="7th_science_hindi_S.html" alt="">7th Science Hindi Solutions</a></li>
+<header class="ep-topbar">
+  <div class="ep-nav-inner">
+    <a class="ep-brand" href="index.html" aria-label="EduPath IQ Home">
+      <img src="logo1.png" alt="EduPath IQ Logo">
+      <div><div class="ep-brand-name">EduPath <span>IQ</span></div><div class="ep-brand-tag">Smart Learning • Better Future</div></div>
+    </a>
 
-    </ul>
- </li>
- <li>8th Class
-      <ul class="dropdown">
-        <li><a href="8th_science_english.html" alt=" "">8th Science English Notes</a></li>
-          <li><a href="8th_science_hindi.html" alt="">8th Science Hindi Notes</a></li>
-          <li><a href="8th_science_english_S.html" alt=" "">8th Science English Solutions</a></li>
-          <li><a href="8th_science_hindi_S.html" alt="">8th Science Hindi Solutions</a></li>
-    </ul>
- </li>
-  <li>9th Class
-      <ul class="dropdown">
-        <li><a href="9th_science_english.html" alt=" "">9th Science English Notes</a></li>
+    <nav class="ep-nav" aria-label="Main navigation">
+      <a class="active" href="index.html">Home</a>
+      <details class="ep-menu"><summary>Classes</summary><div class="ep-dropdown">
+        <a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a>
+      </div></details>
+      <a href="test-series.html">Test Series</a>
+      <details class="ep-menu"><summary>CBSE PYQ</summary><div class="ep-dropdown">
+        <div class="ep-dd-label">Year Wise</div>
+        <a href="#" onclick="return false;">2019–2026 • Coming Soon</a>
+        <a href="cbse-pyq-chapter-wise.html">Chapter Wise</a>
+      </div></details>
+      <details class="ep-menu"><summary>Activity</summary><div class="ep-dropdown">
+        <a href="#activity">Activity Explanation</a><a href="#activity">Activity Based Questions</a>
+      </div></details>
+      <a href="#about-edupath">About Us</a>
+    </nav>
 
-        <li><a href="9th_science_hindi.html" alt="">9th Science Hindi Notes</a></li>
-          <li><a href="9th_science_english_S.html" alt=" "">9th Science English Solutions</a></li>
-          <li><a href="9th_science_hindi_S.html" alt="">9th Science Hindi Solutions</a></li>
-    </ul>
- </li>
- 
- <li>10th Class
-      <ul class="dropdown">
-          <li><a href="10th_science_english.html" alt=" "">10th Science English Notes</a></li>
-          <li><a href="10th_science_hindi.html" alt="">10th Science Hindi Notes</a></li>
-          <li><a href="10th_science_english_S.html" alt=" "">10th Science English Solutions</a></li>
-          <li><a href="10th_science_hindi_S.html" alt="">10th Science Hindi Solutions</a></li>
+    <details class="ep-mobile-toggle">
+      <summary aria-label="Open menu">☰</summary>
+      <div class="ep-mobile-menu">
+        <a href="index.html">Home</a>
+        <details><summary>Classes</summary><div class="ep-mobile-sub"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details>
+        <a href="test-series.html">Test Series</a>
+        <details><summary>CBSE PYQ</summary><div class="ep-mobile-sub"><a href="#" onclick="return false;">Year Wise • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details>
+        <details><summary>Activity</summary><div class="ep-mobile-sub"><a href="#activity">Activity Explanation</a><a href="#activity">Activity Based Questions</a></div></details>
+        <a href="#about-edupath">About Us</a>
+      </div>
+    </details>
+  </div>
+</header>
 
-
-    </ul>
- </li>
- <li>Test Series
-      <ul class="dropdown">
-         <li><a href="test-series.html">All Classes</a></li>
-         <li><a href="class10_tests.html">Class 10 Test Series</a></li>
-      </ul>
- </li>
- <li>CBSE PYQ
-       <ul class="dropdown">
-          <li id="this"><a href="" alt="">2019</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2020</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2021</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2022</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2023</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2024</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2025</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-          <li id="this"><a href="" alt="">2026</a>
-          <ul class="dropdown">
-          <li id="this"><a href="" alt="">English</a></li>
-          <li id="this"><a href="" alt="">Hindi</a></li>
-         </ul>
-         </li>
-      </ul>
- </li>
-<li>CBSE PYQ Chapter Wise
-      <ul class="dropdown">
-
-        <li><a href="cbse-pyq-chapter-wise.html" alt="">10th Class</a></li>
-          
-    </ul>
-</ul>
-<div class="outer">
-<div class="main">
-  
-    <div class="about">
-
+<section class="ep-hero">
+  <span class="ep-doodle d1">⚛</span><span class="ep-doodle d2">✦</span><span class="ep-doodle d3">⌁</span><span class="ep-doodle d4">＋</span>
+  <div class="ep-hero-inner">
+    <div>
+      <div class="ep-kicker"><i></i> NCERT BASED &nbsp;|&nbsp; HINDI &amp; ENGLISH MEDIUM</div>
+      <h1>Your Journey to<br><span class="gold">Excellence</span> Starts Here!</h1>
+      <p class="ep-hero-copy">Learn Science smarter with <strong>Creative Notes</strong>, Solutions, Activity Explanations &amp; Questions, Test Series and CBSE Previous Year Questions — all for Class 6 to 10.</p>
+      <div class="ep-points"><span class="ep-point"><b>✓</b> NCERT Based</span><span class="ep-point"><b>🎯</b> Exam Focused</span><span class="ep-point"><b>★</b> Student Friendly</span><span class="ep-point"><b>✓</b> Trusted Content</span></div>
+      <div class="ep-actions"><a class="ep-btn ep-btn-primary" href="#classes">📚 Explore Classes</a><a class="ep-btn ep-btn-secondary" href="test-series.html">🚀 Practice Now</a></div>
     </div>
-  
-    <div class="boxes">
-      <style>
-        .ep-class-hub{
-          width:92%;
-          max-width:1100px;
-          margin:35px auto 45px;
-          padding:28px 22px 34px;
-          border:2px solid #d8c8ff;
-          border-radius:24px;
-          background:linear-gradient(135deg,#ffffff,#f8f5ff);
-          box-shadow:0 8px 25px rgba(30,41,59,.10);
-          box-sizing:border-box;
-        }
-        .ep-class-hub h2{margin:0;text-align:center;font-size:32px;color:#1e293b}
-        .ep-hub-sub{text-align:center;margin:8px 0 24px;color:#64748b;font-size:17px}
-        .ep-class-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-        .ep-class-card{
-          display:block;text-decoration:none;color:#1e293b;padding:22px 14px;text-align:center;
-          border:1px solid #e2e8f0;border-radius:18px;background:#fff;
-          box-shadow:0 5px 15px rgba(30,41,59,.08);
-          transition:transform .2s ease,box-shadow .2s ease;
-        }
-        .ep-class-card:hover{transform:translateY(-5px);box-shadow:0 10px 22px rgba(30,41,59,.15)}
-        .ep-class-number{font-size:38px;font-weight:800;line-height:1;margin-bottom:8px;color:#4f46e5}
-        .ep-class-card h3{margin:0 0 8px;font-size:21px}
-        .ep-class-card p{margin:0;font-size:14px;color:#64748b;line-height:1.5}
-        @media(max-width:800px){.ep-class-cards{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:480px){.ep-class-hub{width:94%;padding:22px 14px}.ep-class-hub h2{font-size:26px}.ep-class-cards{gap:10px}.ep-class-card{padding:18px 8px}}
-      </style>
-
-      <section class="ep-class-hub">
-        <h2>Explore Your Class</h2>
-        <div class="ep-hub-sub">Science Notes • Solutions • Test Series</div>
-        <div class="ep-class-cards">
-          <a class="ep-class-card"href="class-6-science.html">
-            <div class="ep-class-number">06</div>
-            <h3>Class 6 Science</h3>
-            <p>Notes • Solutions • Tests</p>
-          </a>
-          <a class="ep-class-card"href="class-7-science.html">
-            <div class="ep-class-number">07</div>
-            <h3>Class 7 Science</h3>
-            <p>Notes • Solutions • Tests</p>
-          </a>
-          <a class="ep-class-card" href="class-8-science.html">
-            <div class="ep-class-number">08</div>
-            <h3>Class 8 Science</h3>
-            <p>Notes • Solutions • Tests</p>
-          </a>
-          <a class="ep-class-card"href="class-9-science.html">
-            <div class="ep-class-number">09</div>
-            <h3>Class 9 Science</h3>
-            <p>Notes • Solutions • Tests</p>
-          </a>
-        </div>
-      </section>
+    <div class="ep-hero-art" aria-hidden="true">
+      <div class="ep-art-glow"></div>
+      <div class="ep-study-scene">
+        <div class="ep-bulb">💡</div><div class="ep-microscope">🔬</div>
+        <div class="ep-book"><span>📖</span> THINK • LEARN • ACHIEVE</div>
+        <div class="ep-books"><span class="b1">SCIENCE</span><span class="b2">NCERT</span><span class="b3">SUCCESS</span></div><div class="ep-plant">🌱</div>
+      </div>
     </div>
-   
-</div>
-</div>
+  </div>
+</section>
+
+<section class="ep-feature-wrap" id="activity">
+  <div class="ep-feature-grid">
+    <article class="ep-feature-card"><div class="ep-feature-icon">📝</div><div><h3>Test Series</h3><p>Practice with focused Science tests for better exam preparation.</p><a class="mini-link" href="test-series.html">Practice Now →</a></div></article>
+    <article class="ep-feature-card"><div class="ep-feature-icon">🧪</div><div><h3>Activity Explanation &amp; Questions</h3><p>Understand NCERT activities with clear explanations and activity-based questions.</p><a class="mini-link" href="#classes">Explore Resources →</a></div></article>
+    <article class="ep-feature-card"><div class="ep-feature-icon">📄</div><div><h3>CBSE PYQ</h3><p>Access Year Wise and Chapter Wise previous year question resources.</p><a class="mini-link" href="cbse-pyq-chapter-wise.html">Chapter Wise →</a></div></article>
+  </div>
+</section>
+
+<main>
+  <div class="outer">
+    <div class="main">
+      <div class="about"></div>
+      <div class="boxes" id="classes">
+        <section class="ep-class-hub">
+          <div class="ep-class-heading"><span class="eyebrow">Choose Your Class</span><h2>Explore Your Class</h2><div class="ep-hub-sub">Select your class and start your Science learning journey</div></div>
+          <div class="ep-class-cards">
+            <a class="ep-class-card" href="class-6-science.html"><div class="ep-class-number">06</div><h3>Class 6 Science</h3><p>Notes • Solutions • Tests</p><span class="ep-explore">Explore →</span></a>
+            <a class="ep-class-card" href="class-7-science.html"><div class="ep-class-number">07</div><h3>Class 7 Science</h3><p>Notes • Solutions • Tests</p><span class="ep-explore">Explore →</span></a>
+            <a class="ep-class-card" href="class-8-science.html"><div class="ep-class-number">08</div><h3>Class 8 Science</h3><p>Notes • Solutions • Tests</p><span class="ep-explore">Explore →</span></a>
+            <a class="ep-class-card" href="class-9-science.html"><div class="ep-class-number">09</div><h3>Class 9 Science</h3><p>Notes • Solutions • Tests</p><span class="ep-explore">Explore →</span></a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <section class="ep-why" id="about-edupath">
+    <div class="ep-why-inner"><div class="ep-section-title"><h2>Why Choose EduPath IQ?</h2><p>Simple, focused and student-friendly Science learning.</p></div>
+      <div class="ep-why-grid">
+        <div class="ep-why-item"><div class="icon">📘</div><h3>NCERT Based</h3><p>Content designed around NCERT learning.</p></div>
+        <div class="ep-why-item"><div class="icon">🎯</div><h3>Exam Focused</h3><p>Resources made for school and board preparation.</p></div>
+        <div class="ep-why-item"><div class="icon">🌐</div><h3>Hindi &amp; English</h3><p>Study in the language you are comfortable with.</p></div>
+        <div class="ep-why-item"><div class="icon">📱</div><h3>Mobile Friendly</h3><p>Learn easily on phone, tablet or computer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ep-stats"><div class="ep-stats-box"><div class="ep-stat"><strong>6–10</strong><span>Classes Covered</span></div><div class="ep-stat"><strong>500+</strong><span>Notes &amp; Solutions</span></div><div class="ep-stat"><strong>2000+</strong><span>PYQs Available</span></div><div class="ep-stat"><strong>100+</strong><span>Practice Resources</span></div></div></section>
+</main>
+
 <!-- EduPath IQ Footer -->
     <div id="ep10-resources-mount"></div>
 <footer class="ep-footer">
