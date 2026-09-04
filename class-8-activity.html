@@ -1,32 +1,40 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Class 8 Activity Explanation &amp; Questions | EduPath IQ</title><style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f9ff;color:#172033}
-.site-header{background:#071a3d;color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 14px rgba(0,0,0,.15)}
+:root{--accent:#2563eb;--accent2:#7c3aed;--soft:#eef4ff;--ink:#172033;--muted:#64748b}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#f9f7ff 100%);color:var(--ink);min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 8% 12%,rgba(37,99,235,.08),transparent 24%),radial-gradient(circle at 92% 18%,rgba(124,58,237,.08),transparent 23%),radial-gradient(circle at 50% 100%,rgba(14,165,233,.06),transparent 28%);z-index:-1}
+.site-header{background:linear-gradient(110deg,#061638,#0b2f68 55%,#172b6b);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 6px 24px rgba(7,26,61,.22)}
 .navbar{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:28px}
 .brand{color:#fff;text-decoration:none;font-weight:800;display:flex;align-items:center;gap:10px;font-size:18px}
-.brand-mark{font-size:24px}.brand small{display:block;font-size:11px;font-weight:500;opacity:.8;margin-top:3px}
+.brand-mark{font-size:25px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.25))}.brand small{display:block;font-size:11px;font-weight:500;opacity:.8;margin-top:3px}
 .navlinks{margin-left:auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .navlinks a,.navlinks summary{color:#fff;text-decoration:none;font-size:14px;font-weight:700;cursor:pointer}
+.navlinks a:hover,.navlinks summary:hover{color:#cfe0ff}
 .navdrop{position:relative}.navdrop summary{list-style:none}.navdrop summary::-webkit-details-marker{display:none}
-.dropdown{position:absolute;top:28px;left:0;background:#fff;min-width:210px;border-radius:10px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
-.dropdown a{display:block;color:#172033!important;padding:9px 11px;border-radius:7px}
-.dropdown a:hover{background:#eef4ff}.mobile{display:none;font-size:25px}
-.wrap{max-width:1100px;margin:0 auto;padding:42px 20px 70px}
-.back{display:inline-block;text-decoration:none;color:#1d4ed8;font-weight:700;margin-bottom:18px}
-.hero{background:linear-gradient(135deg,#0b2b67,#164e9c);color:#fff;border-radius:24px;padding:38px 28px;text-align:center;box-shadow:0 15px 35px rgba(11,43,103,.2)}
-.hero-icon{font-size:42px}.hero h1{margin:8px 0;font-size:34px}.hero p{margin:0;opacity:.9}
+.dropdown{position:absolute;top:30px;left:0;background:#fff;min-width:210px;border-radius:12px;padding:8px;box-shadow:0 18px 40px rgba(15,23,42,.2);border:1px solid #e4eaf4}
+.dropdown a{display:block;color:#172033!important;padding:9px 11px;border-radius:8px}.dropdown a:hover{background:#eef4ff}.mobile{display:none;font-size:25px}
+.wrap{max-width:1120px;margin:0 auto;padding:34px 20px 76px;position:relative}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#1d4ed8;font-weight:800;margin-bottom:18px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid #dbe7ff;box-shadow:0 5px 14px rgba(30,64,175,.07);transition:.2s}.back:hover{transform:translateX(-3px);box-shadow:0 8px 18px rgba(30,64,175,.12)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#081f4d 0%,#1457b8 58%,#6938c7 100%);color:#fff;border-radius:28px;padding:42px 28px;text-align:center;box-shadow:0 20px 45px rgba(16,54,120,.22);border:1px solid rgba(255,255,255,.2)}
+.hero::before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.09);top:-120px;left:-70px}.hero::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08);right:-100px;bottom:-180px}
+.hero-icon{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:24px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);font-size:40px;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 24px rgba(0,0,0,.12)}
+.hero h1{position:relative;z-index:1;margin:15px 0 8px;font-size:clamp(28px,4vw,40px);letter-spacing:-.5px;text-shadow:0 3px 15px rgba(0,0,0,.18)}.hero p{position:relative;z-index:1;margin:0;opacity:.92;font-size:15px}
 .intro{text-align:center;margin:26px auto 28px;max-width:760px;color:#526174}
-.chapter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.chapter{background:#fff;border:1px solid #e4eaf4;border-radius:16px;padding:20px;box-shadow:0 5px 16px rgba(30,41,59,.07)}
-.chapter h2{font-size:18px;margin:0 0 14px}.num{color:#1d4ed8;font-weight:800}
-.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:10px 14px;border-radius:9px;background:#1457d9;color:#fff;text-decoration:none;font-weight:700;font-size:13px}.btn.alt{background:#edf3ff;color:#1457d9}
-.soon{display:inline-block;padding:10px 14px;border-radius:9px;background:#f0f2f5;color:#6b7280;font-weight:700;font-size:13px}
-.class-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:30px}
-.class-card{background:#fff;border:1px solid #e3eaf5;border-radius:18px;padding:24px 14px;text-align:center;box-shadow:0 7px 20px rgba(30,41,59,.07);text-decoration:none;color:#172033}
+.note{position:relative;overflow:hidden;background:linear-gradient(135deg,#fffdf4,#fff7df);border:1px solid #f0d487;border-radius:18px;padding:17px 20px;margin:26px 0 30px;color:#664b08;box-shadow:0 8px 22px rgba(146,104,20,.07)}
+.note::before{content:"💡";display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:10px;background:#fff1b8;margin-right:10px;vertical-align:middle}
+.chapter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.chapter{position:relative;background:rgba(255,255,255,.94);border:1px solid #dfe8f6;border-radius:20px;padding:21px 20px 19px;box-shadow:0 8px 24px rgba(30,41,59,.07);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;overflow:hidden}
+.chapter::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#2563eb,#7c3aed);border-radius:20px 0 0 20px}
+.chapter::after{content:"";position:absolute;right:-32px;top:-38px;width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(124,58,237,.08));pointer-events:none}
+.chapter:hover{transform:translateY(-5px);border-color:#b8cdf5;box-shadow:0 16px 32px rgba(30,64,175,.12)}
+.chapter h2{font-size:18px;line-height:1.4;margin:0 0 16px;padding-left:4px;position:relative;z-index:1}.num{color:#1d4ed8;font-weight:900;letter-spacing:.2px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:11px;background:linear-gradient(135deg,#1457d9,#4f46e5);color:#fff;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 7px 15px rgba(37,99,235,.16);transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(37,99,235,.22)}.btn.alt{background:#edf3ff;color:#1457d9;box-shadow:none;border:1px solid #d8e5ff}
+.soon{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:11px;background:linear-gradient(135deg,#f5f7fa,#eef2f7);color:#687386;font-weight:800;font-size:13px;border:1px dashed #cbd5e1}
+.class-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:30px}.class-card{background:#fff;border:1px solid #e3eaf5;border-radius:18px;padding:24px 14px;text-align:center;box-shadow:0 7px 20px rgba(30,41,59,.07);text-decoration:none;color:#172033}
 .class-card .n{font-size:34px;font-weight:900;color:#1d4ed8}.class-card h2{font-size:17px;margin:8px 0}.class-card span{font-size:12px;color:#64748b}
-.note{background:#fff8e8;border:1px solid #f4d58a;border-radius:14px;padding:16px;margin:25px 0;color:#664b08}
-@media(max-width:850px){.navlinks{display:none}.mobile{display:block;margin-left:auto}.chapter-grid{grid-template-columns:1fr}.class-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:850px){.navlinks{display:none}.mobile{display:block;margin-left:auto}.chapter-grid{grid-template-columns:1fr}.class-grid{grid-template-columns:repeat(2,1fr)}.hero{padding:34px 20px}}
+@media(max-width:560px){.wrap{padding:24px 14px 55px}.chapter{padding:18px 16px 17px}.hero h1{font-size:27px}.hero-icon{width:66px;height:66px;font-size:34px}.note{padding:15px}}
 </style></head><body><header class="site-header"><nav class="navbar" aria-label="Main navigation">
 <a class="brand" href="index.html"><span class="brand-mark">📚</span><span>EduPath IQ<small>Learn Smarter. Visualize Better. Score Higher.</small></span></a>
 <div class="navlinks">
