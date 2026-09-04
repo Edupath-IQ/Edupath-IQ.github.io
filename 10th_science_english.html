@@ -1,6 +1,349 @@
 <html>
 <head>
 <link href="first.css" rel="stylesheet"/>
+<style>
+
+/* EduPath IQ Premium Notes/Solutions layout
+   Visual-only enhancement: existing content, links and structure are preserved. */
+.outer{
+    width:min(1180px, calc(100% - 32px));
+    margin:28px auto 40px;
+    padding:0 0 34px;
+    border:0;
+    border-radius:26px;
+    background-image:none !important;
+    background:#f7f9ff;
+    box-shadow:0 18px 55px rgba(15,23,42,.10);
+    overflow:hidden;
+    box-sizing:border-box;
+}
+.outer .main{
+    width:100%;
+    margin:0;
+    padding:0 34px;
+    box-sizing:border-box;
+}
+.first{
+    min-height:86px;
+    height:auto;
+    margin:0 -34px;
+    padding:30px 34px 20px;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    font-size:clamp(28px,3vw,42px);
+    line-height:1.2;
+    font-weight:800;
+    color:#071a3d;
+    background:linear-gradient(135deg,#eef4ff 0%,#fff7df 48%,#f5efff 100%);
+    border-bottom:1px solid rgba(7,26,61,.08);
+}
+.second{
+    height:auto;
+    min-height:0;
+    margin:24px 0 30px;
+    padding:22px 26px;
+    box-sizing:border-box;
+    border:0;
+    border-radius:20px;
+    background:linear-gradient(135deg,#ffffff 0%,#f8fbff 55%,#fffaf0 100%);
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+    position:relative;
+    overflow:hidden;
+}
+.second:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:6px;
+    background:linear-gradient(180deg,#4f46e5,#06b6d4,#f59e0b,#ec4899);
+}
+.second ul{
+    margin:0;
+    padding:0 0 0 4px;
+    list-style:none;
+}
+.second li{
+    margin:0;
+    padding:7px 0;
+    font-size:clamp(16px,1.7vw,22px);
+    line-height:1.45;
+    color:#26344d;
+}
+.third{
+    height:auto;
+    margin:0 0 18px;
+    padding:0;
+    display:flex;
+    align-items:center;
+    font-size:clamp(25px,2.6vw,34px);
+    line-height:1.25;
+    font-weight:800;
+    color:#071a3d;
+}
+.third:after{
+    content:"";
+    flex:1;
+    height:4px;
+    margin-left:18px;
+    border-radius:99px;
+    background:linear-gradient(90deg,#4f46e5,#06b6d4,#22c55e,#f59e0b,#ec4899);
+    opacity:.75;
+}
+.fourth{
+    height:auto;
+    margin:0;
+    padding:4px 0 6px;
+    font-size:18px;
+}
+.fourth ul{
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+    list-style:none;
+}
+.fourth li{
+    position:relative;
+    min-height:72px;
+    box-sizing:border-box;
+    margin:0;
+    padding:18px 20px 18px 22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-align:left;
+    line-height:1.35;
+    border:1px solid rgba(15,23,42,.08);
+    border-radius:17px;
+    background:#fff;
+    box-shadow:0 7px 20px rgba(15,23,42,.07);
+    transition:transform .2s ease,box-shadow .2s ease;
+    overflow:hidden;
+}
+.fourth li:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    background:linear-gradient(180deg,#4f46e5,#06b6d4);
+}
+.fourth li:nth-child(2n):before{background:linear-gradient(180deg,#f59e0b,#ef4444)}
+.fourth li:nth-child(3n):before{background:linear-gradient(180deg,#22c55e,#06b6d4)}
+.fourth li:nth-child(4n):before{background:linear-gradient(180deg,#ec4899,#8b5cf6)}
+.fourth li:nth-child(5n):before{background:linear-gradient(180deg,#06b6d4,#3b82f6)}
+.fourth li:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(15,23,42,.12);
+}
+.fourth label{
+    margin:0;
+    flex:0 0 auto;
+    font-size:14px;
+    font-weight:800;
+    color:#fff;
+    background:#4f46e5;
+    padding:7px 10px;
+    border-radius:9px;
+    white-space:nowrap;
+}
+.fourth li:nth-child(2n) label{background:#f59e0b}
+.fourth li:nth-child(3n) label{background:#10b981}
+.fourth li:nth-child(4n) label{background:#ec4899}
+.fourth li:nth-child(5n) label{background:#06b6d4}
+.fourth li a{
+    color:#17233c;
+    font-weight:700;
+    text-decoration:none;
+    line-height:1.35;
+}
+.fourth li a:hover{text-decoration:underline}
+.fifth,.seventh{
+    height:auto;
+    margin:34px 0 14px;
+    padding:0;
+    font-size:clamp(24px,2.5vw,32px);
+    line-height:1.25;
+    font-weight:800;
+    color:#071a3d;
+    display:flex;
+    align-items:center;
+}
+.fifth:after,.seventh:after{
+    content:"";
+    flex:1;
+    height:3px;
+    margin-left:16px;
+    border-radius:99px;
+    background:linear-gradient(90deg,#f59e0b,#ec4899,#8b5cf6,#06b6d4);
+    opacity:.7;
+}
+.sixth{
+    height:auto;
+    margin:0;
+    padding:18px 22px;
+    box-sizing:border-box;
+    border-radius:18px;
+    background:linear-gradient(135deg,#fffdf5,#f7f9ff);
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+    font-size:18px;
+    line-height:1.6;
+}
+.sixth ul{
+    margin:0;
+    padding-left:24px;
+}
+.sixth li{
+    line-height:1.6;
+    margin:6px 0;
+}
+.eighth{
+    height:auto;
+    margin:0;
+    padding:0;
+}
+.table{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:minmax(58px,auto);
+    gap:1px;
+    margin:0;
+    padding:1px;
+    border-radius:16px;
+    overflow:hidden;
+    background:#dbe3f2;
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+.table div{
+    border:0;
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    padding:12px 10px;
+    font-size:17px;
+    line-height:1.35;
+    text-align:center;
+    background:#fff;
+    color:#24324b;
+}
+.table div:nth-child(4n+1){
+    font-weight:800;
+    color:#071a3d;
+    background:#eef4ff;
+}
+.table div:nth-child(4n+3){
+    font-weight:800;
+    color:#071a3d;
+    background:#fff7df;
+}
+.footer{
+    height:90px;
+    min-height:90px;
+    margin-top:0;
+    border:0;
+    background:#071a3d;
+}
+@media(max-width:800px){
+    .outer{
+        width:calc(100% - 18px);
+        margin:14px auto 24px;
+        border-radius:20px;
+    }
+    .outer .main{
+        padding:0 14px;
+    }
+    .first{
+        margin:0 -14px;
+        padding:22px 18px 18px;
+        min-height:0;
+        font-size:26px;
+        line-height:1.28;
+    }
+    .second{
+        margin:17px 0 23px;
+        padding:17px 17px 17px 20px;
+        border-radius:16px;
+    }
+    .second li{
+        font-size:16px;
+        line-height:1.45;
+        padding:5px 0;
+    }
+    .third{
+        font-size:23px;
+        line-height:1.3;
+        display:block;
+    }
+    .third:after{
+        display:block;
+        width:100%;
+        margin:10px 0 0;
+        height:3px;
+    }
+    .fourth ul{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+    .fourth li{
+        min-height:0;
+        padding:15px 14px 15px 17px;
+        gap:9px;
+        align-items:flex-start;
+    }
+    .fourth label{
+        font-size:12px;
+        padding:6px 8px;
+        margin-top:1px;
+    }
+    .fourth li a{
+        font-size:15px;
+        line-height:1.4;
+        overflow-wrap:anywhere;
+    }
+    .fifth,.seventh{
+        margin-top:28px;
+        font-size:22px;
+        line-height:1.3;
+        display:block;
+    }
+    .fifth:after,.seventh:after{
+        display:block;
+        width:100%;
+        margin:9px 0 0;
+        height:3px;
+    }
+    .sixth{
+        padding:15px 16px;
+        font-size:15px;
+        line-height:1.55;
+    }
+    .sixth li{line-height:1.55;margin:6px 0}
+    .table{
+        grid-template-columns:1fr 1fr;
+    }
+    .table div{
+        min-height:52px;
+        padding:10px 7px;
+        font-size:14px;
+    }
+}
+@media(max-width:430px){
+    .first{font-size:23px}
+    .second li{font-size:15px}
+    .fourth li{display:block;padding:14px 14px 14px 17px}
+    .fourth label{display:inline-block;margin-bottom:7px}
+    .fourth li a{display:block;font-size:15px}
+    .table div{font-size:13px}
+}
+
+</style>
 </head>
 <body><style>
 .ep-modern-header{background:#071a3d;color:#fff;padding:0 28px;box-shadow:0 4px 18px rgba(7,26,61,.25);position:relative;z-index:1000;font-family:Arial,sans-serif}
@@ -16,16 +359,16 @@
 <nav aria-label="Main navigation" class="ep-modern-nav"><a href="index.html">Home</a>
 <div class="ep-modern-menu"><details><summary>Classes⌄</summary><div class="ep-modern-dropdown"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details></div>
 <a href="test-series.html">Test Series</a>
-<div class="ep-modern-menu"><details><summary>CBSE PYQ⌄</summary><div class="ep-modern-dropdown"><div class="ep-modern-tag">Year Wise</div><a href="cbse-pyq-class-10-year-wise.html">2019–2026 • Year Wise</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details></div>
+<div class="ep-modern-menu"><details><summary>CBSE PYQ⌄</summary><div class="ep-modern-dropdown"><div class="ep-modern-tag">Year Wise</div><a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details></div>
 <a href="class-10-science.html" class="ep-modern-nav-link">Activity Explanation &amp; Questions</a>
 <a href="index.html#about-edupath">About Us</a></nav>
-<div class="ep-modern-mobile"><details><summary>☰</summary><div class="ep-mobile-panel"><a href="index.html">Home</a><details><summary>Classes</summary><div class="ep-mobile-sub"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details><a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><div class="ep-mobile-sub"><a href="cbse-pyq-class-10-year-wise.html">2019–2026 • Year Wise</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details><a href="class-10-science.html">Activity Explanation &amp; Questions</a><a href="index.html#about-edupath">About Us</a></div></details></div>
+<div class="ep-modern-mobile"><details><summary>☰</summary><div class="ep-mobile-panel"><a href="index.html">Home</a><details><summary>Classes</summary><div class="ep-mobile-sub"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details><a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><div class="ep-mobile-sub"><a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details><a href="class-10-science.html">Activity Explanation &amp; Questions</a><a href="index.html#about-edupath">About Us</a></div></details></div>
 </div></header>
 
 
 <div class="outer">
 <div class="main">
-<div class="first">Class 10<sup>th</sup> Science creative Notes (English Medium)
+<div class="first">Class 10<sup>th</sup> Science Notes (English Medium)
     </div>
 <div class="second">
     <ul>
@@ -56,24 +399,21 @@
 <li><label>Chapter 13 :</label> <a alt="" href="viewer.html?pdf=10th_chapter15_E.pdf">Our Environment</a></li>
 </ul>
 </div>
-<div class="fifth">Features of Creative Notes
-</div>
-
+<div class="fifth">Features of Notes
+    </div>
 <div class="sixth">
 <ul>
-<li>Concise and well-structured notes for quick and effective revision.</li>
-<li>Concepts explained through detailed diagrams, illustrations, and visual learning.</li>
-<li>Clear and easy-to-understand explanations based on NCERT concepts.</li>
-<li>Helpful for concept revision, exam preparation, and last-minute revision.</li>
-<li>Accessible anytime and anywhere for convenient learning.</li>
-<li>Designed to support effective preparation for the CBSE Board examination.</li>
+<li>Students can use these notes for last minute revision.</li>
+<li>In the the last few days of exam students feel very stress 
+                due to pressure of exam. Notes will be very helping for managing stress in the last days of exams.</li>
+<li>Students can use these notes anytime and anywhere.</li>
 </ul>
 </div>
-<div class="seventh">Summary of Creative Notes
-</div>
+<div class="seventh">Summary of Notes
+    </div>
 <div class="eighth">
 <div class="table">
-<div>Total Chapters</div>
+<div>Total Chapter</div>
 <div>13</div>
 <div>Subject</div>
 <div>Science</div>
