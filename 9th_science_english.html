@@ -2,6 +2,350 @@
 <head>
 <link href="first.css" rel="stylesheet"/>
 <style>
+
+/* EduPath IQ Premium Notes/Solutions layout
+   Visual-only enhancement: existing content, links and structure are preserved. */
+.outer{
+    width:min(1180px, calc(100% - 32px));
+    margin:28px auto 40px;
+    padding:0 0 34px;
+    border:0;
+    border-radius:26px;
+    background-image:none !important;
+    background:#f7f9ff;
+    box-shadow:0 18px 55px rgba(15,23,42,.10);
+    overflow:hidden;
+    box-sizing:border-box;
+}
+.outer .main{
+    width:100%;
+    margin:0;
+    padding:0 34px;
+    box-sizing:border-box;
+}
+.first{
+    min-height:86px;
+    height:auto;
+    margin:0 -34px;
+    padding:30px 34px 20px;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    font-size:clamp(28px,3vw,42px);
+    line-height:1.2;
+    font-weight:800;
+    color:#071a3d;
+    background:linear-gradient(135deg,#eef4ff 0%,#fff7df 48%,#f5efff 100%);
+    border-bottom:1px solid rgba(7,26,61,.08);
+}
+.second{
+    height:auto;
+    min-height:0;
+    margin:24px 0 30px;
+    padding:22px 26px;
+    box-sizing:border-box;
+    border:0;
+    border-radius:20px;
+    background:linear-gradient(135deg,#ffffff 0%,#f8fbff 55%,#fffaf0 100%);
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+    position:relative;
+    overflow:hidden;
+}
+.second:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:6px;
+    background:linear-gradient(180deg,#4f46e5,#06b6d4,#f59e0b,#ec4899);
+}
+.second ul{
+    margin:0;
+    padding:0 0 0 4px;
+    list-style:none;
+}
+.second li{
+    margin:0;
+    padding:7px 0;
+    font-size:clamp(16px,1.7vw,22px);
+    line-height:1.45;
+    color:#26344d;
+}
+.third{
+    height:auto;
+    margin:0 0 18px;
+    padding:0;
+    display:flex;
+    align-items:center;
+    font-size:clamp(25px,2.6vw,34px);
+    line-height:1.25;
+    font-weight:800;
+    color:#071a3d;
+}
+.third:after{
+    content:"";
+    flex:1;
+    height:4px;
+    margin-left:18px;
+    border-radius:99px;
+    background:linear-gradient(90deg,#4f46e5,#06b6d4,#22c55e,#f59e0b,#ec4899);
+    opacity:.75;
+}
+.fourth{
+    height:auto;
+    margin:0;
+    padding:4px 0 6px;
+    font-size:18px;
+}
+.fourth ul{
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+    list-style:none;
+}
+.fourth li{
+    position:relative;
+    min-height:72px;
+    box-sizing:border-box;
+    margin:0;
+    padding:18px 20px 18px 22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-align:left;
+    line-height:1.35;
+    border:1px solid rgba(15,23,42,.08);
+    border-radius:17px;
+    background:#fff;
+    box-shadow:0 7px 20px rgba(15,23,42,.07);
+    transition:transform .2s ease,box-shadow .2s ease;
+    overflow:hidden;
+}
+.fourth li:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    background:linear-gradient(180deg,#4f46e5,#06b6d4);
+}
+.fourth li:nth-child(2n):before{background:linear-gradient(180deg,#f59e0b,#ef4444)}
+.fourth li:nth-child(3n):before{background:linear-gradient(180deg,#22c55e,#06b6d4)}
+.fourth li:nth-child(4n):before{background:linear-gradient(180deg,#ec4899,#8b5cf6)}
+.fourth li:nth-child(5n):before{background:linear-gradient(180deg,#06b6d4,#3b82f6)}
+.fourth li:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(15,23,42,.12);
+}
+.fourth label{
+    margin:0;
+    flex:0 0 auto;
+    font-size:14px;
+    font-weight:800;
+    color:#fff;
+    background:#4f46e5;
+    padding:7px 10px;
+    border-radius:9px;
+    white-space:nowrap;
+}
+.fourth li:nth-child(2n) label{background:#f59e0b}
+.fourth li:nth-child(3n) label{background:#10b981}
+.fourth li:nth-child(4n) label{background:#ec4899}
+.fourth li:nth-child(5n) label{background:#06b6d4}
+.fourth li a{
+    color:#17233c;
+    font-weight:700;
+    text-decoration:none;
+    line-height:1.35;
+}
+.fourth li a:hover{text-decoration:underline}
+.fifth,.seventh{
+    height:auto;
+    margin:34px 0 14px;
+    padding:0;
+    font-size:clamp(24px,2.5vw,32px);
+    line-height:1.25;
+    font-weight:800;
+    color:#071a3d;
+    display:flex;
+    align-items:center;
+}
+.fifth:after,.seventh:after{
+    content:"";
+    flex:1;
+    height:3px;
+    margin-left:16px;
+    border-radius:99px;
+    background:linear-gradient(90deg,#f59e0b,#ec4899,#8b5cf6,#06b6d4);
+    opacity:.7;
+}
+.sixth{
+    height:auto;
+    margin:0;
+    padding:18px 22px;
+    box-sizing:border-box;
+    border-radius:18px;
+    background:linear-gradient(135deg,#fffdf5,#f7f9ff);
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+    font-size:18px;
+    line-height:1.6;
+}
+.sixth ul{
+    margin:0;
+    padding-left:24px;
+}
+.sixth li{
+    line-height:1.6;
+    margin:6px 0;
+}
+.eighth{
+    height:auto;
+    margin:0;
+    padding:0;
+}
+.table{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:minmax(58px,auto);
+    gap:1px;
+    margin:0;
+    padding:1px;
+    border-radius:16px;
+    overflow:hidden;
+    background:#dbe3f2;
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+.table div{
+    border:0;
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    padding:12px 10px;
+    font-size:17px;
+    line-height:1.35;
+    text-align:center;
+    background:#fff;
+    color:#24324b;
+}
+.table div:nth-child(4n+1){
+    font-weight:800;
+    color:#071a3d;
+    background:#eef4ff;
+}
+.table div:nth-child(4n+3){
+    font-weight:800;
+    color:#071a3d;
+    background:#fff7df;
+}
+.footer{
+    height:90px;
+    min-height:90px;
+    margin-top:0;
+    border:0;
+    background:#071a3d;
+}
+@media(max-width:800px){
+    .outer{
+        width:calc(100% - 18px);
+        margin:14px auto 24px;
+        border-radius:20px;
+    }
+    .outer .main{
+        padding:0 14px;
+    }
+    .first{
+        margin:0 -14px;
+        padding:22px 18px 18px;
+        min-height:0;
+        font-size:26px;
+        line-height:1.28;
+    }
+    .second{
+        margin:17px 0 23px;
+        padding:17px 17px 17px 20px;
+        border-radius:16px;
+    }
+    .second li{
+        font-size:16px;
+        line-height:1.45;
+        padding:5px 0;
+    }
+    .third{
+        font-size:23px;
+        line-height:1.3;
+        display:block;
+    }
+    .third:after{
+        display:block;
+        width:100%;
+        margin:10px 0 0;
+        height:3px;
+    }
+    .fourth ul{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+    .fourth li{
+        min-height:0;
+        padding:15px 14px 15px 17px;
+        gap:9px;
+        align-items:flex-start;
+    }
+    .fourth label{
+        font-size:12px;
+        padding:6px 8px;
+        margin-top:1px;
+    }
+    .fourth li a{
+        font-size:15px;
+        line-height:1.4;
+        overflow-wrap:anywhere;
+    }
+    .fifth,.seventh{
+        margin-top:28px;
+        font-size:22px;
+        line-height:1.3;
+        display:block;
+    }
+    .fifth:after,.seventh:after{
+        display:block;
+        width:100%;
+        margin:9px 0 0;
+        height:3px;
+    }
+    .sixth{
+        padding:15px 16px;
+        font-size:15px;
+        line-height:1.55;
+    }
+    .sixth li{line-height:1.55;margin:6px 0}
+    .table{
+        grid-template-columns:1fr 1fr;
+    }
+    .table div{
+        min-height:52px;
+        padding:10px 7px;
+        font-size:14px;
+    }
+}
+@media(max-width:430px){
+    .first{font-size:23px}
+    .second li{font-size:15px}
+    .fourth li{display:block;padding:14px 14px 14px 17px}
+    .fourth label{display:inline-block;margin-bottom:7px}
+    .fourth li a{display:block;font-size:15px}
+    .table div{font-size:13px}
+}
+
+</style>
+</head>
+<body><style>
 .ep-modern-header{background:#071a3d;color:#fff;padding:0 28px;box-shadow:0 4px 18px rgba(7,26,61,.25);position:relative;z-index:1000;font-family:Arial,sans-serif}
 .ep-modern-bar{max-width:1200px;margin:auto;min-height:72px;display:flex;align-items:center;gap:28px}
 .ep-modern-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800;font-size:22px;white-space:nowrap}.ep-modern-logo img{width:52px;height:52px;object-fit:contain}.ep-modern-logo span{color:#ffd54a}
@@ -10,150 +354,61 @@
 .ep-modern-mobile{display:none}.ep-modern-mobile>details>summary{color:#fff;cursor:pointer;list-style:none;font-size:25px;padding:8px}.ep-modern-mobile>details>summary::-webkit-details-marker{display:none}
 @media(max-width:800px){.ep-modern-nav{display:none}.ep-modern-mobile{display:block;margin-left:auto}.ep-mobile-panel{position:absolute;right:18px;top:58px;background:#fff;border-radius:12px;padding:10px;min-width:210px;box-shadow:0 12px 30px rgba(0,0,0,.25)}.ep-mobile-panel a,.ep-mobile-panel summary{display:block;color:#071a3d;text-decoration:none;padding:10px 12px;list-style:none}.ep-mobile-panel details{border-top:1px solid #eee}.ep-mobile-sub a{padding-left:24px}}
 </style>
-
-<style>
-/* FIX: prevent legacy header/nav from rendering */
-.header,.nav{display:none!important}.logo{display:none!important}
-.ep-modern-header{background:#071a3d;color:#fff;padding:0 28px;box-shadow:0 4px 18px rgba(7,26,61,.25);position:relative;z-index:1000;font-family:Arial,sans-serif}
-.ep-modern-bar{max-width:1200px;margin:auto;min-height:72px;display:flex;align-items:center;gap:28px}
-.ep-modern-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800;font-size:22px;white-space:nowrap}
-.ep-modern-logo img{width:52px;height:52px;object-fit:contain}.ep-modern-logo span{color:#ffd54a}
-.ep-modern-nav{display:flex;align-items:center;gap:6px;margin-left:auto}
-.ep-modern-nav>a,.ep-modern-nav summary{color:#fff!important;text-decoration:none;padding:12px 14px;border-radius:10px;font-size:15px;cursor:pointer;list-style:none;white-space:nowrap}
-.ep-modern-nav>a:hover,.ep-modern-nav summary:hover{background:rgba(255,255,255,.1)}
-.ep-modern-menu{position:relative}.ep-modern-dropdown{position:absolute;top:calc(100% + 8px);left:0;background:#fff;min-width:190px;border-radius:12px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.22);display:none}
-.ep-modern-menu details[open] .ep-modern-dropdown{display:block}.ep-modern-dropdown a{display:block;color:#071a3d!important;text-decoration:none;padding:10px 12px;border-radius:8px}
-.ep-modern-dropdown a:hover{background:#eef4ff}.ep-modern-tag{font-size:11px;color:#777;padding:8px 12px}
-.ep-modern-mobile{display:none}.ep-modern-mobile>details>summary{color:#fff;cursor:pointer;list-style:none;font-size:25px;padding:8px}
-.ep-modern-mobile>details>summary::-webkit-details-marker{display:none}
-@media(max-width:800px){.ep-modern-header{padding:0 14px}.ep-modern-bar{min-height:60px}
-.ep-modern-logo{font-size:19px}.ep-modern-logo img{width:44px;height:44px}.ep-modern-nav{display:none}.ep-modern-mobile{display:block;margin-left:auto}
-.ep-mobile-panel{position:absolute;right:14px;top:56px;background:#fff;border-radius:12px;padding:10px;min-width:220px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-.ep-mobile-panel a,.ep-mobile-panel summary{display:block;color:#071a3d!important;text-decoration:none;padding:10px 12px;list-style:none}
-.ep-mobile-panel details{border-top:1px solid #eee}.ep-mobile-sub a{padding-left:24px}}
-</style>
-
-<style>
-/* EduPath IQ — Class 9 Creative Cards */
-:root{--navy:#071a3d;--blue:#2563eb;--purple:#7c3aed;--cyan:#0891b2;--gold:#f59e0b;--pink:#db2777;--bg:#f7f9ff;--text:#172033}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}
-.ep9-header{background:linear-gradient(135deg,#071a3d,#173b7a);color:#fff;box-shadow:0 5px 20px rgba(7,26,61,.22);position:sticky;top:0;z-index:1000}
-.ep9-nav{max-width:1250px;margin:auto;min-height:68px;display:flex;align-items:center;gap:8px;padding:8px 18px}
-.ep9-brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff;font-weight:800;font-family:Arial,sans-serif;font-size:21px;margin-right:auto}
-.ep9-brand img{width:48px;height:48px;object-fit:contain}.ep9-brand span{color:#ffd34d}
-.ep9-nav a,.ep9-nav summary{color:#fff!important;text-decoration:none;font-family:Arial,sans-serif;font-size:14px;font-weight:600;padding:11px 13px;border-radius:10px;cursor:pointer;list-style:none;white-space:nowrap}
-.ep9-nav a:hover,.ep9-nav summary:hover{background:rgba(255,255,255,.13)}
-.ep9-drop{position:relative}.ep9-dropbox{display:none;position:absolute;top:45px;left:0;background:#fff;border-radius:14px;padding:8px;min-width:180px;box-shadow:0 14px 35px rgba(0,0,0,.2)}
-.ep9-drop details[open] .ep9-dropbox{display:block}.ep9-dropbox a{display:block!important;color:var(--navy)!important}
-.ep9-mobile{display:none}
-.ep9-wrap{max-width:1180px;margin:28px auto 60px;padding:0 18px}
-.ep9-title{text-align:center;font-size:clamp(28px,4vw,44px);margin:18px 0 22px;color:var(--navy)}
-.ep9-intro{background:linear-gradient(135deg,#ffffff,#eef6ff);border:1px solid #dbe7ff;border-radius:24px;padding:25px;box-shadow:0 10px 30px rgba(37,99,235,.08);margin-bottom:28px}
-.ep9-intro ul{margin:0;padding-left:25px;line-height:1.9;font-size:18px}
-.ep9-section-title{text-align:center;font-size:31px;color:var(--navy);margin:30px 0 20px}
-.ep9-chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:17px}
-.ep9-card{position:relative;overflow:hidden;background:#fff;border-radius:18px;padding:20px 20px 19px;border:1px solid #e3e8f5;box-shadow:0 8px 22px rgba(15,23,42,.08);transition:.22s}
-.ep9-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--blue),var(--purple),var(--pink))}
-.ep9-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,23,42,.13)}
-.ep9-card .num{display:inline-block;background:#edf3ff;color:var(--blue);font:bold 13px Arial,sans-serif;border-radius:999px;padding:6px 10px;margin-bottom:9px}
-.ep9-card a{color:#1746c7;text-decoration:none;font-size:20px;line-height:1.35;font-weight:600}
-.ep9-card a:hover{text-decoration:underline}
-.ep9-footer-note{text-align:center;margin-top:28px;color:#64748b;font-family:Arial,sans-serif}
-@media(max-width:850px){
- .ep9-nav{min-height:58px}.ep9-nav>a,.ep9-nav>.ep9-drop{display:none}.ep9-brand{font-size:18px}.ep9-brand img{width:42px;height:42px}.ep9-mobile{display:block;margin-left:auto}
- .ep9-mobile summary{list-style:none;color:#fff;font-size:25px;cursor:pointer}.ep9-mobile summary::-webkit-details-marker{display:none}
- .ep9-mobile-box{position:absolute;right:14px;top:55px;background:#fff;border-radius:14px;padding:9px;min-width:235px;box-shadow:0 15px 35px rgba(0,0,0,.25)}
- .ep9-mobile-box a,.ep9-mobile-box summary{display:block!important;color:var(--navy)!important;padding:10px 12px;text-decoration:none;list-style:none}
- .ep9-mobile-box details{border-top:1px solid #e7eaf0}
- .ep9-chapters{grid-template-columns:1fr}.ep9-card a{font-size:18px}
-}
-</style>
-</head>
-<body>
-<header class="ep9-header"><div class="ep9-nav">
-<a class="ep9-brand" href="index.html"><img src="logo1.png" alt="EduPath IQ"><span>EduPath IQ</span></a>
-<a href="index.html">Home</a>
-<div class="ep9-drop"><details><summary>Classes⌄</summary><div class="ep9-dropbox">
-<a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a>
-</div></details></div>
+<header class="ep-modern-header"><div class="ep-modern-bar">
+<a class="ep-modern-logo" href="index.html"><img alt="EduPath IQ" src="logo1.png"/><span>EduPath IQ</span></a>
+<nav aria-label="Main navigation" class="ep-modern-nav"><a href="index.html">Home</a>
+<div class="ep-modern-menu"><details><summary>Classes⌄</summary><div class="ep-modern-dropdown"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details></div>
 <a href="test-series.html">Test Series</a>
-<div class="ep9-drop"><details><summary>CBSE PYQ⌄</summary><div class="ep9-dropbox"><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details></div>
-<a href="class-10-science.html">Activity</a><a href="index.html#about-edupath">About Us</a>
-<div class="ep9-mobile"><details><summary>☰</summary><div class="ep9-mobile-box">
-<a href="index.html">Home</a><details><summary>Classes</summary><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></details>
-<a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></details>
-<a href="class-10-science.html">Activity</a><a href="index.html#about-edupath">About Us</a>
-</div></details></div>
+<div class="ep-modern-menu"><details><summary>CBSE PYQ⌄</summary><div class="ep-modern-dropdown"><div class="ep-modern-tag">Year Wise</div><a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details></div>
+<div class="ep-modern-menu"><details><summary>Activity⌄</summary><div class="ep-modern-dropdown"><a href="index.html#activity">Activity Explanation</a><a href="index.html#activity">Activity Based Questions</a></div></details></div>
+<a href="index.html#about-edupath">About Us</a></nav>
+<div class="ep-modern-mobile"><details><summary>☰</summary><div class="ep-mobile-panel"><a href="index.html">Home</a><details><summary>Classes</summary><div class="ep-mobile-sub"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a></div></details><a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><div class="ep-mobile-sub"><a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details><details><summary>Activity</summary><div class="ep-mobile-sub"><a href="index.html#activity">Activity Explanation</a><a href="index.html#activity">Activity Based Questions</a></div></details><a href="index.html#about-edupath">About Us</a></div></details></div>
 </div></header>
 
-<div class="ep9-wrap">
+
+<div class="outer">
 <div class="main">
-    <div class="ep9-title">Class 9<sup>th</sup> Science Notes (English Medium)
-    </div>
-
-   <div class="ep9-intro">
-    <div class="ep9-chapters">
-        <div class="ep9-card">🧠 Build Strong Concepts with Creative Notes</div>
-        <div class="ep9-card">🔬 Explore Science through Detailed Illustrations & Diagrams</div>
-        <div class="ep9-card">🧪 Understand Concepts with Interactive Activities</div>
-        <div class="ep9-card">💡 Visual Learning for Better Concept Clarity</div>
-        <div class="ep9-card">📖 NCERT-Based Notes for Smart & Effective Revision</div>
-    </ul></div>
+<div class="first">Class 9<sup>th</sup> Science Notes (English Medium)</div>
+<div class="second">
+    <ul>
+        <li>🎨 Learn with Creative & Colourful Notes</li>
+        <li>🔍 Understand concepts through Illustrations & Diagrams</li>
+        <li>🧪 Explore concepts with Activity-Based Learning</li>
+        <li>💡 Visual explanations for better concept clarity</li>
+        <li>📖 NCERT-Based & Student-Friendly Learning</li>
+    </ul>
 </div>
-
-    <div class="ep9-section-title">
-        NCERT Class 9<sup>th</sup> Science Chapters
-    </div>
-    <div class="fourth">
-        <div class="ep9-chapters">
-        <div class="ep9-card">Chapter 1 :</label> <a href="#" alt="">Exploration: Entering the World of Secondary Science</a></div>
-        <div class="ep9-card">Chapter 2 :</label> <a href="#" alt="">Cell: The Building Block of Life</a></div>
-        <div class="ep9-card">Chapter 3 :</label> <a href="#" alt="">Tissues in Action</a></div>
-        <div class="ep9-card">Chapter 4 :</label> <a href="#" alt="">Describing Motion Around Us</a></div>
-        <div class="ep9-card">Chapter 5 :</label> <a href="#" alt="">Exploring Mixtures and their Separation</a></div>
-        <div class="ep9-card">Chapter 6 :</label> <a href="#" alt="">How Forces Affect Motion</a></div>
-        <div class="ep9-card">Chapter 7 :</label> <a href="#" alt="">Work, Energy and Simple Machines</a></div>
-        <div class="ep9-card">Chapter 8 :</label> <a href="#" alt="">Journey Inside the Atom</a></div>
-        <div class="ep9-card">Chapter 9 :</label> <a href="#" alt="">Atomic Foundations of Matter</a></div>
-        <div class="ep9-card">Chapter 10 :</label> <a href="#" alt="">Sound Waves: Characteristics and Applications</a></div>
-        <div class="ep9-card">Chapter 11 :</label> <a href="#" alt="">Reproduction: How Life Continues</a></div>
-        <div class="ep9-card">Chapter 12 :</label> <a href="#" alt="">Patterns in Life: Diversity and Classification</a></div>
-        <div class="ep9-card">Chapter 13 :</label> <a href="#" alt="">Earth as a System: Energy, Matter and Life</a></div>
-        </ul></div>
-    </div>
-    
-    <div class="fifth">Features of Notes
-    </div>
- 
-    <div class="sixth">
-        <div class="ep9-chapters">
-            <div class="ep9-card">Students can use these notes for last minute revision.</div>
-            <div class="ep9-card">In the the last few days of exam students feel very stress 
-                due to pressure of exam. Notes will be very helping for managing stress in the last days of exams.</div>
-            <div class="ep9-card">Students can use these notes anytime and anywhere.</div>
-        </ul></div>
-    </div>
-    
-    <div class="seventh">Summary of Notes
-    </div>
-    
-    <div class="eighth">
-       <div class="table">
-       <div>Total Chapter</div> 
-       <div>13</div>
-       <div>Subject</div>
-       <div>Science</div>
-       <div>Class</div>
-       <div>9<sup>th</sup></div>
-       <div>Medium</div>
-       <div>English</div>
-       </div>
-    </div>
+<div class="third">NCERT Class 9<sup>th</sup> Science Chapters</div>
+<div class="fourth"><ul>
+<li><label>Chapter 1 :</label> <a alt="" href="viewer.html?pdf=9th_chapter1_E.pdf">Exploration: Entering the World of Secondary Science</a></li>
+<li><label>Chapter 2 :</label> <a alt="" href="viewer.html?pdf=9th_chapter2_E.pdf">Cell: The Building Block of Life</a></li>
+<li><label>Chapter 3 :</label> <a alt="" href="viewer.html?pdf=9th_chapter3_E.pdf">Tissues in Action</a></li>
+<li><label>Chapter 4 :</label> <a alt="" href="viewer.html?pdf=9th_chapter4_E.pdf">Describing Motion Around Us</a></li>
+<li><label>Chapter 5 :</label> <a alt="" href="viewer.html?pdf=9th_chapter5_E.pdf">Exploring Mixtures and their Separation</a></li>
+<li><label>Chapter 6 :</label> <a alt="" href="viewer.html?pdf=9th_chapter6_E.pdf">How Forces Affect Motion</a></li>
+<li><label>Chapter 7 :</label> <a alt="" href="viewer.html?pdf=9th_chapter7_E.pdf">Work, Energy and Simple Machines</a></li>
+<li><label>Chapter 8 :</label> <a alt="" href="viewer.html?pdf=9th_chapter8_E.pdf">Journey Inside the Atom</a></li>
+<li><label>Chapter 9 :</label> <a alt="" href="viewer.html?pdf=9th_chapter9_E.pdf">Atomic Foundations of Matter</a></li>
+<li><label>Chapter 10 :</label> <a alt="" href="viewer.html?pdf=9th_chapter10_E.pdf">Sound Waves: Characteristics and Applications</a></li>
+<li><label>Chapter 11 :</label> <a alt="" href="viewer.html?pdf=9th_chapter11_E.pdf">Reproduction: How Life Continues</a></li>
+<li><label>Chapter 12 :</label> <a alt="" href="viewer.html?pdf=9th_chapter12_E.pdf">Patterns in Life: Diversity and Classification</a></li>
+<li><label>Chapter 13 :</label> <a alt="" href="viewer.html?pdf=9th_chapter13_E.pdf">Earth as a System: Energy, Matter and Life</a></li>
+</ul></div>
+<div class="fifth">Features of Notes</div>
+<div class="sixth"><ul>
+<li>Students can use these notes for last minute revision.</li>
+<li>In the the last few days of exam students feel very stress due to pressure of exam. Notes will be very helping for managing stress in the last days of exams.</li>
+<li>Students can use these notes anytime and anywhere.</li>
+</ul></div>
+<div class="seventh">Summary of Notes</div>
+<div class="eighth"><div class="table">
+<div>Total Chapter</div><div>13</div>
+<div>Subject</div><div>Science</div>
+<div>Class</div><div>9<sup>th</sup></div>
+<div>Medium</div><div>English</div>
+</div></div>
 </div>
-
-<div class="footer">
-</div>
+<div class="footer"></div>
 </div>
 </body>
- </html>
+</html>
