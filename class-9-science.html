@@ -39,8 +39,51 @@ body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135d
 .btn.alt{background:#eef3ff;color:#24457e}
 @media(max-width:800px){.navbar{min-height:64px;padding:0 14px}.navlinks{display:none}.mobile{display:block;margin-left:auto}.grid{grid-template-columns:1fr}.hero h1{font-size:30px}}
 </style>
+
+<style>
+/* FIX: prevent legacy header/nav from rendering */
+.header,.nav{display:none!important}.logo{display:none!important}
+.ep-modern-header{background:#071a3d;color:#fff;padding:0 28px;box-shadow:0 4px 18px rgba(7,26,61,.25);position:relative;z-index:1000;font-family:Arial,sans-serif}
+.ep-modern-bar{max-width:1200px;margin:auto;min-height:72px;display:flex;align-items:center;gap:28px}
+.ep-modern-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800;font-size:22px;white-space:nowrap}
+.ep-modern-logo img{width:52px;height:52px;object-fit:contain}.ep-modern-logo span{color:#ffd54a}
+.ep-modern-nav{display:flex;align-items:center;gap:6px;margin-left:auto}
+.ep-modern-nav>a,.ep-modern-nav summary{color:#fff!important;text-decoration:none;padding:12px 14px;border-radius:10px;font-size:15px;cursor:pointer;list-style:none;white-space:nowrap}
+.ep-modern-nav>a:hover,.ep-modern-nav summary:hover{background:rgba(255,255,255,.1)}
+.ep-modern-menu{position:relative}.ep-modern-dropdown{position:absolute;top:calc(100% + 8px);left:0;background:#fff;min-width:190px;border-radius:12px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.22);display:none}
+.ep-modern-menu details[open] .ep-modern-dropdown{display:block}.ep-modern-dropdown a{display:block;color:#071a3d!important;text-decoration:none;padding:10px 12px;border-radius:8px}
+.ep-modern-dropdown a:hover{background:#eef4ff}.ep-modern-tag{font-size:11px;color:#777;padding:8px 12px}
+.ep-modern-mobile{display:none}.ep-modern-mobile>details>summary{color:#fff;cursor:pointer;list-style:none;font-size:25px;padding:8px}
+.ep-modern-mobile>details>summary::-webkit-details-marker{display:none}
+@media(max-width:800px){.ep-modern-header{padding:0 14px}.ep-modern-bar{min-height:60px}
+.ep-modern-logo{font-size:19px}.ep-modern-logo img{width:44px;height:44px}.ep-modern-nav{display:none}.ep-modern-mobile{display:block;margin-left:auto}
+.ep-mobile-panel{position:absolute;right:14px;top:56px;background:#fff;border-radius:12px;padding:10px;min-width:220px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.ep-mobile-panel a,.ep-mobile-panel summary{display:block;color:#071a3d!important;text-decoration:none;padding:10px 12px;list-style:none}
+.ep-mobile-panel details{border-top:1px solid #eee}.ep-mobile-sub a{padding-left:24px}}
+</style>
+
 </head>
 <body>
+<header class="ep-modern-header"><div class="ep-modern-bar">
+<a class="ep-modern-logo" href="index.html"><img alt="EduPath IQ" src="logo1.png"/><span>EduPath IQ</span></a>
+<nav class="ep-modern-nav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<div class="ep-modern-menu"><details><summary>Classes⌄</summary><div class="ep-modern-dropdown">
+<a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a>
+</div></details></div>
+<a href="test-series.html">Test Series</a>
+<div class="ep-modern-menu"><details><summary>CBSE PYQ⌄</summary><div class="ep-modern-dropdown"><div class="ep-modern-tag">Year Wise</div>
+<a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details></div>
+<a href="class-10-science.html">Activity Explanation &amp; Questions</a><a href="index.html#about-edupath">About Us</a>
+</nav>
+<div class="ep-modern-mobile"><details><summary>☰</summary><div class="ep-mobile-panel">
+<a href="index.html">Home</a><details><summary>Classes</summary><div class="ep-mobile-sub">
+<a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="10th_science_english.html">Class 10</a>
+</div></details><a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><div class="ep-mobile-sub">
+<a href="#" onclick="return false;">2019–2026 • Coming Soon</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a>
+</div></details><a href="class-10-science.html">Activity Explanation &amp; Questions</a><a href="index.html#about-edupath">About Us</a>
+</div></details></div></div></header>
+
 <header class="site-header">
 <nav class="navbar" aria-label="Main navigation">
 <a class="brand" href="index.html"><span class="brand-mark">📚</span><span>EduPath IQ<small>Learn Smarter. Visualize Better. Score Higher.</small></span></a>
