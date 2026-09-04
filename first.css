@@ -1,5 +1,4 @@
-body
-{
+body{
     display:flex;
     min-height:100vh;
     flex-direction: column;
@@ -128,7 +127,7 @@ margin-top:10px;
 width:100%;
 margin:auto;
 border:solid 1px black;
-background-image:url("bg1.png");
+background-image:none;
 background-size:100% 100%;
 background-repeat:no-repeat;
 background-position:top center;
