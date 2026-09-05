@@ -30,4 +30,30 @@
 <div class="test-grid"><a class="test-card" href="class8_chapter1_test.html"><div class="chapter-number">CHAPTER 1</div><h2>Exploring The Investigative World Of Science</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter2_test.html"><div class="chapter-number">CHAPTER 2</div><h2>The Invisible World: Beyond Our Naked Eye</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter3_test.html"><div class="chapter-number">CHAPTER 3</div><h2>Health The Ultimate Treasure</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter4_test.html"><div class="chapter-number">CHAPTER 4</div><h2>Electricity: Magnetic And Heating Effects</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter5_test.html"><div class="chapter-number">CHAPTER 5</div><h2>Exploring Forces</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter6_test.html"><div class="chapter-number">CHAPTER 6</div><h2>Pressure, Winds, Storms And Cyclones</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter7_test.html"><div class="chapter-number">CHAPTER 7</div><h2>Particulate Nature Of Matter</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter8_test.html"><div class="chapter-number">CHAPTER 8</div><h2>Nature Of Matter: Elements, Compounds And Mixtures</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter9_test.html"><div class="chapter-number">CHAPTER 9</div><h2>Exploring The World Of Solutes, Solvents And Solutions</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class8_chapter10_test.html"><div class="chapter-number">CHAPTER 10</div><h2>Lights: Mirrors And Lenses</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a></div>
 </main>
 <footer class="epq-footer"><strong>EduPath IQ</strong> • Class 8 Science Chapter-wise Tests</footer>
-<style id="language-selector-only">.language-selector-only{display:flex;justify-content:center;gap:12px;margin:18px auto 24px}.language-selector-only button{border:0;border-radius:999px;padding:11px 24px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.14)}.language-selector-only button.active{transform:translateY(-1px);box-shadow:0 7px 20px rgba(0,0,0,.22)}.lang-disabled-only{cursor:default!important;pointer-events:none!important}</style><div class="language-selector-only" aria-label="Select language"><button type="button" id="langEnglishOnly" class="active">English</button><button type="button" id="langHindiOnly">हिंदी</button></div><script>(function(){const hi=['विज्ञान की जाँच-पड़ताल की दुनिया', 'अदृश्य दुनिया: हमारी नग्न आँखों से परे', 'स्वास्थ्य: सर्वोत्तम धन', 'विद्युत: चुंबकीय और तापन प्रभाव', 'बलों की खोज', 'दाब, पवन, तूफान और चक्रवात', 'पदार्थ की कणिकीय प्रकृति', 'पदार्थ की प्रकृति: तत्व, यौगिक और मिश्रण', 'विलेय, विलायक और विलयनों की दुनिया की खोज', 'प्रकाश: दर्पण और लेंस'];const cards=[...document.querySelectorAll('.test-card, .chapter-card')];const original=cards.map(c=>{const h=c.querySelector('h2,h3');return h?h.textContent:''});const en=document.getElementById('langEnglishOnly'),hn=document.getElementById('langHindiOnly');function setLang(lang){cards.forEach((c,i)=>{const h=c.querySelector('h2,h3');if(!h)return;if(lang==='hi'){h.textContent=hi[i]||original[i];if(c.hasAttribute('href')){c.dataset.originalHref=c.getAttribute('href');c.removeAttribute('href');}c.classList.add('lang-disabled-only');}else{h.textContent=original[i];if(c.dataset.originalHref!==undefined)c.setAttribute('href',c.dataset.originalHref);c.classList.remove('lang-disabled-only');}});en.classList.toggle('active',lang==='en');hn.classList.toggle('active',lang==='hi')}en.addEventListener('click',()=>setLang('en'));hn.addEventListener('click',()=>setLang('hi'));})();</script></body></html>
+
+<style>
+.ep-lang-selector{display:flex;justify-content:flex-start;gap:10px;margin:0 0 24px;flex-wrap:wrap}
+.ep-lang-selector button{border:1px solid #d7e2f2;background:#fff;color:#12335f;padding:10px 20px;border-radius:10px;font-weight:800;cursor:pointer;font:inherit;transition:.15s ease}
+.ep-lang-selector button.active{background:#1769e0;color:#fff;border-color:#1769e0}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const hiNames=['विज्ञान की अन्वेषी दुनिया की खोज', 'अदृश्य जीव जगत: हमारी नग्न आँखों से परे', 'स्वास्थ्य: सबसे बड़ा खजाना', 'विद्युत: चुंबकीय और ऊष्मीय प्रभाव', 'बलों की खोज', 'दाब, पवन, तूफान और चक्रवात', 'पदार्थ की कणिकीय प्रकृति', 'पदार्थ की प्रकृति: तत्व, यौगिक और मिश्रण', 'विलेय, विलायक और विलयनों की अद्भुत दुनिया', 'प्रकाश: दर्पण और लेंस'];
+  const cards=[...document.querySelectorAll('.test-grid .test-card h2, .chapter-grid .chapter-card h3')];
+  if(!cards.length)return;
+  const wrap=document.createElement('div'); wrap.className='ep-lang-selector';
+  const en=document.createElement('button'), hi=document.createElement('button');
+  en.type='button'; hi.type='button'; en.textContent='English'; hi.textContent='Hindi';
+  wrap.append(en,hi);
+  const grid=document.querySelector('.test-grid,.chapter-grid');
+  if(!grid)return; grid.parentNode.insertBefore(wrap,grid);
+  const original=cards.map(el=>el.textContent.trim());
+  function setLang(lang){
+    cards.forEach((el,i)=>{el.textContent=(lang==='hi' && hiNames[i])?hiNames[i]:original[i];});
+    en.classList.toggle('active',lang==='en'); hi.classList.toggle('active',lang==='hi');
+  }
+  en.addEventListener('click',()=>setLang('en')); hi.addEventListener('click',()=>setLang('hi'));
+  setLang('en');
+});
+</script>
+</body></html>
