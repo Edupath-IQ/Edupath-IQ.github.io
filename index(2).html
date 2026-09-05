@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduPath IQ | Science Learning Platform</title>
+
+<link href="remove-blur-background.css" rel="stylesheet"/>
+<link href="footer.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+ --navy:#07183d;--navy2:#0b2b68;--blue:#1769e0;--cyan:#38a8ff;--yellow:#ffd21f;
+ --ink:#10204a;--muted:#66738c;--bg:#f7f9fe;--line:#dce5f3;--white:#fff;
+ --green:#0b8d4b;--purple:#5522c7;--orange:#f07800;--red:#e51b23;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden}a{text-decoration:none}
+.header,.nav{display:none!important}
+/* HEADER */
+.ep-topbar{position:relative;z-index:1000;background:linear-gradient(110deg,#041330,#071b43 62%,#0b285b);color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.16)}
+.ep-nav-inner{max-width:1320px;margin:auto;min-height:82px;padding:10px 24px;display:flex;align-items:center;gap:28px}
+.ep-brand{display:flex;align-items:center;gap:12px;color:#fff;min-width:270px}.ep-brand img{width:56px;height:56px;object-fit:contain}.ep-brand-name{font-size:24px;font-weight:800;line-height:1}.ep-brand-name span{color:var(--yellow)}.ep-brand-tag{font-size:11px;color:#cbd8ef;margin-top:5px}
+.ep-nav{margin-left:auto;display:flex;align-items:center;gap:3px}.ep-nav>a,.ep-menu>summary{color:#f2f6ff;padding:12px 14px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;white-space:nowrap}.ep-nav>a:hover,.ep-menu>summary:hover,.ep-nav>a.active{background:rgba(255,255,255,.08)}.ep-nav>a.active{box-shadow:inset 0 -3px 0 var(--yellow)}.ep-menu{position:relative}.ep-menu>summary::-webkit-details-marker{display:none}.ep-menu>summary:after{content:'⌄';font-size:11px;margin-left:6px;color:#b7c8e5}.ep-dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:220px;background:#07183d;border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.3)}.ep-dropdown a,.ep-dd-label{display:block;padding:10px 12px;border-radius:9px;color:#dce8ff;font-size:13px}.ep-dropdown a:hover{background:rgba(255,255,255,.08);color:#fff}.ep-dd-label{font-size:10px;color:#87a4d0!important;text-transform:uppercase;letter-spacing:.7px}.ep-mobile-toggle{display:none}
+/* HERO */
+.ep-hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#041330 0%,#071b43 48%,#0b2b68 100%);border-bottom:1px solid #163d78}
+.ep-hero:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 76% 34%,rgba(255,194,61,.24),transparent 22%),radial-gradient(circle at 28% 22%,rgba(23,105,224,.25),transparent 30%),radial-gradient(circle at 50% 100%,rgba(56,168,255,.14),transparent 35%);pointer-events:none}
+.ep-hero-inner{max-width:1320px;margin:auto;min-height:430px;padding:42px 28px 38px;display:grid;grid-template-columns:1fr 1.08fr;gap:20px;align-items:center;position:relative;z-index:1}
+.ep-kicker{font-size:13px;font-weight:800;letter-spacing:.45px;color:#f5f8ff}.ep-kicker strong{color:#f29a00}
+.ep-hero h1{font-size:clamp(40px,4.8vw,64px);line-height:1.04;letter-spacing:-2.2px;margin:16px 0 15px;font-weight:800;max-width:650px;color:#fff}.ep-hero h1 .gold{color:#f29a00}
+.ep-hero-copy{font-size:17px;line-height:1.55;color:#e6efff;max-width:610px;margin:0 0 20px}.ep-hero-copy b{color:#ed8d00}
+.ep-points{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 23px}.ep-point{font-size:11px;font-weight:700;color:#eaf2ff;display:flex;gap:6px;align-items:center}.ep-point b{color:#ef9c00;font-size:15px}.ep-actions{display:flex;gap:12px;flex-wrap:wrap}.ep-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;padding:13px 24px;font-size:14px;font-weight:800}.ep-btn-primary{background:#f5ad16;color:#112a50;box-shadow:0 8px 18px rgba(239,157,0,.18)}.ep-btn-secondary{background:#fff;border:1.5px solid #f0a400;color:#16345f;box-shadow:0 7px 16px rgba(34,70,110,.08)}
+/* hero illustration — matched to the supplied light-blue/orange visual */
+.ep-hero-art{min-height:350px;position:relative;display:grid;place-items:center;padding:4px 0}.ep-hero-picture{position:relative;width:min(650px,100%);border-radius:22px;padding:0;background:#0b2b68;box-shadow:0 20px 45px rgba(0,0,0,.28);border:1px solid rgba(112,176,255,.28);overflow:hidden}.ep-hero-picture:before{content:'LEARN • UNDERSTAND • ACHIEVE';position:absolute;top:12px;right:14px;z-index:3;padding:7px 11px;border-radius:999px;background:rgba(7,24,61,.88);border:1px solid #f0b332;color:#fff;font-size:9px;font-weight:800;letter-spacing:.55px;box-shadow:0 5px 14px rgba(35,77,117,.12)}.ep-hero-picture img{display:block;width:100%;height:auto;border-radius:21px}.ep-orbit{position:absolute;width:290px;height:155px;border:1px solid rgba(91,171,255,.25);border-radius:50%;transform:rotate(-22deg);top:10px;right:35px;pointer-events:none}.ep-orbit:after{content:'✦';position:absolute;color:#efaa1b;right:-12px;top:18px;font-size:19px}.ep-hero-svg{display:none}
+/* SECTIONS */
+.ep-section{max-width:1260px;margin:auto;padding:38px 22px}.ep-section-head{text-align:center;margin-bottom:20px}.ep-section-head h2{font-size:28px;margin:0;color:#0c2052}.ep-section-head h2:before,.ep-section-head h2:after{content:'—';color:#f3b900;margin:0 12px}.ep-section-head p{margin:7px 0 0;color:#53627b;font-size:13px}
+/* CLASS CARDS */
+.ep-class-section{background:#fff}.ep-class-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.ep-class-card{position:relative;overflow:hidden;min-height:225px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(150deg,#fff,#f7fbff);padding:18px 12px 16px;text-align:center;transition:.2s;box-shadow:0 5px 15px rgba(20,50,100,.05)}.ep-class-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(20,50,100,.12)}.ep-class-card.c6{--c:#0b8f4c;--soft:#e9fff2}.ep-class-card.c7{--c:#5522c7;--soft:#f1ebff}.ep-class-card.c8{--c:#ee6e00;--soft:#fff0e2}.ep-class-card.c9{--c:#1357cf;--soft:#eaf1ff}.ep-class-card.c10{--c:#e51b23;--soft:#fff0f0;border-color:#ff7d7d}.ep-class-icon{width:78px;height:78px;margin:0 auto 7px;border-radius:50%;display:grid;place-items:center;background:var(--soft);font-size:46px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}.ep-class-card h3{margin:3px 0 6px;color:var(--c);font-size:20px}.ep-class-card p{font-size:10px;line-height:1.55;margin:0;color:#111}.ep-class-card .ep-explore{display:inline-flex;margin-top:14px;background:var(--c);color:#fff;padding:8px 22px;border-radius:5px;font-size:12px;font-weight:800}.ep-most{position:absolute;right:9px;top:0;background:#e60000;color:#fff;padding:6px 11px;border-radius:0 0 7px 7px;font-size:10px;font-weight:800}
+/* FEATURE CARDS */
+.ep-feature-section{max-width:1260px;margin:auto;padding:4px 22px 34px}.ep-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.ep-feature-card{min-height:210px;border-radius:12px;border:1px solid var(--line);padding:20px;display:grid;grid-template-columns:115px 1fr;gap:12px;align-items:center;background:linear-gradient(145deg,#eef6ff,#fff)}.ep-feature-card:nth-child(2){background:linear-gradient(145deg,#f4efff,#fff)}.ep-feature-card:nth-child(3){background:linear-gradient(145deg,#fff1f1,#fff)}.ep-feature-art{font-size:76px;text-align:center;filter:drop-shadow(0 6px 6px rgba(0,0,0,.08))}.ep-feature-card h3{font-size:21px;margin:0 0 6px;color:#123b9d}.ep-feature-card:nth-child(2) h3{color:#5522c7}.ep-feature-card:nth-child(3) h3{color:#d81b24}.ep-feature-card p{font-size:12px;line-height:1.55;margin:0 0 10px;color:#1d2431}.mini-link{display:inline-flex;background:#0c4bc0;color:#fff;border-radius:5px;padding:8px 13px;font-size:11px;font-weight:800}.ep-feature-card:nth-child(2) .mini-link{background:#5522c7}.ep-feature-card:nth-child(3) .mini-link{background:#df1c25}
+/* CLASS 10 HUB */
+.ep10-hub{max-width:1260px;margin:0 auto 38px;padding:24px 18px 14px;border:1px solid #ffcf8a;border-radius:13px;background:linear-gradient(110deg,#fff8e9,#fffef9);position:relative;overflow:hidden}.ep10-hub:before,.ep10-hub:after{position:absolute;font-size:56px;color:#f0a800;opacity:.22}.ep10-hub:before{content:'☆';left:12px;top:15px}.ep10-hub:after{content:'⚛';right:18px;top:10px}.ep10-head{text-align:center}.ep10-head h2{font-size:27px;margin:0;color:#11275a}.ep10-head h2 b{color:#111}.ep10-head p{margin:5px 0 16px;font-size:12px;color:#566174}.ep10-hub-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;position:relative;z-index:1}.ep10-hub-card{background:rgba(255,255,255,.82);border:1px solid #f0e3d1;padding:14px 12px;min-height:160px;text-align:center}.ep10-hub-card:first-child{border-radius:10px 0 0 10px}.ep10-hub-card:last-child{border-radius:0 10px 10px 0}.ep10-hub-icon{font-size:30px;margin-bottom:5px}.ep10-hub-card h3{font-size:12px;margin:0 0 8px;color:#183fa4}.ep10-hub-card:nth-child(1) h3{color:#e51b23}.ep10-hub-card:nth-child(3) h3{color:#5522c7}.ep10-hub-card:nth-child(4) h3{color:#0a7d42}.ep10-hub-card:nth-child(5) h3{color:#d81b24}.ep10-hub-card ul{padding:0;margin:0;list-style:none;text-align:left;font-size:9px;line-height:1.8;color:#273044}.ep10-hub-card li:before{content:'✓';font-weight:800;margin-right:5px;color:#0a7d42}.ep10-cta{display:block;width:220px;text-align:center;margin:0 auto;background:#e51b23;color:#fff;padding:9px;border-radius:5px;font-size:12px;font-weight:800;position:relative;z-index:2}
+/* loader + why */
+.boxes{display:none!important}.ep-why{background:#fff;padding:34px 22px}.ep-why-grid{max-width:1260px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.ep-why-item{text-align:center;padding:10px}.ep-why-icon{width:58px;height:58px;margin:auto;border-radius:50%;background:#f0f2ff;display:grid;place-items:center;font-size:29px}.ep-why-item h3{font-size:12px;margin:7px 0 4px;color:#10265f}.ep-why-item p{font-size:9px;line-height:1.5;color:#50607a;margin:0}
+.ep-stats{max-width:1260px;margin:0 auto 20px;padding:0 22px}.ep-stats-box{background:linear-gradient(110deg,#06183d,#092a64);border-radius:11px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;color:#fff}.ep-stat{text-align:center;padding:15px 10px;border-right:1px solid rgba(255,255,255,.18)}.ep-stat:last-child{border-right:0}.ep-stat strong{display:block;font-size:22px;color:#fff}.ep-stat span{font-size:10px;color:#cbd8ee}
+/* FOOTER */
+.ep-footer{margin-top:0!important}
+/* responsive */
+@media(max-width:1050px){.ep-nav-inner{gap:10px}.ep-brand{min-width:230px}.ep-nav>a,.ep-menu>summary{padding:10px 8px;font-size:12px}.ep-class-grid{grid-template-columns:repeat(3,1fr)}.ep10-hub-grid{grid-template-columns:repeat(3,1fr)}.ep10-hub-card:first-child,.ep10-hub-card:last-child{border-radius:0}.ep-why-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.ep-nav{display:none}.ep-mobile-toggle{display:block;margin-left:auto}.ep-mobile-toggle summary{list-style:none;cursor:pointer;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:10px;display:grid;place-items:center;font-size:22px}.ep-mobile-toggle summary::-webkit-details-marker{display:none}.ep-mobile-menu{position:absolute;right:14px;top:68px;width:min(320px,calc(100vw - 28px));background:#07183d;border:1px solid rgba(255,255,255,.15);border-radius:13px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.3)}.ep-mobile-menu a,.ep-mobile-menu summary{display:block;padding:11px 12px;color:#eef5ff;font-size:13px;border-radius:8px;list-style:none}.ep-mobile-menu a:hover,.ep-mobile-menu summary:hover{background:rgba(255,255,255,.08)}.ep-mobile-sub{padding:2px 8px 7px 20px}.ep-mobile-sub a{font-size:12px;padding:8px 10px}.ep-brand{min-width:0}.ep-brand img{width:46px;height:46px}.ep-brand-name{font-size:20px}.ep-brand-tag{font-size:8px}.ep-hero-inner{grid-template-columns:1fr;min-height:auto;padding:42px 18px 30px}.ep-hero h1{font-size:42px;letter-spacing:-1.6px}.ep-hero-copy{font-size:14px}.ep-hero-art{min-height:250px;padding-top:18px}.ep-hero-picture{width:100%;border-radius:18px;padding:0}.ep-hero-picture img{border-radius:17px}.ep-hero-picture:before{top:10px;right:10px;font-size:7px;padding:6px 9px}.ep-orbit{width:240px;height:130px;right:5px;top:8px}.ep-class-grid{grid-template-columns:repeat(2,1fr);gap:10px}.ep-class-card{min-height:205px;padding:15px 9px}.ep-class-icon{width:65px;height:65px;font-size:37px}.ep-class-card h3{font-size:16px}.ep-class-card p{font-size:9px}.ep-feature-grid{grid-template-columns:1fr}.ep-feature-card{min-height:165px;grid-template-columns:92px 1fr;padding:16px}.ep-feature-art{font-size:62px}.ep-feature-card h3{font-size:18px}.ep10-hub-grid{grid-template-columns:1fr 1fr}.ep10-hub-card{min-height:150px}.ep-why-grid{grid-template-columns:1fr 1fr;gap:8px}.ep-stats-box{grid-template-columns:1fr 1fr}.ep-stat:nth-child(2){border-right:0}.ep-stat:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.15)}}
+@media(max-width:430px){.ep-hero h1{font-size:36px}.ep-hero-picture:before{display:none}.ep-points{gap:8px}.ep-point{font-size:9px}.ep-actions .ep-btn{width:100%}.ep-section{padding-left:13px;padding-right:13px}.ep-section-head h2{font-size:24px}.ep-section-head h2:before,.ep-section-head h2:after{margin:0 5px}.ep-class-card{min-height:190px}.ep-class-card .ep-explore{padding:7px 17px}.ep10-hub{margin-left:10px;margin-right:10px;padding-left:9px;padding-right:9px}.ep10-hub-grid{gap:1px}.ep10-hub-card{padding:11px 8px}.ep10-hub-card ul{font-size:8px}.ep10-cta{width:190px}.ep-stat strong{font-size:19px}}
+
+/* Class 10 hub visual upgrade */
+.ep10-hub{position:relative;overflow:hidden;background:linear-gradient(135deg,#fffaf0,#fff4dc);border:1px solid #ffc85b;border-radius:18px;padding:26px 24px 34px;box-shadow:0 12px 35px rgba(20,35,70,.08)}
+.ep10-head{position:relative;z-index:2;text-align:center;margin-bottom:16px}.ep10-head h2{font-size:28px;margin:0 0 4px;color:#10204a}.ep10-head h2 b{color:#e51b23}.ep10-head p{margin:0;color:#52627e;font-size:13px}
+.ep10-girl{position:absolute;left:-2px;bottom:-8px;width:230px;height:330px;object-fit:cover;object-position:center top;z-index:1;filter:drop-shadow(0 8px 10px rgba(0,0,0,.10));border-radius:0 80px 0 0}
+.ep10-decor{position:absolute;right:12px;top:18px;font-size:58px;opacity:.22}.ep10-books{position:absolute;right:10px;bottom:8px;font-size:76px;opacity:.7;transform:rotate(-4deg)}
+.ep10-hub-grid{position:relative;z-index:2;margin-left:205px;display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:8px}
+.ep10-hub-card{background:rgba(255,255,255,.88);border:1px solid #e7d9c4;border-radius:10px;min-height:180px;padding:14px 11px;text-align:center;box-shadow:0 5px 14px rgba(30,40,70,.05)}
+.ep10-hub-icon{font-size:30px;line-height:1;margin-bottom:7px}.ep10-hub-card h3{font-size:12px;line-height:1.2;margin:0 0 8px;color:#1b2b55}.ep10-hub-card:nth-child(1) h3{color:#e51b23}.ep10-hub-card:nth-child(2) h3{color:#1556c7}.ep10-hub-card:nth-child(3) h3{color:#5522c7}.ep10-hub-card:nth-child(4) h3{color:#0b8d4b}.ep10-hub-card:nth-child(5) h3{color:#e85a00}.ep10-hub-card ul{list-style:none;padding:0;margin:0;text-align:left;font-size:9px;line-height:1.7;color:#27344d}.ep10-hub-card li:before{content:'✓';font-weight:800;margin-right:5px;color:#152c58}.ep10-cta{position:relative;z-index:3;display:block;width:220px;margin:12px auto 0;background:#e51b23;color:#fff;text-align:center;border-radius:7px;padding:9px 12px;font-size:12px;font-weight:800}
+@media(max-width:900px){.ep10-girl{width:170px;height:250px;left:-10px}.ep10-hub-grid{margin-left:145px;grid-template-columns:repeat(2,1fr)}.ep10-hub-card{min-height:145px}.ep10-books{display:none}}
+@media(max-width:600px){.ep10-hub{padding:20px 12px 28px}.ep10-head h2{font-size:22px}.ep10-girl{position:relative;display:block;left:auto;bottom:auto;width:155px;height:210px;margin:0 auto -8px;border-radius:0}.ep10-hub-grid{margin-left:0;grid-template-columns:1fr 1fr}.ep10-hub-card{min-height:150px}.ep10-hub-card ul{font-size:8px}.ep10-cta{width:190px}}
+
+</style>
+
+<style id="ep10-final-fix">
+/* Final Class 10 Hub cleanup: prevent legacy site styles from breaking the cards */
+#class10-hub.ep10-hub{box-sizing:border-box!important;width:calc(100% - 24px)!important;max-width:1260px!important;margin:24px auto 38px!important;padding:24px 18px 18px!important;overflow:hidden!important;}
+#class10-hub .ep10-head{box-sizing:border-box!important;width:100%!important;margin:0 0 16px!important;}
+#class10-hub .ep10-hub-grid{box-sizing:border-box!important;width:auto!important;margin:0 0 0 190px!important;padding:0!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important;align-items:stretch!important;}
+#class10-hub .ep10-hub-card{box-sizing:border-box!important;width:auto!important;min-width:0!important;max-width:none!important;min-height:178px!important;height:auto!important;margin:0!important;padding:14px 10px!important;background:rgba(255,255,255,.94)!important;border:1px solid #e7d9c4!important;border-radius:10px!important;box-shadow:0 5px 14px rgba(30,40,70,.05)!important;overflow:hidden!important;text-align:center!important;}
+#class10-hub .ep10-hub-card *{box-sizing:border-box!important;}
+#class10-hub .ep10-hub-icon{display:block!important;background:transparent!important;border:0!important;font-size:28px!important;line-height:1!important;margin:0 0 7px!important;padding:0!important;}
+#class10-hub .ep10-hub-card h3{display:block!important;background:transparent!important;border:0!important;color:#1b2b55!important;font-size:12px!important;line-height:1.2!important;margin:0 0 8px!important;padding:0!important;white-space:normal!important;}
+#class10-hub .ep10-hub-card:nth-child(1) h3{color:#e51b23!important}
+#class10-hub .ep10-hub-card:nth-child(2) h3{color:#1556c7!important}
+#class10-hub .ep10-hub-card:nth-child(3) h3{color:#5522c7!important}
+#class10-hub .ep10-hub-card:nth-child(4) h3{color:#0b8d4b!important}
+#class10-hub .ep10-hub-card:nth-child(5) h3{color:#e85a00!important}
+#class10-hub .ep10-hub-card ul{display:block!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;height:auto!important;max-height:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;list-style:none!important;text-align:left!important;color:#27344d!important;font-size:9px!important;line-height:1.65!important;overflow:visible!important;}
+#class10-hub .ep10-hub-card li{display:block!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;color:#27344d!important;font-size:9px!important;line-height:1.65!important;white-space:normal!important;overflow:visible!important;}
+#class10-hub .ep10-hub-card li:before{content:'✓'!important;display:inline!important;background:transparent!important;border:0!important;color:#152c58!important;font-weight:800!important;margin-right:5px!important;padding:0!important;}
+#class10-hub .ep10-cta{box-sizing:border-box!important;display:block!important;width:220px!important;margin:12px auto 0!important;padding:9px 12px!important;background:#e51b23!important;color:#fff!important;border:0!important;border-radius:7px!important;text-align:center!important;font-size:12px!important;font-weight:800!important;line-height:1.2!important;}
+@media(max-width:1050px){#class10-hub .ep10-hub-grid{margin-left:150px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;}#class10-hub .ep10-girl{width:145px!important;height:230px!important;}}
+@media(max-width:700px){#class10-hub.ep10-hub{width:calc(100% - 20px)!important;padding:20px 10px 26px!important;}#class10-hub .ep10-girl{position:relative!important;display:block!important;left:auto!important;bottom:auto!important;width:145px!important;height:200px!important;margin:0 auto 8px!important;border-radius:0!important;}#class10-hub .ep10-hub-grid{margin-left:0!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;}#class10-hub .ep10-hub-card{min-height:145px!important;padding:11px 8px!important;}#class10-hub .ep10-hub-card ul,#class10-hub .ep10-hub-card li{font-size:8px!important;line-height:1.55!important;}}
+</style>
+</head>
+<body>
+<header class="ep-topbar">
+<div class="ep-nav-inner">
+<a class="ep-brand" href="index.html"><img alt="EduPath IQ Logo" src="logo1.png"/><div><div class="ep-brand-name">EduPath <span>IQ</span></div><div class="ep-brand-tag">Learn Smarter. Visualize Better. Score Higher.</div></div></a>
+<nav aria-label="Main navigation" class="ep-nav">
+<a class="active" href="index.html">Home</a>
+<details class="ep-menu"><summary>Classes</summary><div class="ep-dropdown"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="class-10-science.html">Class 10</a></div></details>
+<a href="test-series.html">Test Series</a>
+<details class="ep-menu"><summary>CBSE PYQ</summary><div class="ep-dropdown"><div class="ep-dd-label">Year Wise</div><a href="cbse-pyq-class-10-year-wise.html">2019–2026 • Year Wise</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details>
+<a href="activity.html">Activity</a>
+<a href="#about-edupath">About Us</a>
+</nav>
+<details class="ep-mobile-toggle"><summary>☰</summary><div class="ep-mobile-menu"><a href="index.html">Home</a><details><summary>Classes</summary><div class="ep-mobile-sub"><a href="class-6-science.html">Class 6</a><a href="class-7-science.html">Class 7</a><a href="class-8-science.html">Class 8</a><a href="class-9-science.html">Class 9</a><a href="class-10-science.html">Class 10</a></div></details><a href="test-series.html">Test Series</a><details><summary>CBSE PYQ</summary><div class="ep-mobile-sub"><a href="cbse-pyq-class-10-year-wise.html">2019–2026 • Year Wise</a><a href="cbse-pyq-chapter-wise.html">Chapter Wise</a></div></details><details><summary>Activity</summary><div class="ep-mobile-sub"><a href="#activity">Activity Explanation</a><a href="#activity">Activity Based Questions</a></div></details><a href="#about-edupath">About Us</a></div></details>
+</div>
+</header>
+<section class="ep-hero">
+<div class="ep-hero-inner">
+<div>
+<div class="ep-kicker"><strong>NCERT BASED</strong>   |   HINDI &amp; ENGLISH MEDIUM</div>
+<h1>Your Journey to<br/><span class="gold">Excellence</span> Starts Here!</h1>
+<p class="ep-hero-copy">Get <b>Creative Notes</b>, Solutions, Activity Explanation &amp; Questions, Test Series and CBSE Previous Year Questions for Class 6 to 10.</p>
+<div class="ep-points"><span class="ep-point"><b>▣</b> NCERT Based</span><span class="ep-point"><b>◎</b> Exam Focused</span><span class="ep-point"><b>●</b> Student Friendly</span><span class="ep-point"><b>⬡</b> Trusted Content</span></div>
+<div class="ep-actions"><a class="ep-btn ep-btn-primary" href="#classes">Explore Classes   📚</a><a class="ep-btn ep-btn-secondary" href="test-series.html">Practice Now   🚀</a></div>
+</div>
+<div aria-hidden="true" class="ep-hero-art"><div class="ep-orbit"></div><div class="ep-hero-picture"><img alt="EduPath IQ student learning with NCERT books" src="edupath-home-hero.webp"/></div></div>
+</div>
+</section>
+<main class="main">
+<section class="ep-section ep-class-section" id="classes">
+<div class="ep-section-head"><h2>Explore Your Class</h2><p>Select your class and start your learning journey</p></div>
+<div class="ep-class-grid">
+<a class="ep-class-card c6" href="class-6-science.html"><div class="ep-class-icon">🧪</div><h3>Class 6</h3><p>Creative Notes • Solutions<br/>Test Series<br/>Activity Explanation &amp; Questions</p><span class="ep-explore">Explore →</span></a>
+<a class="ep-class-card c7" href="class-7-science.html"><div class="ep-class-icon">🪐</div><h3>Class 7</h3><p>Creative Notes • Solutions<br/>Test Series<br/>Activity Explanation &amp; Questions</p><span class="ep-explore">Explore →</span></a>
+<a class="ep-class-card c8" href="class-8-science.html"><div class="ep-class-icon">🧬</div><h3>Class 8</h3><p>Creative Notes • Solutions<br/>Test Series<br/>Activity Explanation &amp; Questions</p><span class="ep-explore">Explore →</span></a>
+<a class="ep-class-card c9" href="class-9-science.html"><div class="ep-class-icon">🧲</div><h3>Class 9</h3><p>Creative Notes • Solutions<br/>Test Series<br/>Activity Explanation &amp; Questions</p><span class="ep-explore">Explore →</span></a>
+<a class="ep-class-card c10" href="class-10-science.html"><span class="ep-most">Most Important</span><div class="ep-class-icon">🧬</div><h3>Class 10</h3><p>Creative Notes • Solutions<br/>Test Series<br/>Activity Explanation &amp; Questions</p><span class="ep-explore">Explore →</span></a>
+</div>
+</section>
+<section class="ep-feature-section" id="activity">
+<div class="ep-feature-grid">
+<article class="ep-feature-card"><div class="ep-feature-art">🎯</div><div><h3>Test Series</h3><p>Practice more, improve accuracy and prepare confidently for school and board exams.</p><a class="mini-link" href="test-series.html">Explore Test Series →</a></div></article>
+<article class="ep-feature-card"><div class="ep-feature-art">🧪</div><div><h3>Activity Explanation &amp; Questions</h3><p>Step-by-step NCERT activity explanations with activity-based questions.</p><a class="mini-link" href="activity.html">View Activities →</a></div></article>
+<article class="ep-feature-card"><div class="ep-feature-art">📚</div><div><h3>CBSE PYQ</h3><p>Previous Year Questions (2019–2026) with Year Wise and Chapter Wise resources.</p><a class="mini-link" href="cbse-pyq-class-10-year-wise.html">Year Wise →</a> <a class="mini-link" href="cbse-pyq-chapter-wise.html">Chapter Wise →</a></div></article>
+</div>
+</section>
+<section class="ep10-hub" id="class10-hub">
+<div class="ep10-decor">⚛</div><div class="ep10-books">🏆📚</div>
+<div class="ep10-head"><h2>Class 10 – <b>Complete Science Hub</b></h2><p>Everything you need for Board Exam success in one place!</p></div>
+<img alt="Student with Class 10 Science book" class="ep10-girl" src="class10-student.webp"/>
+<div class="ep10-hub-grid">
+<div class="ep10-hub-card"><div class="ep10-hub-icon">📕</div><h3>Creative Notes</h3><ul><li>Hindi &amp; English</li><li>Chapter-wise Notes</li><li>Important Diagrams</li><li>Easy to Understand</li></ul></div>
+<div class="ep10-hub-card"><div class="ep10-hub-icon">📝</div><h3>Solutions</h3><ul><li>NCERT Solutions</li><li>In-text Questions</li><li>Important Questions</li><li>Detailed Explanation</li></ul></div>
+<div class="ep10-hub-card"><div class="ep10-hub-icon">🧪</div><h3>Activity Explanation &amp; Questions</h3><ul><li>Step-by-step Explanation</li><li>NCERT Activities</li><li>Activity Based Questions</li><li>Concept Based</li></ul></div>
+<div class="ep10-hub-card"><div class="ep10-hub-icon">🎯</div><h3>Test Series</h3><ul><li>Chapter-wise Tests</li><li>Full Syllabus Tests</li><li>MCQ Tests</li><li>CBSE Pattern Tests</li></ul></div>
+<div class="ep10-hub-card"><div class="ep10-hub-icon">📁</div><h3>CBSE PYQ</h3><ul><li>2019 – 2026 Papers</li><li>Chapter-wise PYQ</li><li>With Solutions</li><li>Board Exam Focused</li></ul></div>
+</div>
+<a class="ep10-cta" href="class-10-science.html">Explore Class 10 Hub →</a>
+</section>
+<!-- Kept for the existing safe Class 10 loader. The loader places the detailed chapter resources here. -->
+
+<div aria-hidden="true" class="boxes"></div>
+<section class="ep-why" id="about-edupath">
+<div class="ep-section-head"><h2>Why Choose EduPath IQ?</h2><p>Simple, focused and student-friendly Science learning.</p></div>
+<div class="ep-why-grid">
+<div class="ep-why-item"><div class="ep-why-icon">📖</div><h3>NCERT Based</h3><p>Learning resources designed around NCERT content.</p></div>
+<div class="ep-why-item"><div class="ep-why-icon">🎯</div><h3>Exam Focused</h3><p>Designed for school and board exam preparation.</p></div>
+<div class="ep-why-item"><div class="ep-why-icon">文</div><h3>Hindi &amp; English Medium</h3><p>Study comfortably in your preferred language.</p></div>
+<div class="ep-why-item"><div class="ep-why-icon">★</div><h3>High Quality Content</h3><p>Clear, structured and easy to understand.</p></div>
+<div class="ep-why-item"><div class="ep-why-icon">📱</div><h3>Mobile Friendly</h3><p>Accessible anytime on phone, tablet or computer.</p></div>
+</div>
+</section>
+<section class="ep-stats"><div class="ep-stats-box"><div class="ep-stat"><strong>6–10</strong><span>Classes Covered</span></div><div class="ep-stat"><strong>NCERT</strong><span>Focused Learning</span></div><div class="ep-stat"><strong>Hindi + English</strong><span>Medium Support</span></div><div class="ep-stat"><strong>Exam Ready</strong><span>Practice Resources</span></div></div></section>
+</main>
+<footer class="ep-footer">
+<div class="ep-footer-inner">
+<div class="ep-footer-grid">
+<div class="ep-footer-brand">
+<div class="ep-brand-head">
+<img alt="EduPath IQ Logo" class="ep-footer-logo" src="logo1.png"/>
+<div>
+<div class="ep-brand-name">EduPath <span>IQ</span></div>
+<div class="ep-tagline">Learn Today, Lead Tomorrow</div>
+</div>
+</div>
+<p>
+          EduPath IQ is your trusted learning companion for Class 6 to 10.
+          We provide NCERT-based Science Notes,
+          <strong>Creative &amp; Easy-to-Understand Notes</strong>, PYQs and
+          Test Series to help students learn better and score higher.
+        </p>
+<div class="ep-creative-box">
+<div class="ep-creative-icon">✎</div>
+<div>
+<h4>Creative Notes, Better Learning!</h4>
+<p>Colorful, well-structured and easy-to-understand notes for effective learning.</p>
+</div>
+</div>
+</div>
+<div class="ep-footer-column">
+<h3>Quick Links</h3>
+<a href="index.html">⌂   Home</a>
+<a href="6th_science_english.html">🎓   Class 6</a>
+<a href="7th_science_english.html">🎓   Class 7</a>
+<a href="8th_science_english.html">🎓   Class 8</a>
+<a href="9th_science_english.html">🎓   Class 9</a>
+<a href="class-10-science.html">🎓   Class 10</a>
+<a href="test-series.html">📝   Test Series</a>
+<a href="#ep-contact">☎   Contact Us</a>
+</div>
+<div class="ep-footer-column">
+<h3>Study Resources</h3>
+<a href="6th_science_english.html">📚   Science Notes</a>
+<a href="cbse-pyq-chapter-wise.html">📄   Chapter Wise PYQ</a>
+<a href="class10_tests.html">📝   Test Series</a>
+<a href="index.html">📑   CBSE PYQ</a>
+</div>
+<div class="ep-footer-column ep-connect" id="ep-contact">
+<h3>Connect With Us</h3>
+<a class="ep-social ep-instagram" href="https://www.instagram.com/edupathiq_/" rel="noopener" target="_blank">
+<span class="ep-social-icon">◎</span>
+<span><b>Instagram</b><small>@EDUPATHIQ_</small></span>
+</a>
+<a class="ep-social ep-whatsapp" href="https://wa.me/918800265237" rel="noopener" target="_blank">
+<span class="ep-social-icon">◔</span>
+<span><b>WhatsApp</b><small>+91 88002 65237</small></span>
+</a>
+<a class="ep-social ep-phone" href="tel:+918800265237">
+<span class="ep-social-icon">☎</span>
+<span><b>Phone</b><small>+91 88002 65237</small></span>
+</a>
+<a class="ep-social ep-email" href="mailto:avikeshsaini6@gmail.com">
+<span class="ep-social-icon">✉</span>
+<span><b>Email</b><small>avikeshsaini6@gmail.com</small></span>
+</a>
+</div>
+</div>
+<div class="ep-feature-bar">
+<div><span>🛡</span><b>Trusted by Students</b><small>Quality learning resources</small></div>
+<div><span>🏅</span><b>Quality Content</b><small>NCERT Based &amp; Exam Focused</small></div>
+<div><span>🔒</span><b>Secure &amp; Safe</b><small>Safe payment experience</small></div>
+<div><span>🎧</span><b>Student Support</b><small>We are here to help</small></div>
+</div>
+<div class="ep-footer-bottom">
+<div>© 2026 <strong>EduPath IQ</strong>. All Rights Reserved.</div>
+<div class="ep-legal">
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+<a href="refund-policy.html">Refund Policy</a>
+<a href="cancellation-policy.html">Cancellation Policy</a>
+</div>
+<div>Made with <span class="ep-heart">♥</span> for Students</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
