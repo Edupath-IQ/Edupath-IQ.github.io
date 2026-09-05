@@ -30,4 +30,30 @@
 <div class="test-grid"><a class="test-card" href="class6_chapter1_test.html"><div class="chapter-number">CHAPTER 1</div><h2>The Wonderful World Of Science</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter2_test.html"><div class="chapter-number">CHAPTER 2</div><h2>Diversity In The Living World</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter3_test.html"><div class="chapter-number">CHAPTER 3</div><h2>Mindful Eating: A Path To a Healthy Body</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter4_test.html"><div class="chapter-number">CHAPTER 4</div><h2>Exploring Magnets</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter5_test.html"><div class="chapter-number">CHAPTER 5</div><h2>Measurement Of Length And Motion</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter6_test.html"><div class="chapter-number">CHAPTER 6</div><h2>Materials Around Us</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter7_test.html"><div class="chapter-number">CHAPTER 7</div><h2>Temperature And Its Measurement</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter8_test.html"><div class="chapter-number">CHAPTER 8</div><h2>A Journey Through States Of Water</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter9_test.html"><div class="chapter-number">CHAPTER 9</div><h2>Methods Of Separation In Everyday Life</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a><a class="test-card" href="class6_chapter10_test.html"><div class="chapter-number">CHAPTER 10</div><h2>Living Creatures: Exploring Their Characteristics</h2><p>Chapter-wise Science practice test.</p><span class="badge">Start Test →</span></a></div>
 </main>
 <footer class="epq-footer"><strong>EduPath IQ</strong> • Class 6 Science Chapter-wise Tests</footer>
-<style id="language-selector-only">.language-selector-only{display:flex;justify-content:center;gap:12px;margin:18px auto 24px}.language-selector-only button{border:0;border-radius:999px;padding:11px 24px;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.14)}.language-selector-only button.active{transform:translateY(-1px);box-shadow:0 7px 20px rgba(0,0,0,.22)}.lang-disabled-only{cursor:default!important;pointer-events:none!important}</style><div class="language-selector-only" aria-label="Select language"><button type="button" id="langEnglishOnly" class="active">English</button><button type="button" id="langHindiOnly">हिंदी</button></div><script>(function(){const hi=['विज्ञान की अद्भुत दुनिया', 'सजीव जगत में विविधता', 'स्वास्थ्यवर्धक भोजन: स्वस्थ शरीर की राह', 'चुंबकों की खोज', 'लंबाई और गति का मापन', 'हमारे आस-पास की सामग्रियाँ', 'तापमान और उसका मापन', 'जल की अवस्थाओं की यात्रा', 'दैनिक जीवन में पृथक्करण की विधियाँ', 'सजीव: उनकी विशेषताओं की खोज'];const cards=[...document.querySelectorAll('.test-card, .chapter-card')];const original=cards.map(c=>{const h=c.querySelector('h2,h3');return h?h.textContent:''});const en=document.getElementById('langEnglishOnly'),hn=document.getElementById('langHindiOnly');function setLang(lang){cards.forEach((c,i)=>{const h=c.querySelector('h2,h3');if(!h)return;if(lang==='hi'){h.textContent=hi[i]||original[i];if(c.hasAttribute('href')){c.dataset.originalHref=c.getAttribute('href');c.removeAttribute('href');}c.classList.add('lang-disabled-only');}else{h.textContent=original[i];if(c.dataset.originalHref!==undefined)c.setAttribute('href',c.dataset.originalHref);c.classList.remove('lang-disabled-only');}});en.classList.toggle('active',lang==='en');hn.classList.toggle('active',lang==='hi')}en.addEventListener('click',()=>setLang('en'));hn.addEventListener('click',()=>setLang('hi'));})();</script></body></html>
+
+<style>
+.ep-lang-selector{display:flex;justify-content:flex-start;gap:10px;margin:0 0 24px;flex-wrap:wrap}
+.ep-lang-selector button{border:1px solid #d7e2f2;background:#fff;color:#12335f;padding:10px 20px;border-radius:10px;font-weight:800;cursor:pointer;font:inherit;transition:.15s ease}
+.ep-lang-selector button.active{background:#1769e0;color:#fff;border-color:#1769e0}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const hiNames=['विज्ञान की अद्भुत दुनिया', 'जीव जगत में विविधता', 'सजग आहार: स्वस्थ शरीर की ओर', 'चुंबकों की खोज', 'लंबाई और गति का मापन', 'हमारे आसपास की सामग्रियाँ', 'तापमान और उसका मापन', 'जल की अवस्थाओं की यात्रा', 'दैनिक जीवन में पृथक्करण की विधियाँ', 'जीव-जंतु: उनकी विशेषताओं की खोज'];
+  const cards=[...document.querySelectorAll('.test-grid .test-card h2, .chapter-grid .chapter-card h3')];
+  if(!cards.length)return;
+  const wrap=document.createElement('div'); wrap.className='ep-lang-selector';
+  const en=document.createElement('button'), hi=document.createElement('button');
+  en.type='button'; hi.type='button'; en.textContent='English'; hi.textContent='Hindi';
+  wrap.append(en,hi);
+  const grid=document.querySelector('.test-grid,.chapter-grid');
+  if(!grid)return; grid.parentNode.insertBefore(wrap,grid);
+  const original=cards.map(el=>el.textContent.trim());
+  function setLang(lang){
+    cards.forEach((el,i)=>{el.textContent=(lang==='hi' && hiNames[i])?hiNames[i]:original[i];});
+    en.classList.toggle('active',lang==='en'); hi.classList.toggle('active',lang==='hi');
+  }
+  en.addEventListener('click',()=>setLang('en')); hi.addEventListener('click',()=>setLang('hi'));
+  setLang('en');
+});
+</script>
+</body></html>
