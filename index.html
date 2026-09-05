@@ -63,6 +63,17 @@
 @media(max-width:900px){.ep10-girl{width:170px;height:250px;left:-10px}.ep10-hub-grid{margin-left:145px;grid-template-columns:repeat(2,1fr)}.ep10-hub-card{min-height:145px}.ep10-books{display:none}}
 @media(max-width:600px){.ep10-hub{padding:20px 12px 28px}.ep10-head h2{font-size:22px}.ep10-girl{position:relative;display:block;left:auto;bottom:auto;width:155px;height:210px;margin:0 auto -8px;border-radius:0}.ep10-hub-grid{margin-left:0;grid-template-columns:1fr 1fr}.ep10-hub-card{min-height:150px}.ep10-hub-card ul{font-size:8px}.ep10-cta{width:190px}}
 
+
+/* Homepage-only CBSE PYQ year strip — requested targeted change */
+.ep-pyq-strip{max-width:1260px;margin:0 auto 26px;text-align:center;padding:0 12px;}
+.ep-pyq-strip-title{margin:0 0 5px;color:#123b78;font-size:20px;font-weight:800;line-height:1.25;}
+.ep-pyq-strip-subtitle{margin:0 0 12px;color:#66738c;font-size:11px;font-weight:600;}
+.ep-pyq-strip-years{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;}
+.ep-pyq-strip-year{display:flex;align-items:center;justify-content:center;min-height:38px;padding:0 8px;border-radius:8px;text-decoration:none!important;color:#17315e!important;font-size:11px;font-weight:800;border:1px solid rgba(23,49,94,.08);box-shadow:0 2px 7px rgba(20,50,100,.05);transition:transform .18s,box-shadow .18s;}
+.ep-pyq-strip-year:nth-child(1){background:#dceeff}.ep-pyq-strip-year:nth-child(2){background:#e6f8d9}.ep-pyq-strip-year:nth-child(3){background:#fff0bf}.ep-pyq-strip-year:nth-child(4){background:#f9d9df}.ep-pyq-strip-year:nth-child(5){background:#e8dcff}.ep-pyq-strip-year:nth-child(6){background:#d9e8ff}.ep-pyq-strip-year:nth-child(7){background:#e2f5df}.ep-pyq-strip-year:nth-child(8){background:#ffdfe3}
+.ep-pyq-strip-year:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(20,50,100,.12);}
+@media(max-width:760px){.ep-pyq-strip-years{grid-template-columns:repeat(4,1fr);gap:7px}.ep-pyq-strip-title{font-size:18px}.ep-pyq-strip-year{min-height:36px;font-size:10px;}}
+@media(max-width:430px){.ep-pyq-strip{padding:0 8px;margin-bottom:20px}.ep-pyq-strip-title{font-size:17px}.ep-pyq-strip-subtitle{font-size:10px}.ep-pyq-strip-years{gap:6px}.ep-pyq-strip-year{min-height:34px;font-size:9px;}}
 </style>
 
 <style id="ep10-final-fix">
@@ -132,26 +143,20 @@
 <article class="ep-feature-card"><div class="ep-feature-art">📚</div><div><h3>CBSE PYQ</h3><p>Previous Year Questions (2019–2026) with Year Wise and Chapter Wise resources.</p><a class="mini-link" href="cbse-pyq-class-10-year-wise.html">Year Wise →</a> <a class="mini-link" href="cbse-pyq-chapter-wise.html">Chapter Wise →</a></div></article>
 </div>
 </section>
-<style id="ep-home-pyq-strip">
-.ep-home-pyq{max-width:1260px;margin:24px auto 18px;padding:18px;border:1px solid #d9c7ff;border-radius:16px;background:linear-gradient(110deg,#fbf8ff,#fffdf7);box-sizing:border-box}
-.ep-home-pyq-head{text-align:center;margin-bottom:14px}.ep-home-pyq-head h2{margin:0 0 5px;font-size:22px;color:#24104f}.ep-home-pyq-head p{margin:0;font-size:13px;color:#666}
-.ep-home-pyq-years{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}.ep-home-pyq-year{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;color:#fff;box-shadow:0 5px 12px rgba(20,35,70,.10);transition:transform .15s ease}.ep-home-pyq-year:hover{transform:translateY(-2px)}
-.ep-home-pyq-year:nth-child(1){background:#e85d75}.ep-home-pyq-year:nth-child(2){background:#f39c3d}.ep-home-pyq-year:nth-child(3){background:#36a269}.ep-home-pyq-year:nth-child(4){background:#3d83d8}.ep-home-pyq-year:nth-child(5){background:#8b5fc7}.ep-home-pyq-year:nth-child(6){background:#e06a9a}.ep-home-pyq-year:nth-child(7){background:#2d9caa}.ep-home-pyq-year:nth-child(8){background:#d47b35}
-@media(max-width:760px){.ep-home-pyq{margin:18px 12px 14px;padding:15px}.ep-home-pyq-years{grid-template-columns:repeat(4,1fr);gap:8px}.ep-home-pyq-year{min-height:44px;font-size:14px}}
-</style>
-<section class="ep-home-pyq" aria-label="CBSE Previous Year Question Papers">
-<div class="ep-home-pyq-head"><h2>CBSE Previous Year Question Papers</h2><p>Class 10 Science • Year Wise PYQs (2019–2026)</p></div>
-<div class="ep-home-pyq-years">
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2019</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2020</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2021</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2022</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2023</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2024</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2025</a>
-<a class="ep-home-pyq-year" href="cbse-pyq-class-10-year-wise.html">2026</a>
+<div class="ep-pyq-strip">
+<div class="ep-pyq-strip-title">CBSE Previous Year Questions</div>
+<div class="ep-pyq-strip-subtitle">Year-wise PYQs for Class 10 Science (2019–2026)</div>
+<div class="ep-pyq-strip-years">
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2019.html">2019</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2020.html">2020</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2021.html">2021</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2022.html">2022</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2023.html">2023</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2024.html">2024</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2025.html">2025</a>
+<a class="ep-pyq-strip-year" href="https://edupath-iq.github.io/cbse-pyq-class-10-2026.html">2026</a>
 </div>
-</section>
+</div>
 <section class="ep10-hub" id="class10-hub">
 <div class="ep10-decor">⚛</div><div class="ep10-books">🏆📚</div>
 <div class="ep10-head"><h2>Class 10 – <b>Complete Science Hub</b></h2><p>Everything you need for Board Exam success in one place!</p></div>
