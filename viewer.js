@@ -197,38 +197,32 @@ async function loadPdf(pdfFile) {
                  * Page 2 onward:
                  * higher resolution for better mobile clarity.
                  */
-                const devicePixelRatio =
-                    window.devicePixelRatio || 1;
+               const devicePixelRatio =
+    window.devicePixelRatio || 1;
 
-                const isMobile =
-                    window.matchMedia &&
-                    window.matchMedia(
-                        "(max-width: 768px)"
-                    ).matches;
+const isMobile =
+    window.matchMedia &&
+    window.matchMedia(
+        "(max-width: 768px)"
+    ).matches;
 
-                let maxOutputScale;
+let maxOutputScale;
 
-                if (isMobile) {
+if (isMobile) {
+    maxOutputScale =
+        number === 1
+            ? 2
+            : 3.5;
+} else {
+    maxOutputScale =
+        2;
+}
 
-                    maxOutputScale =
-                        number === 1
-                            ? 2
-                            : 3;
-
-                } else {
-
-                    maxOutputScale =
-                        number === 1
-                            ? 2
-                            : 2.5;
-                }
-
-                const outputScale =
-                    Math.min(
-                        devicePixelRatio,
-                        maxOutputScale
-                    );
-
+const outputScale =
+    Math.min(
+        devicePixelRatio,
+        maxOutputScale
+    );
                 const canvas =
                     document.createElement("canvas");
 
