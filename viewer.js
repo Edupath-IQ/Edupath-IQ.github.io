@@ -1,5 +1,5 @@
 // Fast, sharp and mobile-friendly PDF viewer.
-// The PDF file itself is NOT compressed or modified.
+// Original PDF files are NOT compressed or modified.
 
 const container = document.getElementById("pdfContainer");
 
@@ -25,14 +25,15 @@ async function loadPdf(pdfFile) {
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
 
         /*
-         * Load the PDF without eagerly downloading/rendering
-         * every page.
+         * R2 optimized loading.
+         * Larger chunks reduce the number of network requests.
          */
         const loadingTask = pdfjsLib.getDocument({
             url: pdfFile,
-            rangeChunkSize: 262144,
-            disableAutoFetch: true,
-            disableStream: false
+            rangeChunkSize: 2097152,
+            disableAutoFetch: false,
+            disableStream: false,
+            stopAtErrors: false
         });
 
         const pdf = await loadingTask.promise;
@@ -44,9 +45,7 @@ async function loadPdf(pdfFile) {
 
         container.innerHTML = "";
 
-        /*
-         * PDF controls
-         */
+        /* PDF controls */
         const controls = document.createElement("div");
 
         controls.style.position = "sticky";
@@ -93,9 +92,7 @@ async function loadPdf(pdfFile) {
 
         container.appendChild(controls);
 
-        /*
-         * Get only the first page initially.
-         */
+        /* First page */
         const firstPage = await pdf.getPage(1);
 
         const baseViewport = firstPage.getViewport({
@@ -125,8 +122,8 @@ async function loadPdf(pdfFile) {
         const pages = [];
 
         /*
-         * Create lightweight placeholders.
-         * We do NOT render all pages at startup.
+         * Lightweight placeholders.
+         * Actual pages are rendered progressively.
          */
         for (
             let number = 1;
@@ -192,14 +189,44 @@ async function loadPdf(pdfFile) {
                     });
 
                 /*
-                 * 2x backing resolution for sharp text/images.
-                 * This is capped so mobile doesn't become
-                 * unnecessarily slow.
+                 * Different quality levels:
+                 *
+                 * Page 1:
+                 * lower resolution for faster opening.
+                 *
+                 * Page 2 onward:
+                 * higher resolution for better mobile clarity.
                  */
+                const devicePixelRatio =
+                    window.devicePixelRatio || 1;
+
+                const isMobile =
+                    window.matchMedia &&
+                    window.matchMedia(
+                        "(max-width: 768px)"
+                    ).matches;
+
+                let maxOutputScale;
+
+                if (isMobile) {
+
+                    maxOutputScale =
+                        number === 1
+                            ? 2
+                            : 3;
+
+                } else {
+
+                    maxOutputScale =
+                        number === 1
+                            ? 2
+                            : 2.5;
+                }
+
                 const outputScale =
                     Math.min(
-                        window.devicePixelRatio || 1,
-                        2
+                        devicePixelRatio,
+                        maxOutputScale
                     );
 
                 const canvas =
@@ -220,10 +247,6 @@ async function loadPdf(pdfFile) {
                         outputScale
                     );
 
-                /*
-                 * Important for mobile:
-                 * visible canvas always fits the screen.
-                 */
                 canvas.style.width =
                     "100%";
 
@@ -233,17 +256,22 @@ async function loadPdf(pdfFile) {
                 canvas.style.display =
                     "block";
 
+                canvas.style.imageRendering =
+                    "auto";
+
                 pageBox.innerHTML = "";
                 pageBox.appendChild(canvas);
 
                 const ctx =
                     canvas.getContext("2d", {
-                        alpha: false
+                        alpha: false,
+                        desynchronized: true
                     });
 
                 await page.render({
                     canvasContext: ctx,
                     viewport: viewport,
+
                     transform: [
                         outputScale,
                         0,
@@ -251,7 +279,10 @@ async function loadPdf(pdfFile) {
                         outputScale,
                         0,
                         0
-                    ]
+                    ],
+
+                    intent: "display"
+
                 }).promise;
 
                 pageBox.dataset.rendered =
@@ -272,23 +303,22 @@ async function loadPdf(pdfFile) {
         }
 
         /*
-         * FIRST PRIORITY:
-         * Render only page 1 immediately.
+         * First page gets highest priority.
          */
         await renderPage(pages[0]);
 
         /*
-         * Page 2 shortly after page 1.
+         * Page 2 loads shortly after page 1.
          */
         if (pages[1]) {
             setTimeout(() => {
                 renderPage(pages[1]);
-            }, 100);
+            }, 50);
         }
 
         /*
-         * Remaining pages are loaded only
-         * when they approach the screen.
+         * Remaining pages load progressively
+         * as they approach the viewport.
          */
         if (
             "IntersectionObserver" in window
@@ -318,7 +348,8 @@ async function loadPdf(pdfFile) {
                     },
                     {
                         rootMargin:
-                            "800px 0px",
+                            "300px 0px",
+
                         threshold: 0
                     }
                 );
@@ -334,6 +365,7 @@ async function loadPdf(pdfFile) {
                         number !== "1" &&
                         number !== "2"
                     ) {
+
                         observer.observe(
                             pageBox
                         );
@@ -343,8 +375,31 @@ async function loadPdf(pdfFile) {
         }
 
         /*
-         * ZOOM IN
+         * Re-render pages already rendered
+         * after zoom/size changes.
          */
+        async function rerenderRenderedPages() {
+
+            for (
+                const pageBox of pages
+            ) {
+
+                if (
+                    pageBox.dataset
+                        .rendered === "true"
+                ) {
+
+                    pageBox.dataset
+                        .rendered = "false";
+
+                    await renderPage(
+                        pageBox
+                    );
+                }
+            }
+        }
+
+        /* Zoom In */
         zoomIn.addEventListener(
             "click",
             async () => {
@@ -360,32 +415,11 @@ async function loadPdf(pdfFile) {
                 zoomLabel.textContent =
                     `${Math.round(zoom * 100)}%`;
 
-                /*
-                 * Re-render currently visible pages.
-                 */
-                for (
-                    const pageBox of pages
-                ) {
-
-                    if (
-                        pageBox.dataset
-                            .rendered === "true"
-                    ) {
-
-                        pageBox.dataset
-                            .rendered = "false";
-
-                        await renderPage(
-                            pageBox
-                        );
-                    }
-                }
+                await rerenderRenderedPages();
             }
         );
 
-        /*
-         * ZOOM OUT
-         */
+        /* Zoom Out */
         zoomOut.addEventListener(
             "click",
             async () => {
@@ -401,29 +435,11 @@ async function loadPdf(pdfFile) {
                 zoomLabel.textContent =
                     `${Math.round(zoom * 100)}%`;
 
-                for (
-                    const pageBox of pages
-                ) {
-
-                    if (
-                        pageBox.dataset
-                            .rendered === "true"
-                    ) {
-
-                        pageBox.dataset
-                            .rendered = "false";
-
-                        await renderPage(
-                            pageBox
-                        );
-                    }
-                }
+                await rerenderRenderedPages();
             }
         );
 
-        /*
-         * FIT TO SCREEN
-         */
+        /* Fit */
         resetZoom.addEventListener(
             "click",
             async () => {
@@ -433,23 +449,33 @@ async function loadPdf(pdfFile) {
                 zoomLabel.textContent =
                     "100%";
 
-                for (
-                    const pageBox of pages
-                ) {
+                await rerenderRenderedPages();
+            }
+        );
 
-                    if (
-                        pageBox.dataset
-                            .rendered === "true"
-                    ) {
+        /*
+         * Re-render after device orientation
+         * or browser width changes.
+         */
+        let resizeTimer;
 
-                        pageBox.dataset
-                            .rendered = "false";
+        window.addEventListener(
+            "resize",
+            () => {
 
-                        await renderPage(
-                            pageBox
-                        );
-                    }
-                }
+                clearTimeout(
+                    resizeTimer
+                );
+
+                resizeTimer =
+                    setTimeout(
+                        async () => {
+
+                            await rerenderRenderedPages();
+
+                        },
+                        250
+                    );
             }
         );
 
@@ -468,7 +494,7 @@ async function loadPdf(pdfFile) {
 
 
 /*
- * Get PDF filename from URL.
+ * Read PDF filename from URL.
  */
 const params =
     new URLSearchParams(
@@ -480,24 +506,39 @@ const pdfFile =
 
 
 /*
- * Cloudflare R2 PDF storage.
+ * Cloudflare R2 storage.
  *
- * Creative Notes PDFs:
+ * Creative Notes:
  * 7th_chapter3_E.pdf
  *
- * Creative Solution PDFs:
+ * Creative Solutions:
  * 7th_solution_chapter3_E.pdf
  *
- * Both are loaded from the same R2 bucket.
+ * Both use the same R2 bucket.
  */
 const R2_BASE_URL =
-    "https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/";
+    "https://pub-a381c2de36564bf9938df8e892649d12.r2.dev";
 
 
-const pdfUrl =
-    pdfFile
-        ? R2_BASE_URL + encodeURIComponent(pdfFile)
-        : null;
+function getPdfSource(filename) {
+
+    if (!filename) {
+        return null;
+    }
+
+    /*
+     * Creative Notes / Creative Solutions
+     * PDF filename pattern.
+     */
+    const isCreativePdf =
+        /^\d+(st|nd|rd|th)_(?:solution_)?chapter\d+_[EH]\.pdf$/i.test(
+            filename
+        );
+
+    return isCreativePdf
+        ? `${R2_BASE_URL}/${encodeURIComponent(filename)}`
+        : filename;
+}
 
 
 if (!pdfFile) {
@@ -506,12 +547,14 @@ if (!pdfFile) {
 
 } else {
 
-    loadPdf(pdfUrl);
+    loadPdf(
+        getPdfSource(pdfFile)
+    );
 }
 
 
 /*
- * Existing basic protection.
+ * Basic protection.
  */
 document.addEventListener(
     "contextmenu",
