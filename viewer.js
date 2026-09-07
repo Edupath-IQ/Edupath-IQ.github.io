@@ -16,8 +16,8 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
 async function loadPdf(pdfFile) {
     try {
         // Load PDF.js only after we know a PDF was requested.
-        const pdfjsLib = await import("./pdfjs/pdf.mjs");
-        pdfjsLib.GlobalWorkerOptions.workerSrc = "./pdfjs/pdf.worker.mjs";
+      const pdfjsLib = await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs");
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
 
         const pdf = await pdfjsLib.getDocument({ url: pdfFile }).promise;
 
