@@ -18,10 +18,12 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
 async function loadPdf(pdfFile) {
     try {
         // Use the existing PDF.js files in the repository.
-        const pdfjsLib = await import("./pdfjs/pdf.mjs");
+const pdfjsLib = await import(
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
+);
 
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-            "./pdfjs/pdf.worker.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
 
         /*
          * Do not eagerly download/render every page.
