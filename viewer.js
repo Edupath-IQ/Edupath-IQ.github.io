@@ -479,13 +479,34 @@ const pdfFile =
     params.get("pdf");
 
 
+/*
+ * Cloudflare R2 PDF storage.
+ *
+ * Creative Notes PDFs:
+ * 7th_chapter3_E.pdf
+ *
+ * Creative Solution PDFs:
+ * 7th_solution_chapter3_E.pdf
+ *
+ * Both are loaded from the same R2 bucket.
+ */
+const R2_BASE_URL =
+    "https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/";
+
+
+const pdfUrl =
+    pdfFile
+        ? R2_BASE_URL + encodeURIComponent(pdfFile)
+        : null;
+
+
 if (!pdfFile) {
 
     showComingSoon();
 
 } else {
 
-    loadPdf(pdfFile);
+    loadPdf(pdfUrl);
 }
 
 
