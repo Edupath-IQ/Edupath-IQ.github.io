@@ -28,30 +28,120 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs
 
         container.innerHTML = "";
 
-        for (let num = 1; num <= pdf.numPages; num++) {
-            const page = await pdf.getPage(num);
-            const canvas = document.createElement("canvas");
-            canvas.className = "pdf-page-canvas";
-            const ctx = canvas.getContext("2d");
+      const firstPage = await pdf.getPage(1);
 
-            const baseViewport = page.getViewport({ scale: 1 });
-const width = Math.max(container.clientWidth - 20, 500);
+const baseViewport = firstPage.getViewport({ scale: 1 });
+const width = Math.min(
+    Math.max(container.clientWidth - 20, 600),
+    1000
+);
 const scale = width / baseViewport.width;
-const viewport = page.getViewport({ scale });
+const viewport = firstPage.getViewport({ scale });
 
-canvas.width = viewport.width;
-canvas.height = viewport.height;
+const pages = [];
 
-canvas.style.width = `${viewport.width}px`;
-canvas.style.height = `${viewport.height}px`;
+for (let num = 1; num <= pdf.numPages; num++) {
+    const pageBox = document.createElement("div");
 
-container.appendChild(canvas);
+    pageBox.className = "pdf-page-container";
+    pageBox.dataset.pageNumber = num;
 
-await page.render({
-    canvasContext: ctx,
-    viewport: viewport
-}).promise;
+    pageBox.style.width = `${viewport.width}px`;
+    pageBox.style.height = `${viewport.height}px`;
+    pageBox.style.margin = "0 auto 20px";
+    pageBox.style.position = "relative";
+
+    container.appendChild(pageBox);
+
+    pages.push(pageBox);
+}
+
+async function renderPage(pageBox) {
+    if (pageBox.dataset.rendered === "true") return;
+
+    pageBox.dataset.rendered = "true";
+
+    try {
+        const num = Number(pageBox.dataset.pageNumber);
+        const page = num === 1
+            ? firstPage
+            : await pdf.getPage(num);
+
+        const canvas = document.createElement("canvas");
+        canvas.className = "pdf-page-canvas";
+
+        const outputScale = 2;
+
+        canvas.width = Math.floor(
+            viewport.width * outputScale
+        );
+
+        canvas.height = Math.floor(
+            viewport.height * outputScale
+        );
+
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+        canvas.style.display = "block";
+
+        pageBox.appendChild(canvas);
+
+        const ctx = canvas.getContext("2d", {
+            alpha: false
+        });
+
+        await page.render({
+            canvasContext: ctx,
+            viewport: viewport,
+            transform: [
+                outputScale,
+                0,
+                0,
+                outputScale,
+                0,
+                0
+            ]
+        }).promise;
+
+    } catch (error) {
+        console.error(
+            `PDF page ${pageBox.dataset.pageNumber} render error:`,
+            error
+        );
+        pageBox.dataset.rendered = "false";
+    }
+}
+
+if (pages[0]) {
+    await renderPage(pages[0]);
+}
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    renderPage(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            rootMargin: "800px 0px"
         }
+    );
+
+    pages.forEach((pageBox) => {
+        if (pageBox.dataset.pageNumber !== "1") {
+            observer.observe(pageBox);
+        }
+    });
+} else {
+    for (const pageBox of pages) {
+        await renderPage(pageBox);
+    }
+}
+    
     } catch (error) {
         console.error("PDF load error:", error);
         showComingSoon();
