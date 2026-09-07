@@ -35,14 +35,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs
             const ctx = canvas.getContext("2d");
 
             const baseViewport = page.getViewport({ scale: 1 });
-           const width = Math.max(container.clientWidth - 20, 600);
+const width = Math.max(container.clientWidth - 20, 500);
 const scale = width / baseViewport.width;
 const viewport = page.getViewport({ scale });
 
-const outputScale = window.devicePixelRatio || 1;
-
-canvas.width = Math.floor(viewport.width * outputScale);
-canvas.height = Math.floor(viewport.height * outputScale);
+canvas.width = viewport.width;
+canvas.height = viewport.height;
 
 canvas.style.width = `${viewport.width}px`;
 canvas.style.height = `${viewport.height}px`;
@@ -51,10 +49,7 @@ container.appendChild(canvas);
 
 await page.render({
     canvasContext: ctx,
-    viewport: viewport,
-    transform: outputScale !== 1
-        ? [outputScale, 0, 0, outputScale, 0, 0]
-        : null
+    viewport: viewport
 }).promise;
         }
     } catch (error) {
