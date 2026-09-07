@@ -1,5 +1,5 @@
 // Fast, sharp and mobile-friendly PDF viewer.
-// The PDF itself is NOT compressed or modified.
+// The PDF file itself is NOT compressed or modified.
 
 const container = document.getElementById("pdfContainer");
 
@@ -17,17 +17,16 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
 
 async function loadPdf(pdfFile) {
     try {
-        // Use the existing PDF.js files in the repository.
-const pdfjsLib = await import(
-    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
-);
+        const pdfjsLib = await import(
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
+        );
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
 
         /*
-         * Do not eagerly download/render every page.
-         * Ask PDF.js to use range requests where the server supports them.
+         * Load the PDF without eagerly downloading/rendering
+         * every page.
          */
         const loadingTask = pdfjsLib.getDocument({
             url: pdfFile,
@@ -45,39 +44,95 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
         container.innerHTML = "";
 
-        // Only page 1 is loaded immediately.
+        /*
+         * PDF controls
+         */
+        const controls = document.createElement("div");
+
+        controls.style.position = "sticky";
+        controls.style.top = "0";
+        controls.style.zIndex = "20";
+        controls.style.display = "flex";
+        controls.style.justifyContent = "center";
+        controls.style.alignItems = "center";
+        controls.style.gap = "8px";
+        controls.style.padding = "8px";
+        controls.style.background = "rgba(255,255,255,0.96)";
+        controls.style.borderBottom = "1px solid #ddd";
+
+        const zoomOut = document.createElement("button");
+        zoomOut.textContent = "−";
+
+        const zoomLabel = document.createElement("span");
+        zoomLabel.textContent = "100%";
+
+        const zoomIn = document.createElement("button");
+        zoomIn.textContent = "+";
+
+        const resetZoom = document.createElement("button");
+        resetZoom.textContent = "Fit";
+
+        [zoomOut, zoomIn, resetZoom].forEach((button) => {
+            button.style.minWidth = "42px";
+            button.style.minHeight = "38px";
+            button.style.fontSize = "20px";
+            button.style.cursor = "pointer";
+            button.style.border = "1px solid #bbb";
+            button.style.borderRadius = "6px";
+            button.style.background = "#fff";
+        });
+
+        zoomLabel.style.minWidth = "55px";
+        zoomLabel.style.textAlign = "center";
+        zoomLabel.style.fontWeight = "600";
+
+        controls.appendChild(zoomOut);
+        controls.appendChild(zoomLabel);
+        controls.appendChild(zoomIn);
+        controls.appendChild(resetZoom);
+
+        container.appendChild(controls);
+
+        /*
+         * Get only the first page initially.
+         */
         const firstPage = await pdf.getPage(1);
 
         const baseViewport = firstPage.getViewport({
             scale: 1
         });
 
-        const pageRatio =
-            baseViewport.height / baseViewport.width;
+        let zoom = 1;
 
-        function getPageWidth() {
-            const availableWidth =
-                container.clientWidth || window.innerWidth;
+        function getAvailableWidth() {
+            const width =
+                container.clientWidth ||
+                window.innerWidth;
 
-            /*
-             * IMPORTANT:
-             * Do NOT force a 600px minimum.
-             * This makes the complete page fit on mobile.
-             */
-            return Math.min(
-                Math.max(availableWidth - 12, 280),
-                1000
+            return Math.max(
+                Math.min(width - 12, 1000),
+                280
             );
+        }
+
+        function getScale() {
+            return (
+                getAvailableWidth() /
+                baseViewport.width
+            ) * zoom;
         }
 
         const pages = [];
 
-        // Create lightweight page placeholders.
-        for (let num = 1; num <= pdf.numPages; num++) {
-
-            const width = getPageWidth();
-            const height = width * pageRatio;
-
+        /*
+         * Create lightweight placeholders.
+         * We do NOT render all pages at startup.
+         */
+        for (
+            let number = 1;
+            number <= pdf.numPages;
+            number++
+        ) {
             const pageBox =
                 document.createElement("div");
 
@@ -85,18 +140,13 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                 "pdf-page-container";
 
             pageBox.dataset.pageNumber =
-                String(num);
+                String(number);
 
             pageBox.dataset.rendered =
                 "false";
 
             pageBox.style.width = "100%";
-            pageBox.style.maxWidth =
-                `${width}px`;
-
-            pageBox.style.height =
-                `${height}px`;
-
+            pageBox.style.maxWidth = "1000px";
             pageBox.style.margin =
                 "0 auto 16px";
 
@@ -114,7 +164,6 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
         async function renderPage(pageBox) {
 
             if (
-                pageBox.dataset.rendered === "true" ||
                 pageBox.dataset.rendering === "true"
             ) {
                 return;
@@ -124,23 +173,18 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                 "true";
 
             try {
-
-                const pageNumber =
+                const number =
                     Number(
                         pageBox.dataset.pageNumber
                     );
 
                 const page =
-                    pageNumber === 1
+                    number === 1
                         ? firstPage
-                        : await pdf.getPage(pageNumber);
-
-                const width =
-                    getPageWidth();
+                        : await pdf.getPage(number);
 
                 const scale =
-                    width /
-                    baseViewport.width;
+                    getScale();
 
                 const viewport =
                     page.getViewport({
@@ -148,13 +192,15 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                     });
 
                 /*
-                 * Good clarity without creating
-                 * extremely large canvases.
+                 * 2x backing resolution for sharp text/images.
+                 * This is capped so mobile doesn't become
+                 * unnecessarily slow.
                  */
                 const outputScale =
-                    window.devicePixelRatio > 1
-                        ? 2
-                        : 1.5;
+                    Math.min(
+                        window.devicePixelRatio || 1,
+                        2
+                    );
 
                 const canvas =
                     document.createElement("canvas");
@@ -175,8 +221,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                     );
 
                 /*
-                 * CSS width makes the complete page
-                 * fit the phone screen.
+                 * Important for mobile:
+                 * visible canvas always fits the screen.
                  */
                 canvas.style.width =
                     "100%";
@@ -187,12 +233,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                 canvas.style.display =
                     "block";
 
-                pageBox.style.maxWidth =
-                    `${width}px`;
-
-                pageBox.style.height =
-                    `${viewport.height}px`;
-
+                pageBox.innerHTML = "";
                 pageBox.appendChild(canvas);
 
                 const ctx =
@@ -202,9 +243,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
                 await page.render({
                     canvasContext: ctx,
-
                     viewport: viewport,
-
                     transform: [
                         outputScale,
                         0,
@@ -225,9 +264,6 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                     error
                 );
 
-                pageBox.dataset.rendered =
-                    "false";
-
             } finally {
 
                 pageBox.dataset.rendering =
@@ -236,23 +272,23 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
         }
 
         /*
-         * MOST IMPORTANT:
-         * Show page 1 first.
+         * FIRST PRIORITY:
+         * Render only page 1 immediately.
          */
         await renderPage(pages[0]);
 
         /*
-         * Then prepare page 2.
-         * Remaining pages wait until needed.
+         * Page 2 shortly after page 1.
          */
         if (pages[1]) {
             setTimeout(() => {
                 renderPage(pages[1]);
-            }, 50);
+            }, 100);
         }
 
         /*
-         * Lazy-load remaining pages while scrolling.
+         * Remaining pages are loaded only
+         * when they approach the screen.
          */
         if (
             "IntersectionObserver" in window
@@ -282,7 +318,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                     },
                     {
                         rootMargin:
-                            "700px 0px",
+                            "800px 0px",
                         threshold: 0
                     }
                 );
@@ -304,20 +340,118 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
                     }
                 }
             );
-
-        } else {
-
-            /*
-             * Older-browser fallback.
-             */
-            for (
-                let i = 2;
-                i < pages.length;
-                i++
-            ) {
-                renderPage(pages[i]);
-            }
         }
+
+        /*
+         * ZOOM IN
+         */
+        zoomIn.addEventListener(
+            "click",
+            async () => {
+
+                if (zoom >= 2) return;
+
+                zoom =
+                    Math.min(
+                        zoom + 0.25,
+                        2
+                    );
+
+                zoomLabel.textContent =
+                    `${Math.round(zoom * 100)}%`;
+
+                /*
+                 * Re-render currently visible pages.
+                 */
+                for (
+                    const pageBox of pages
+                ) {
+
+                    if (
+                        pageBox.dataset
+                            .rendered === "true"
+                    ) {
+
+                        pageBox.dataset
+                            .rendered = "false";
+
+                        await renderPage(
+                            pageBox
+                        );
+                    }
+                }
+            }
+        );
+
+        /*
+         * ZOOM OUT
+         */
+        zoomOut.addEventListener(
+            "click",
+            async () => {
+
+                if (zoom <= 0.75) return;
+
+                zoom =
+                    Math.max(
+                        zoom - 0.25,
+                        0.75
+                    );
+
+                zoomLabel.textContent =
+                    `${Math.round(zoom * 100)}%`;
+
+                for (
+                    const pageBox of pages
+                ) {
+
+                    if (
+                        pageBox.dataset
+                            .rendered === "true"
+                    ) {
+
+                        pageBox.dataset
+                            .rendered = "false";
+
+                        await renderPage(
+                            pageBox
+                        );
+                    }
+                }
+            }
+        );
+
+        /*
+         * FIT TO SCREEN
+         */
+        resetZoom.addEventListener(
+            "click",
+            async () => {
+
+                zoom = 1;
+
+                zoomLabel.textContent =
+                    "100%";
+
+                for (
+                    const pageBox of pages
+                ) {
+
+                    if (
+                        pageBox.dataset
+                            .rendered === "true"
+                    ) {
+
+                        pageBox.dataset
+                            .rendered = "false";
+
+                        await renderPage(
+                            pageBox
+                        );
+                    }
+                }
+            }
+        );
 
     } catch (error) {
 
@@ -333,7 +467,9 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 }
 
 
-// Get PDF filename from URL.
+/*
+ * Get PDF filename from URL.
+ */
 const params =
     new URLSearchParams(
         window.location.search
@@ -341,6 +477,7 @@ const params =
 
 const pdfFile =
     params.get("pdf");
+
 
 if (!pdfFile) {
 
@@ -352,7 +489,9 @@ if (!pdfFile) {
 }
 
 
-// Keep the existing basic protection.
+/*
+ * Existing basic protection.
+ */
 document.addEventListener(
     "contextmenu",
     function (e) {
