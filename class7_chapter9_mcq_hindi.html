@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 7 Chapter 9 Hindi Medium MCQ | EduPath IQ</title>
+<style>
+:root{--navy:#17324d;--blue:#2563a6;--gold:#f3b63f;--rose:#e8798b;--ink:#172033;--line:#dce5ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;background:linear-gradient(135deg,#f7fbff,#fffaf4);color:var(--ink)}
+header{background:var(--navy);color:#fff;padding:14px 20px;box-shadow:0 4px 18px rgba(23,50,77,.16)}
+.top{max-width:980px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:20px;font-weight:900;text-decoration:none;color:#fff}.logo span{color:#ffd45a}
+.back{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:9px;font-size:14px}
+.wrap{max-width:900px;margin:28px auto;padding:0 16px}
+.hero{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;text-align:center;box-shadow:0 12px 32px rgba(30,55,80,.09)}
+.badge{display:inline-block;background:#fff0c9;color:#7b5510;padding:7px 13px;border-radius:999px;font-weight:800;font-size:13px}
+h1{margin:12px 0 6px;font-size:clamp(25px,5vw,38px);color:var(--navy)}.sub{margin:0;color:#526173}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}.stat{background:#f4f8fc;border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-weight:800;font-size:14px}.timer{display:inline-flex;align-items:center;gap:8px;background:#fff4df;border:1px solid #f0cf91;color:#704b08;border-radius:12px;padding:8px 14px;font-weight:900}.timer.warning{background:#fff0f0;border-color:#e5a4a4;color:#a52a2a}
+.test,.result{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 12px 30px rgba(30,55,80,.08)}
+.progress-row{display:flex;justify-content:space-between;font-size:14px;font-weight:800;margin-bottom:9px}.bar{height:9px;background:#e9eef4;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--gold),var(--rose));transition:.25s}
+.question{font-size:20px;line-height:1.65;font-weight:800;margin:22px 0 18px}
+.option{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;border:2px solid #e3eaf1;background:#fbfdff;border-radius:14px;padding:14px 15px;margin:10px 0;cursor:pointer;font:inherit;color:var(--ink);transition:.15s}
+.option:hover{border-color:#a9bfd4;transform:translateY(-1px)}.option.selected{border-color:var(--blue);background:#eef6ff}
+.letter{min-width:30px;height:30px;border-radius:9px;background:#edf2f7;display:grid;place-items:center;font-weight:900}.selected .letter{background:var(--blue);color:#fff}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px}button{border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:900;cursor:pointer}.prev{background:#edf2f7;color:#27364a}.next,.submit{background:var(--navy);color:#fff}button:disabled{opacity:.45;cursor:not-allowed}
+.result{display:none;text-align:center}.score{font-size:42px;font-weight:950;color:var(--navy)}.message{font-size:18px;font-weight:800;margin:8px 0 18px}.review{text-align:left;margin-top:20px}.review-item{padding:14px;border-left:4px solid #25855b;background:#f6fbf8;border-radius:10px;margin:9px 0;line-height:1.6}.restart{background:var(--gold);color:#382500}
+footer{text-align:center;color:#66758a;padding:26px 12px;font-size:13px}
+@media(max-width:600px){.wrap{margin-top:16px}.hero,.test,.result{padding:17px;border-radius:17px}.question{font-size:18px}.actions button{padding:11px 13px}}
+</style>
+</head>
+<body>
+<header><div class="top"><a class="logo" href="index.html">EduPath <span>IQ</span></a><a class="back" href="class7_chapter_mcq_hindi.html">← Chapter MCQ</a></div></header>
+<div class="wrap">
+<section class="hero">
+<div class="badge">कक्षा 7 • हिंदी माध्यम • ऑनलाइन MCQ</div>
+<h1>अध्याय 9 — जैव प्रक्रम</h1>
+<p class="sub">पाचन, श्वसन और संबंधित जैव प्रक्रमों पर 30 महत्वपूर्ण MCQs</p>
+<div class="stats"><div class="stat">30 प्रश्न</div><div class="stat">1 अंक / प्रश्न</div><div class="stat">तुरंत स्कोर</div></div>
+</section>
+<section class="test" id="testBox">
+<div class="progress-row"><span id="count"></span><span id="answered"></span><span class="timer" id="timer">⏱️ 15:00</span></div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div class="question" id="question"></div><div id="options"></div>
+<div class="actions"><button class="prev" id="prev">← पिछला</button><button class="next" id="next">अगला →</button><button class="submit" id="submit" style="display:none">टेस्ट जमा करें ✓</button></div>
+</section>
+<section class="result" id="result"><div class="badge">Test Completed</div><h2>आपका परिणाम</h2><div class="score" id="score"></div><div class="message" id="message"></div><button class="restart" id="restart">फिर से टेस्ट दें</button><div class="review" id="review"></div></section>
+</div>
+<footer>EduPath IQ • Class 7 Science • Chapter 9 • Hindi Medium MCQ Test</footer>
+<script>
+const questions = [{"q": "जंतुओं में पाचन का मुख्य उद्देश्य क्या है?", "o": ["ऑक्सीजन का निर्माण करना", "जटिल भोजन-घटकों को सरल रूपों में तोड़ना", "कार्बन डाइऑक्साइड को बाहर निकालना", "रुधिर को पंप करना"], "a": 1}, {"q": "दाँतों द्वारा भोजन को चबाकर छोटे टुकड़ों में तोड़ने की प्रक्रिया क्या कहलाती है?", "o": ["रासायनिक पाचन", "यांत्रिक पाचन", "श्वसन", "अवशोषण"], "a": 1}, {"q": "मुख में स्रावित होने वाला कौन-सा पदार्थ मण्ड को शर्करा में विघटित करने में सहायता करता है?", "o": ["पित्त", "लार", "श्‍लेष्मा", "अम्ल"], "a": 1}, {"q": "रोटी या चावल को कुछ समय तक चबाने के बाद उसका स्वाद मीठा क्यों लगने लगता है?", "o": ["लार मण्ड को सरल शर्कराओं में विघटित करने में सहायता करती है।", "भोजन मुख में शर्करा को अवशोषित कर लेता है।", "भोजन में उपस्थित जल मीठा हो जाता है।", "दाँत मण्ड को शर्करा में बदल देते हैं।"], "a": 0}, {"q": "निगला हुआ भोजन मुख से आमाशय तक किस भाग से होकर जाता है?", "o": ["श्वासनली", "ग्रासनली", "क्षुद्रांत्र", "बृहदांत्र"], "a": 1}, {"q": "ग्रासनली में भोजन आगे की ओर कैसे बढ़ता है?", "o": ["केवल गुरुत्वाकर्षण के कारण", "फेफड़ों की गति के कारण", "इसकी भित्तियों के लहरदार संकुचन और शिथिलन के कारण", "पसली पिंजर की गति के कारण"], "a": 2}, {"q": "आमाशय में भोजन के साथ क्या होता है?", "o": ["भोजन केवल संग्रहित होता है और उसमें कोई परिवर्तन नहीं होता।", "भोजन का मंथन होता है और वह अम्ल, पाचक रस तथा श्‍लेष्मा के साथ मिश्रित होता है।", "भोजन सीधे रुधिर में अवशोषित हो जाता है।", "भोजन कार्बन डाइऑक्साइड में बदल जाता है।"], "a": 1}, {"q": "आमाशय की आंतरिक परत को अम्ल से सुरक्षित रखने में कौन-सा पदार्थ सहायता करता है?", "o": ["लार", "श्‍लेष्मा", "पित्त", "अग्न्याशयी रस"], "a": 1}, {"q": "आमाशय में उपस्थित अम्ल का एक महत्वपूर्ण कार्य क्या है?", "o": ["यह प्रोटीन के विघटन में सहायता करता है और कई हानिकारक जीवाणुओं को नष्ट करता है।", "यह अधिकांश पोषक पदार्थों का अवशोषण करता है।", "यह फेफड़ों में गैसों का विनिमय करवाता है।", "यह वसा को सीधे ऑक्सीजन में बदल देता है।"], "a": 0}, {"q": "पित्त का स्राव किस अंग द्वारा किया जाता है?", "o": ["आमाशय", "यकृत", "अग्न्याशय", "क्षुद्रांत्र"], "a": 1}, {"q": "पित्त पाचन में किस प्रकार सहायता करता है?", "o": ["यह मण्ड को शर्करा में बदलता है।", "यह अम्ल को उदासीन करता है और वसा को छोटी-छोटी बूंदों में तोड़ने में सहायता करता है।", "यह भोजन से जल का अवशोषण करता है।", "यह शरीर में ऑक्सीजन पहुँचाता है।"], "a": 1}, {"q": "अग्न्याशयी रस किस अंग द्वारा स्रावित किया जाता है?", "o": ["यकृत", "आमाशय", "अग्न्याशय", "बृहदांत्र"], "a": 2}, {"q": "मनुष्य में पचे हुए भोजन का अधिकांश भाग किसकी भित्तियों द्वारा अवशोषित किया जाता है?", "o": ["आमाशय", "क्षुद्रांत्र", "बृहदांत्र", "अग्न्याशय"], "a": 1}, {"q": "क्षुद्रांत्र की आंतरिक सतह अवशोषण के लिए किस प्रकार विशेष रूप से अनुकूलित होती है?", "o": ["इसमें अनेक अंगुली के समान उंगलीनुमा प्रवर्ध होते हैं, जो अवशोषण के लिए सतह क्षेत्र बढ़ाते हैं।", "इसमें भोजन चबाने के लिए दाँत होते हैं।", "इसमें अम्ल की मोटी परत होती है।", "इसमें भोजन लंबे समय तक संग्रहित रहता है।"], "a": 0}, {"q": "क्षुद्रांत्र से अवशोषित पोषक पदार्थों का क्या होता है?", "o": ["वे शरीर से बाहर निकाल दिए जाते हैं।", "वे रुधिर द्वारा शरीर के विभिन्न भागों तक पहुँचाए जाते हैं।", "वे अपचित भोजन में बदल जाते हैं।", "वे सीधे फेफड़ों तक पहुँचते हैं।"], "a": 1}, {"q": "अपचित भोजन से बचे अधिकतर जल और कुछ लवणों का अवशोषण मुख्य रूप से किस भाग में होता है?", "o": ["आमाशय", "क्षुद्रांत्र", "बृहदांत्र", "ग्रासनली"], "a": 2}, {"q": "बृहदांत्र में बनने वाला अर्ध-ठोस अपशिष्ट क्या कहलाता है?", "o": ["पित्त", "मल", "लार", "ग्लूकोस"], "a": 1}, {"q": "अपचित भोजन को गुदा द्वारा शरीर से बाहर निकालने की प्रक्रिया कहलाती है—", "o": ["अवशोषण", "पाचन", "उत्सर्जन", "उच्छ्वसन"], "a": 2}, {"q": "गाय जैसे जंतु अपना भोजन दोबारा क्यों चबाते हैं?", "o": ["उनके पास आमाशय नहीं होता।", "वे आंशिक रूप से पचे भोजन को वापस मुख में लाकर अच्छी तरह चबाते हैं।", "वे भोजन निगल नहीं सकते।", "उनके मुख में भोजन का पाचन नहीं होता।"], "a": 1}, {"q": "आंशिक रूप से पचे भोजन को वापस मुख में लाकर दोबारा चबाने की प्रक्रिया क्या कहलाती है?", "o": ["अवशोषण", "रोमंथन", "उत्सर्जन", "श्वसन"], "a": 1}, {"q": "पक्षियों में दाँत नहीं होते। भोजन को यांत्रिक रूप से तोड़ने में कौन-सा भाग सहायता करता है?", "o": ["रूमेन", "पेषणी", "कूपिकाएँ", "डायाफ्राम"], "a": 1}, {"q": "श्वसन के दौरान ग्लूकोस के विघटन और ऊर्जा के विमोचन के लिए निम्नलिखित में से किसकी आवश्यकता होती है?", "o": ["कार्बन डाइऑक्साइड", "ऑक्सीजन", "जल", "सूर्यप्रकाश"], "a": 1}, {"q": "निम्नलिखित में से कौन-सा कथन श्‍वसन लेने की प्रक्रिया को सही ढंग से बताता है?", "o": ["यह ग्लूकोस के विघटन की प्रक्रिया है।", "यह वायु को अंदर लेने और बाहर निकालने की प्रक्रिया है।", "यह पोषक पदार्थों के अवशोषण की प्रक्रिया है।", "यह अपचित भोजन को बाहर निकालने की प्रक्रिया है।"], "a": 1}, {"q": "फेफड़ों में ऑक्सीजन और कार्बन डाइऑक्साइड का विनिमय मुख्य रूप से किस संरचना में होता है?", "o": ["नासाद्वार", "श्वासनली", "कूपिकाएँ", "पसली पिंजर"], "a": 2}, {"q": "अंतःश्वसन के दौरान डायाफ्राम की स्थिति में क्या परिवर्तन होता है?", "o": ["यह ऊपर की ओर जाता है।", "यह नीचे की ओर जाता है।", "यह अपनी स्थिति में ही रहता है।", "यह फेफड़ों की ओर जाता है।"], "a": 1}, {"q": "डायाफ्राम के नीचे की ओर जाने पर वायु फेफड़ों में क्यों प्रवेश करती है?", "o": ["वक्ष के अंदर का स्थान बढ़ जाता है।", "फेफड़े छोटे हो जाते हैं।", "पसलियाँ अंदर की ओर आ जाती हैं।", "कार्बन डाइऑक्साइड फेफड़ों में प्रवेश करती है।"], "a": 0}, {"q": "हमारे द्वारा उच्छ्वसित वायु के बारे में कौन-सा कथन सही है?", "o": ["इसमें अंतःश्वसित वायु की तुलना में अधिक ऑक्सीजन होती है।", "इसमें अंतःश्वसित वायु की तुलना में अधिक कार्बन डाइऑक्साइड होती है।", "इसमें कार्बन डाइऑक्साइड नहीं होती।", "इसमें केवल कार्बन डाइऑक्साइड होती है।"], "a": 1}, {"q": "जब कोई विद्यार्थी उच्छ्वसित वायु को चूने के पानी में प्रवाहित करता है और चूने का पानी दूधिया हो जाता है, तो इससे क्या पता चलता है?", "o": ["उच्छ्वसित वायु में कार्बन डाइऑक्साइड होती है।", "उच्छ्वसित वायु में ऑक्सीजन नहीं होती।", "नाइट्रोजन चूने के पानी से अभिक्रिया करती है।", "उच्छ्वसित वायु में अधिक जलवाष्प होती है।"], "a": 0}, {"q": "श्‍ववास लेने और श्‍वसन के बीच सही अंतर कौन-सा है?", "o": ["श्‍ववास लेना रासायनिक प्रक्रिया है, जबकि श्‍वसन भौतिक प्रक्रिया है।", "दोनों बिल्कुल समान प्रक्रियाएँ हैं।", "श्‍ववास लेना भौतिक प्रक्रिया है, जबकि श्‍वसन एक रासायनिक प्रक्रिया है जिसमें प्रयोज्य ऊर्जा मुक्त होती है।", "श्‍वसन केवल फेफड़ों में होता है।"], "a": 2}, {"q": "निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?", "o": ["कूपिकाएँ — गैसों का विनिमय", "क्षुद्रांत्र — रुधिर का पंपन", "ग्रासनली — ऑक्सीजन का अवशोषण", "पेषणी — गैसों का विनिमय"], "a": 0}];
+let current=0, answers=Array(questions.length).fill(null);
+let timeLeft=15*60, timerId=null, submitted=false;
+const qEl=document.getElementById('question'),oEl=document.getElementById('options'),countEl=document.getElementById('count'),ansEl=document.getElementById('answered'),fillEl=document.getElementById('fill');
+function render(){
+ const item=questions[current]; countEl.textContent=`प्रश्न ${current+1} / ${questions.length}`; ansEl.textContent=`उत्तर: ${answers.filter(x=>x!==null).length}`; fillEl.style.width=`${((current+1)/questions.length)*100}%`;
+ qEl.textContent=`${current+1}. ${item.q}`; oEl.innerHTML='';
+ item.o.forEach((opt,i)=>{const b=document.createElement('button');b.className='option'+(answers[current]===i?' selected':'');b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${opt}</span>`;b.onclick=()=>{answers[current]=i;render()};oEl.appendChild(b)});
+ document.getElementById('prev').disabled=current===0;document.getElementById('next').style.display=current===questions.length-1?'none':'inline-block';document.getElementById('submit').style.display=current===questions.length-1?'inline-block':'none';
+}
+document.getElementById('prev').onclick=()=>{if(current>0){current--;render()}};document.getElementById('next').onclick=()=>{if(current<questions.length-1){current++;render()}};
+document.getElementById('submit').onclick=()=>{
+ if(answers.includes(null)){alert('कृपया सभी 30 प्रश्नों के उत्तर चुनें।');return}
+ let score=0;answers.forEach((a,i)=>{if(a===questions[i].a)score++});
+ document.getElementById('testBox').style.display='none';document.getElementById('result').style.display='block';document.getElementById('score').textContent=`${score} / ${questions.length}`;
+ document.getElementById('message').textContent=score>=27?'शानदार! आपकी तैयारी बहुत अच्छी है।':score>=21?'बहुत बढ़िया! थोड़ी और practice करें।':score>=15?'अच्छा प्रयास! अध्याय को एक बार फिर revise करें।':'कोई बात नहीं! अध्याय को दोबारा पढ़कर फिर प्रयास करें।';
+ document.getElementById('review').innerHTML='<h3>उत्तर समीक्षा</h3>'+questions.map((x,i)=>`<div class="review-item"><b>${i+1}. ${x.q}</b><br>सही उत्तर: ${String.fromCharCode(65+x.a)}) ${x.o[x.a]}</div>`).join('');
+};
+function updateTimer(){
+ const m=Math.floor(timeLeft/60), sec=timeLeft%60, el=document.getElementById('timer');
+ el.textContent=`⏱️ ${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+ el.classList.toggle('warning',timeLeft<=60);
+ if(timeLeft<=0){clearInterval(timerId);timerId=null;if(!submitted){submitted=true;finishTest(true)}}
+ else timeLeft--;
+}
+function finishTest(auto=false){
+ if(!auto && answers.includes(null)){alert('कृपया सभी 30 प्रश्नों के उत्तर चुनें।');return}
+ clearInterval(timerId);timerId=null;
+ let score=0;answers.forEach((a,i)=>{if(a===questions[i].a)score++});
+ document.getElementById('testBox').style.display='none';document.getElementById('result').style.display='block';document.getElementById('score').textContent=`${score} / ${questions.length}`;
+ document.getElementById('message').textContent=auto?'समय समाप्त हो गया। आपका टेस्ट स्वतः जमा कर दिया गया।':score>=27?'शानदार! आपकी तैयारी बहुत अच्छी है।':score>=21?'बहुत बढ़िया! थोड़ी और practice करें।':score>=15?'अच्छा प्रयास! अध्याय को एक बार फिर revise करें।':'कोई बात नहीं! अध्याय को दोबारा पढ़कर फिर प्रयास करें।';
+ document.getElementById('review').innerHTML='<h3>उत्तर समीक्षा</h3>'+questions.map((x,i)=>`<div class="review-item"><b>${i+1}. ${x.q}</b><br>आपका उत्तर: ${answers[i]===null?'उत्तर नहीं दिया':String.fromCharCode(65+answers[i])+') '+x.o[answers[i]]}<br>सही उत्तर: ${String.fromCharCode(65+x.a)}) ${x.o[x.a]}</div>`).join('');
+}
+document.getElementById('submit').onclick=()=>{submitted=true;finishTest(false)};
+document.getElementById('restart').onclick=()=>{answers=Array(questions.length).fill(null);current=0;timeLeft=15*60;submitted=false;document.getElementById('result').style.display='none';document.getElementById('testBox').style.display='block';updateTimer();clearInterval(timerId);timerId=setInterval(updateTimer,1000);render()};
+updateTimer();timerId=setInterval(updateTimer,1000);render();
+</script>
+</body></html>
