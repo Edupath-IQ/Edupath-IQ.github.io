@@ -82,7 +82,7 @@ function finishTest(auto=false){
  document.getElementById('review').innerHTML='<h3>उत्तर समीक्षा</h3>'+questions.map((x,i)=>`<div class="review-item"><b>${i+1}. ${x.q}</b><br>आपका उत्तर: ${answers[i]===null?'उत्तर नहीं दिया':String.fromCharCode(65+answers[i])+') '+x.o[answers[i]]}<br>सही उत्तर: ${String.fromCharCode(65+x.a)}) ${x.o[x.a]}</div>`).join('');
 }
 document.getElementById('submit').onclick=()=>{submitted=true;finishTest(false)};
-document.getElementById('restart').onclick=()=>{answers=Array(questions.length).fill(null);current=0;timeLeft=15*60;submitted=false;document.getElementById('result').style.display='none';document.getElementById('testBox').style.display='block';updateTimer();clearInterval(timerId);timerId=setInterval(updateTimer,1000);render()};
-updateTimer();timerId=setInterval(updateTimer,1000);render();
+document.getElementById('restart').onclick=()=>{answers=Array(questions.length).fill(null);current=0;timeLeft=15*60;submitted=false;document.getElementById('result').style.display='none';document.getElementById('testBox').style.display='block';updateTimer();clearInterval(timerId);timerId=setInterval(()=>{if(timeLeft<=0){clearInterval(timerId);timerId=null;if(!submitted){submitted=true;finishTest(true)}return}timeLeft--;updateTimer()},1000);render()};
+updateTimer();timerId=setInterval(()=>{if(timeLeft<=0){clearInterval(timerId);timerId=null;if(!submitted){submitted=true;finishTest(true)}return}timeLeft--;updateTimer()},1000);render();
 </script>
 </body></html>
