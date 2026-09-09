@@ -12,4 +12,44 @@ function render(){let x=questions[current];document.getElementById('counter').te
 function nextQ(){if(current<questions.length-1){current++;render()}else finish()}function prevQ(){if(current>0){current--;render()}}
 function finish(){let u=answers.filter(x=>x===null).length;if(u&&!confirm(u+' question(s) are unanswered. Finish the test anyway?'))return;document.getElementById('quiz').style.display='none';document.getElementById('result').style.display='block';let s=scoreNow();document.getElementById('final').textContent=`${s} / ${questions.length}`;document.getElementById('message').textContent=s>=24?'Excellent work!':s>=18?'Good job! Keep practising.':'Keep practising and review the chapter once more.';let r=document.getElementById('review');r.innerHTML='<h3>Answer Review</h3>';questions.forEach((x,i)=>{let y=answers[i]===null?'Not answered':`${['A','B','C','D'][answers[i]]}) ${x.o[answers[i]]}`;let c=`${['A','B','C','D'][x.a]}) ${x.o[x.a]}`;let d=document.createElement('div');d.className='review-item';d.innerHTML=`<strong>Q${i+1}. ${x.q}</strong><div class="small">Your answer: ${y}</div><div class="small">Correct answer: ${c}</div>`;r.appendChild(d)});window.scrollTo(0,0)}
 function restart(){current=0;answers=Array(questions.length).fill(null);document.getElementById('result').style.display='none';document.getElementById('quiz').style.display='block';render()}render();
+
+let timeLeft = 15 * 60;
+let timerId = null;
+let testFinished = false;
+
+function updateTimer(){
+  const el = document.getElementById('timer');
+  if(!el) return;
+  const m = Math.floor(timeLeft / 60);
+  const sec = timeLeft % 60;
+  el.textContent = `⏱️ ${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  el.style.fontWeight = '900';
+  el.style.padding = '6px 10px';
+  el.style.borderRadius = '10px';
+  el.style.background = timeLeft <= 60 ? '#fff0f0' : '#fff4df';
+  el.style.color = timeLeft <= 60 ? '#a52a2a' : '#704b08';
+}
+function startTimer(){
+  clearInterval(timerId);
+  timeLeft = 15 * 60;
+  testFinished = false;
+  updateTimer();
+  timerId = setInterval(()=>{
+    if(testFinished){ clearInterval(timerId); return; }
+    timeLeft--;
+    updateTimer();
+    if(timeLeft <= 0){
+      clearInterval(timerId);
+      testFinished = true;
+      if(typeof finishTest === 'function') finishTest(true);
+      else if(typeof submitTest === 'function') submitTest(true);
+      else {
+        const btn = document.getElementById('submit');
+        if(btn) btn.click();
+      }
+    }
+  },1000);
+}
+
+startTimer();
 </script></body></html>

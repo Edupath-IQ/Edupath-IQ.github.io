@@ -22,10 +22,10 @@
 <span class="chapter-no">CH 07</span><h3>Heat Transfer In Nature</h3>
 <span class="coming">MCQ Coming Soon</span></div><div class="chapter-card disabled">
 <span class="chapter-no">CH 08</span><h3>Measurement Of Time And Motion</h3>
-<span class="coming">MCQ Coming Soon</span></div><div class="chapter-card disabled">
-<a href="class7_chapter9_mcq.html" class="chapter-card">
+<span class="coming">MCQ Coming Soon</span></div><a href="class7_chapter9_mcq.html" class="chapter-card" data-en-href="class7_chapter9_mcq.html" data-hi-href="class7_chapter9_mcq_hindi.html">
 <span class="chapter-no">CH 09</span><h3>Life Processes In Animals</h3>
 <span class="coming">Start MCQ Test</span></a>
+<div class="chapter-card disabled">
 <span class="chapter-no">CH 10</span><h3>Life Processes In Plants</h3>
 <span class="coming">MCQ Coming Soon</span></div></section>
 </main><footer class="epq-footer"><strong>EduPath IQ</strong> • Class 7 Science MCQ Tests</footer>
@@ -46,12 +46,19 @@ document.addEventListener('DOMContentLoaded',function(){
   const grid=document.querySelector('.test-grid,.chapter-grid');
   if(!grid)return; grid.parentNode.insertBefore(wrap,grid);
   const original=cards.map(el=>el.textContent.trim());
-  function setLang(lang){
+  function updateChapterLinks(){
+document.querySelectorAll('[data-en-href][data-hi-href]').forEach(a=>{
+  a.href=(currentLang==='hi'?a.dataset.hiHref:a.dataset.enHref);
+});
+}
+function setLang(lang){
+updateChapterLinks();
     cards.forEach((el,i)=>{el.textContent=(lang==='hi' && hiNames[i])?hiNames[i]:original[i];});
     en.classList.toggle('active',lang==='en'); hi.classList.toggle('active',lang==='hi');
   }
   en.addEventListener('click',()=>setLang('en')); hi.addEventListener('click',()=>setLang('hi'));
   setLang('en');
 });
+updateChapterLinks();
 </script>
 </body></html>
