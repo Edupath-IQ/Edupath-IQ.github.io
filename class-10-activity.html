@@ -18,7 +18,7 @@
   gap:10px;
   margin:24px auto;
 }
-.language-switch button,.language-switch .language-btn{
+.language-switch button{
   border:0;
   border-radius:10px;
   padding:11px 22px;
@@ -28,7 +28,7 @@
   font-weight:800;
   cursor:pointer;
 }
-.language-switch .language-btn.active{
+.language-switch button.active{
   background:#10b981;
   color:#fff;
 }
@@ -37,8 +37,8 @@
 </div><div class="mobile">☰</div></nav></header>
 <div class="wrap"><a class="back" href="activity.html">← Back to Activity</a>
   <div class="language-switch">
-  <a class="language-btn active" href="class-10-activity-english.html">English</a>
-  <a class="language-btn" href="class-10-activity-hindi.html">Hindi</a>
+  <button type="button" class="active" onclick="showLanguage('en')">English</button>
+  <button type="button" onclick="showLanguage('hi')">Hindi</button>
 </div>
 <section class="hero"><div class="hero-icon">🧪</div><h1>Class 10 Activity Explanation &amp; Questions</h1><p>Chapter-wise • English &amp; Hindi Medium</p></section>
 <div class="note"><strong>PDF slots ready:</strong> Activity Explanation &amp; Questions will be added chapter-wise. English and Hindi links are kept ready for your PDFs.</div>
