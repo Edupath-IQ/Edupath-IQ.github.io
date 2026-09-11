@@ -525,7 +525,7 @@ function getPdfSource(filename) {
      * PDF filename pattern.
      */
     const isCreativePdf =
-        /^\d+(st|nd|rd|th)_(?:solution_)?chapter\d+_[EH]\.pdf$/i.test(
+        /^\d+(st|nd|rd|th)_(?:solution_)?chapter\d+(?:_[A-Za-z0-9_-]+)?_[EH]\.pdf$/i.test(
             filename
         );
 
