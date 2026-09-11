@@ -628,6 +628,19 @@ function getPdfSource(filename) {
     }
 
     /*
+     * Chapter 1 Creative Notes:
+     * Website link uses:
+     * 10th_chapter1_E.pdf
+     *
+     * R2 actual file:
+     * 10th_chapter1_chemical_reactions_and_equations_E.pdf
+     */
+    if (filename === "10th_chapter1_E.pdf") {
+        filename =
+            "10th_chapter1_chemical_reactions_and_equations_E.pdf";
+    }
+
+    /*
      * Creative Notes / Creative Solutions
      * PDF filename pattern.
      */
