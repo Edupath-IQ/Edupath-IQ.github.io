@@ -3,86 +3,42 @@
 
 const container = document.getElementById("pdfContainer");
 
-/*
- * Friendly loading screen for large Creative Notes PDFs.
- * This changes only what is shown while the existing PDF viewer loads;
- * it does not modify, compress, resize, or lower the PDF quality.
- */
 function showPdfLoading() {
     if (!container) return;
 
-    const existing = document.getElementById("pdfLoadingOverlay");
-    if (existing) return;
+    container.innerHTML = `
+        <div class="pdf-loading-message" style="text-align:center;padding:70px 20px;">
+            <div style="font-size:28px;font-weight:700;margin-bottom:10px;">
+                📖 Loading Creative Notes
+            </div>
+            <div style="font-size:17px;margin-bottom:10px;">
+                Please wait...
+            </div>
+            <div style="font-size:14px;opacity:0.8;margin-bottom:18px;">
+                This file is larger because it contains high-quality creative images.
+            </div>
+            <div id="pdfLoadingDots" style="font-size:18px;font-weight:600;min-height:24px;">
+                Loading •
+            </div>
+        </div>
+    `;
 
-    const overlay = document.createElement("div");
-    overlay.id = "pdfLoadingOverlay";
-    overlay.style.width = "100%";
-    overlay.style.minHeight = "55vh";
-    overlay.style.display = "flex";
-    overlay.style.alignItems = "center";
-    overlay.style.justifyContent = "center";
-    overlay.style.textAlign = "center";
-    overlay.style.padding = "32px 16px";
-    overlay.style.boxSizing = "border-box";
-    overlay.style.background = "#fff";
+    const dots = document.getElementById("pdfLoadingDots");
+    let step = 1;
 
-    const card = document.createElement("div");
-    card.style.maxWidth = "560px";
-    card.style.width = "100%";
-    card.style.padding = "28px 22px";
-    card.style.boxSizing = "border-box";
-    card.style.border = "1px solid #e5e5e5";
-    card.style.borderRadius = "14px";
-    card.style.background = "#fff";
-    card.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)";
-
-    const title = document.createElement("div");
-    title.textContent = "📖 Loading Creative Notes";
-    title.style.fontSize = "24px";
-    title.style.fontWeight = "700";
-    title.style.marginBottom = "10px";
-
-    const wait = document.createElement("div");
-    wait.textContent = "Please wait...";
-    wait.style.fontSize = "17px";
-    wait.style.fontWeight = "600";
-    wait.style.marginBottom = "10px";
-
-    const info = document.createElement("div");
-    info.textContent = "This file is larger because it contains high-quality creative images.";
-    info.style.fontSize = "14px";
-    info.style.lineHeight = "1.5";
-    info.style.opacity = "0.78";
-    info.style.marginBottom = "16px";
-
-    const dots = document.createElement("div");
-    dots.textContent = "Loading •";
-    dots.style.fontSize = "18px";
-    dots.style.fontWeight = "700";
-    dots.style.minHeight = "28px";
-
-    card.appendChild(title);
-    card.appendChild(wait);
-    card.appendChild(info);
-    card.appendChild(dots);
-    overlay.appendChild(card);
-    container.appendChild(overlay);
-
-    let count = 1;
-    overlay._dotsTimer = window.setInterval(() => {
-        count = count >= 3 ? 1 : count + 1;
-        dots.textContent = `Loading ${"• ".repeat(count).trim()}`;
-    }, 450);
+    if (dots) {
+        window.__pdfLoadingTimer = setInterval(() => {
+            step = step >= 3 ? 1 : step + 1;
+            dots.textContent = "Loading " + "• ".repeat(step).trim();
+        }, 450);
+    }
 }
 
 function hidePdfLoading() {
-    const overlay = document.getElementById("pdfLoadingOverlay");
-    if (!overlay) return;
-
-    if (overlay._dotsTimer) {
-        window.clearInterval(overlay._dotsTimer);
+    if (window.__pdfLoadingTimer) {
+        clearInterval(window.__pdfLoadingTimer);
+        window.__pdfLoadingTimer = null;
     }
-    overlay.remove();
 }
 
 function showComingSoon(message = "This resource has not been uploaded yet.") {
@@ -124,6 +80,7 @@ async function loadPdf(pdfFile) {
         const pdf = await loadingTask.promise;
 
         if (!pdf || !pdf.numPages) {
+            hidePdfLoading();
             showComingSoon();
             return;
         }
@@ -282,32 +239,33 @@ async function loadPdf(pdfFile) {
                  * Page 2 onward:
                  * higher resolution for better mobile clarity.
                  */
-               const devicePixelRatio =
-    window.devicePixelRatio || 1;
+                const devicePixelRatio =
+                    window.devicePixelRatio || 1;
 
-const isMobile =
-    window.matchMedia &&
-    window.matchMedia(
-        "(max-width: 768px)"
-    ).matches;
+                const isMobile =
+                    window.matchMedia &&
+                    window.matchMedia(
+                        "(max-width: 768px)"
+                    ).matches;
 
-let maxOutputScale;
+                let maxOutputScale;
 
-if (isMobile) {
-    maxOutputScale =
-        number === 1
-            ? 2
-            : 3.5;
-} else {
-    maxOutputScale =
-        2;
-}
+                if (isMobile) {
+                    maxOutputScale =
+                        number === 1
+                            ? 2
+                            : 3.5;
+                } else {
+                    maxOutputScale =
+                        2;
+                }
 
-const outputScale =
-    Math.min(
-        devicePixelRatio,
-        maxOutputScale
-    );
+                const outputScale =
+                    Math.min(
+                        devicePixelRatio,
+                        maxOutputScale
+                    );
+
                 const canvas =
                     document.createElement("canvas");
 
@@ -622,12 +580,12 @@ const outputScale =
 
     } catch (error) {
 
-        hidePdfLoading();
-
         console.error(
             "PDF load error:",
             error
         );
+
+        hidePdfLoading();
 
         showComingSoon(
             "Unable to load this PDF right now."
