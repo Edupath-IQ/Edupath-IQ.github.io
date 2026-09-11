@@ -25,13 +25,14 @@ async function loadPdf(pdfFile) {
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.mjs";
 
         /*
-         * R2 optimized loading.
-         * Larger chunks reduce the number of network requests.
+         * R2 first-page optimized loading.
+         * Small range chunks reduce initial latency and auto-fetch is disabled
+         * so the viewer does not pull the rest of the PDF before page 1.
          */
         const loadingTask = pdfjsLib.getDocument({
             url: pdfFile,
-            rangeChunkSize: 2097152,
-            disableAutoFetch: false,
+            rangeChunkSize: 524288,
+            disableAutoFetch: true,
             disableStream: false,
             stopAtErrors: false
         });
@@ -280,108 +281,63 @@ const outputScale =
                 }).promise;
 
                 /*
-                 * Preserve clickable PDF link annotations.
-                 * The canvas renderer does not draw PDF annotations,
-                 * so create a transparent link layer over the rendered page.
+                 * Preserve clickable PDF annotations/links.
+                 * The canvas itself does not render PDF link annotations,
+                 * so create transparent link overlays from the original PDF.
                  */
                 if (typeof page.getAnnotations === "function") {
                     const annotations = await page.getAnnotations({
                         intent: "display"
                     });
 
-                    const annotationLayer =
-                        document.createElement("div");
-
-                    annotationLayer.className =
-                        "pdf-annotation-layer";
-
-                    annotationLayer.style.position =
-                        "absolute";
-
-                    annotationLayer.style.inset = "0";
-                    annotationLayer.style.width = "100%";
-                    annotationLayer.style.height = "100%";
-                    annotationLayer.style.zIndex = "10";
-                    annotationLayer.style.pointerEvents = "none";
+                    const linkLayer = document.createElement("div");
+                    linkLayer.className = "pdf-link-layer";
+                    linkLayer.style.position = "absolute";
+                    linkLayer.style.left = "0";
+                    linkLayer.style.top = "0";
+                    linkLayer.style.width = "100%";
+                    linkLayer.style.height = "100%";
+                    linkLayer.style.pointerEvents = "none";
+                    linkLayer.style.zIndex = "5";
 
                     for (const annotation of annotations) {
-                        if (
-                            annotation.subtype !== "Link" ||
-                            !(
-                                annotation.url ||
-                                annotation.unsafeUrl
-                            )
-                        ) {
-                            continue;
-                        }
+                        if (annotation.subtype !== "Link") continue;
 
-                        const rect =
-                            viewport.convertToViewportRectangle(
-                                annotation.rect
-                            );
-
-                        const left =
-                            Math.min(rect[0], rect[2]);
-
-                        const top =
-                            Math.min(rect[1], rect[3]);
-
-                        const width =
-                            Math.abs(rect[2] - rect[0]);
-
-                        const height =
-                            Math.abs(rect[3] - rect[1]);
-
-                        const link =
-                            document.createElement("a");
-
-                        link.href =
+                        const url =
                             annotation.url ||
                             annotation.unsafeUrl;
 
-                        link.target = "_blank";
-                        link.rel =
-                            "noopener noreferrer";
+                        if (!url || !annotation.rect) continue;
 
-                        link.style.position =
-                            "absolute";
-
-                        link.style.left =
-                            `${left}px`;
-
-                        link.style.top =
-                            `${top}px`;
-
-                        link.style.width =
-                            `${width}px`;
-
-                        link.style.height =
-                            `${height}px`;
-
-                        link.style.display =
-                            "block";
-
-                        link.style.pointerEvents =
-                            "auto";
-
-                        link.style.background =
-                            "transparent";
-
-                        link.style.cursor =
-                            "pointer";
-
-                        link.setAttribute(
-                            "aria-label",
-                            "Open linked resource"
+                        const rect = viewport.convertToViewportRectangle(
+                            annotation.rect
                         );
 
-                        annotationLayer.appendChild(link);
+                        const left = Math.min(rect[0], rect[2]);
+                        const top = Math.min(rect[1], rect[3]);
+                        const width = Math.abs(rect[2] - rect[0]);
+                        const height = Math.abs(rect[3] - rect[1]);
+
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.target = "_blank";
+                        link.rel = "noopener noreferrer";
+                        link.setAttribute("aria-label", "Open PDF link");
+                        link.style.position = "absolute";
+                        link.style.left = `${left}px`;
+                        link.style.top = `${top}px`;
+                        link.style.width = `${width}px`;
+                        link.style.height = `${height}px`;
+                        link.style.display = "block";
+                        link.style.pointerEvents = "auto";
+                        link.style.background = "transparent";
+                        link.style.cursor = "pointer";
+
+                        linkLayer.appendChild(link);
                     }
 
-                    if (annotationLayer.children.length) {
-                        pageBox.appendChild(
-                            annotationLayer
-                        );
+                    if (linkLayer.children.length) {
+                        pageBox.appendChild(linkLayer);
                     }
                 }
 
@@ -413,7 +369,7 @@ const outputScale =
         if (pages[1]) {
             setTimeout(() => {
                 renderPage(pages[1]);
-            }, 50);
+            }, 800);
         }
 
         /*
@@ -448,7 +404,7 @@ const outputScale =
                     },
                     {
                         rootMargin:
-                            "300px 0px",
+                            "200px 0px",
 
                         threshold: 0
                     }
