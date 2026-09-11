@@ -15,34 +15,8 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
     `;
 }
 
-
-function showFirstPagePreview(pdfFile) {
-    if (!container) return;
-
-    // Only Chapter 5 gets the supplied lightweight preview.
-    if (!/(?:^|\/)10th_chapter5_Life_Processes_E\.pdf$/i.test(pdfFile)) return;
-
-    container.innerHTML = "";
-
-    const preview = document.createElement("img");
-    preview.src = "10th_chapter5_Life_Processes_preview.webp";
-    preview.alt = "Class 10 Science Chapter 5 - Life Processes";
-    preview.decoding = "async";
-    preview.fetchPriority = "high";
-    preview.style.width = "100%";
-    preview.style.maxWidth = "1000px";
-    preview.style.height = "auto";
-    preview.style.display = "block";
-    preview.style.margin = "0 auto 16px";
-    preview.style.userSelect = "none";
-    preview.draggable = false;
-
-    container.appendChild(preview);
-}
-
 async function loadPdf(pdfFile) {
     try {
-        showFirstPagePreview(pdfFile);
         const pdfjsLib = await import(
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
         );
