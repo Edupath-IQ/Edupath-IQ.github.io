@@ -279,6 +279,112 @@ const outputScale =
 
                 }).promise;
 
+                /*
+                 * Preserve clickable PDF link annotations.
+                 * The canvas renderer does not draw PDF annotations,
+                 * so create a transparent link layer over the rendered page.
+                 */
+                if (typeof page.getAnnotations === "function") {
+                    const annotations = await page.getAnnotations({
+                        intent: "display"
+                    });
+
+                    const annotationLayer =
+                        document.createElement("div");
+
+                    annotationLayer.className =
+                        "pdf-annotation-layer";
+
+                    annotationLayer.style.position =
+                        "absolute";
+
+                    annotationLayer.style.inset = "0";
+                    annotationLayer.style.width = "100%";
+                    annotationLayer.style.height = "100%";
+                    annotationLayer.style.zIndex = "10";
+                    annotationLayer.style.pointerEvents = "none";
+
+                    for (const annotation of annotations) {
+                        if (
+                            annotation.subtype !== "Link" ||
+                            !(
+                                annotation.url ||
+                                annotation.unsafeUrl
+                            )
+                        ) {
+                            continue;
+                        }
+
+                        const rect =
+                            viewport.convertToViewportRectangle(
+                                annotation.rect
+                            );
+
+                        const left =
+                            Math.min(rect[0], rect[2]);
+
+                        const top =
+                            Math.min(rect[1], rect[3]);
+
+                        const width =
+                            Math.abs(rect[2] - rect[0]);
+
+                        const height =
+                            Math.abs(rect[3] - rect[1]);
+
+                        const link =
+                            document.createElement("a");
+
+                        link.href =
+                            annotation.url ||
+                            annotation.unsafeUrl;
+
+                        link.target = "_blank";
+                        link.rel =
+                            "noopener noreferrer";
+
+                        link.style.position =
+                            "absolute";
+
+                        link.style.left =
+                            `${left}px`;
+
+                        link.style.top =
+                            `${top}px`;
+
+                        link.style.width =
+                            `${width}px`;
+
+                        link.style.height =
+                            `${height}px`;
+
+                        link.style.display =
+                            "block";
+
+                        link.style.pointerEvents =
+                            "auto";
+
+                        link.style.background =
+                            "transparent";
+
+                        link.style.cursor =
+                            "pointer";
+
+                        link.setAttribute(
+                            "aria-label",
+                            "Open linked resource"
+                        );
+
+                        annotationLayer.appendChild(link);
+                    }
+
+                    if (annotationLayer.children.length) {
+                        pageBox.appendChild(
+                            annotationLayer
+                        );
+                    }
+                }
+
                 pageBox.dataset.rendered =
                     "true";
 
@@ -525,7 +631,7 @@ function getPdfSource(filename) {
      * PDF filename pattern.
      */
     const isCreativePdf =
-        /^\d+(st|nd|rd|th)_(?:solution_)?chapter\d+_[EH]\.pdf$/i.test(
+        /^\d+(st|nd|rd|th)_(?:solution_)?chapter\d+(?:_[A-Za-z0-9_-]+)?_[EH]\.pdf$/i.test(
             filename
         );
 
