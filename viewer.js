@@ -15,8 +15,49 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
     `;
 }
 
+function showFirstPagePreview(pdfFile) {
+    if (!container) return;
+
+    const isChapter5Preview =
+        /(?:^|\\/)10th_chapter5_Life_Processes_E\\.pdf$/i.test(pdfFile);
+
+    if (!isChapter5Preview) return;
+
+    container.innerHTML = "";
+
+    const previewWrap = document.createElement("div");
+    previewWrap.className = "pdf-first-page-preview";
+    previewWrap.style.width = "100%";
+    previewWrap.style.maxWidth = "1000px";
+    previewWrap.style.margin = "0 auto 16px";
+    previewWrap.style.position = "relative";
+    previewWrap.style.background = "#fff";
+    previewWrap.style.minHeight = "420px";
+    previewWrap.style.display = "flex";
+    previewWrap.style.justifyContent = "center";
+    previewWrap.style.alignItems = "flex-start";
+    previewWrap.style.overflow = "hidden";
+
+    const previewImage = document.createElement("img");
+    previewImage.src = "10th_chapter5_Life_Processes_preview.webp";
+    previewImage.alt = "Class 10 Science Chapter 5 - Life Processes";
+    previewImage.decoding = "async";
+    previewImage.fetchPriority = "high";
+    previewImage.style.width = "100%";
+    previewImage.style.height = "auto";
+    previewImage.style.display = "block";
+    previewImage.style.userSelect = "none";
+    previewImage.draggable = false;
+
+    previewWrap.appendChild(previewImage);
+    container.appendChild(previewWrap);
+}
+
 async function loadPdf(pdfFile) {
     try {
+        // Show the lightweight first-page preview immediately.
+        // PDF.js loading starts right after it, without waiting for the preview.
+        showFirstPagePreview(pdfFile);
         const pdfjsLib = await import(
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
         );
