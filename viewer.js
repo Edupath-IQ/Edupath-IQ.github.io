@@ -3,6 +3,88 @@
 
 const container = document.getElementById("pdfContainer");
 
+/*
+ * Friendly loading screen for large Creative Notes PDFs.
+ * This changes only what is shown while the existing PDF viewer loads;
+ * it does not modify, compress, resize, or lower the PDF quality.
+ */
+function showPdfLoading() {
+    if (!container) return;
+
+    const existing = document.getElementById("pdfLoadingOverlay");
+    if (existing) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "pdfLoadingOverlay";
+    overlay.style.width = "100%";
+    overlay.style.minHeight = "55vh";
+    overlay.style.display = "flex";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    overlay.style.textAlign = "center";
+    overlay.style.padding = "32px 16px";
+    overlay.style.boxSizing = "border-box";
+    overlay.style.background = "#fff";
+
+    const card = document.createElement("div");
+    card.style.maxWidth = "560px";
+    card.style.width = "100%";
+    card.style.padding = "28px 22px";
+    card.style.boxSizing = "border-box";
+    card.style.border = "1px solid #e5e5e5";
+    card.style.borderRadius = "14px";
+    card.style.background = "#fff";
+    card.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)";
+
+    const title = document.createElement("div");
+    title.textContent = "📖 Loading Creative Notes";
+    title.style.fontSize = "24px";
+    title.style.fontWeight = "700";
+    title.style.marginBottom = "10px";
+
+    const wait = document.createElement("div");
+    wait.textContent = "Please wait...";
+    wait.style.fontSize = "17px";
+    wait.style.fontWeight = "600";
+    wait.style.marginBottom = "10px";
+
+    const info = document.createElement("div");
+    info.textContent = "This file is larger because it contains high-quality creative images.";
+    info.style.fontSize = "14px";
+    info.style.lineHeight = "1.5";
+    info.style.opacity = "0.78";
+    info.style.marginBottom = "16px";
+
+    const dots = document.createElement("div");
+    dots.textContent = "Loading •";
+    dots.style.fontSize = "18px";
+    dots.style.fontWeight = "700";
+    dots.style.minHeight = "28px";
+
+    card.appendChild(title);
+    card.appendChild(wait);
+    card.appendChild(info);
+    card.appendChild(dots);
+    overlay.appendChild(card);
+    container.appendChild(overlay);
+
+    let count = 1;
+    overlay._dotsTimer = window.setInterval(() => {
+        count = count >= 3 ? 1 : count + 1;
+        dots.textContent = `Loading ${"• ".repeat(count).trim()}`;
+    }, 450);
+}
+
+function hidePdfLoading() {
+    const overlay = document.getElementById("pdfLoadingOverlay");
+    if (!overlay) return;
+
+    if (overlay._dotsTimer) {
+        window.clearInterval(overlay._dotsTimer);
+    }
+    overlay.remove();
+}
+
 function showComingSoon(message = "This resource has not been uploaded yet.") {
     if (!container) return;
 
@@ -16,6 +98,8 @@ function showComingSoon(message = "This resource has not been uploaded yet.") {
 }
 
 async function loadPdf(pdfFile) {
+    showPdfLoading();
+
     try {
         const pdfjsLib = await import(
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.mjs"
@@ -362,6 +446,7 @@ const outputScale =
          * First page gets highest priority.
          */
         await renderPage(pages[0]);
+        hidePdfLoading();
 
         /*
          * Page 2 loads shortly after page 1.
@@ -536,6 +621,8 @@ const outputScale =
         );
 
     } catch (error) {
+
+        hidePdfLoading();
 
         console.error(
             "PDF load error:",
