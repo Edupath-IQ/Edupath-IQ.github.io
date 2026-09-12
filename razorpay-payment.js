@@ -4,7 +4,7 @@
   Never put the Razorpay secret key here.
 */
 (() => {
-  const WORKER_BASE_URL = 'https://REPLACE-WITH-YOUR-WORKER.workers.dev';
+ const WORKER_BASE_URL = "https://edupath-iq-payments.avikeshsaini6.workers.dev";
 
   function loadRazorpay() {
     return new Promise((resolve, reject) => {
