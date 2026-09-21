@@ -63,6 +63,28 @@ body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135d
 .ep-exam-card .btns{position:relative;z-index:1}
 
 </style>
+
+<style id="chapter-exam-style">
+.ep-exam-card{position:relative;overflow:hidden}
+.ep-exam-card:before,.ep-exam-card:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.ep-exam-card:before{width:130px;height:130px;right:-65px;top:-65px;background:rgba(6,182,212,.13)}
+.ep-exam-card:after{width:100px;height:100px;left:-55px;bottom:-55px;background:rgba(236,72,153,.10)}
+.ep-exam-card .exam-sub{color:#52657f;font-size:13px;font-weight:700;min-height:0;margin:0 0 13px}
+.ep-marks-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin:12px 0 15px;position:relative;z-index:1}
+.ep-marks-mini span{background:rgba(255,255,255,.9);border:1px solid rgba(59,130,246,.10);border-radius:11px;padding:8px 4px;font-size:12px;font-weight:800;color:#172554;text-align:center}
+.ep-marks-mini small{display:block;color:#64748b;font-weight:700;font-size:10px;margin-top:2px}
+.ep-chapters{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.ep-chapter{background:rgba(255,255,255,.88);border:1px solid #dbe5f2;border-radius:15px;padding:14px;text-align:left;box-shadow:0 4px 12px rgba(30,41,59,.05)}
+.ep-chapter-no{font-size:12px;font-weight:900;color:#2563eb;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.ep-chapter-en{font-size:14px;font-weight:900;color:#172554;line-height:1.25}
+.ep-chapter-hi{font-size:12px;font-weight:800;color:#52657f;line-height:1.3;margin-top:3px}
+.ep-chapter-btns{display:flex;gap:7px;margin-top:10px}
+.ep-chapter-btns a{flex:1;text-align:center;padding:8px 7px;border-radius:9px;text-decoration:none;font-size:12px;font-weight:900}
+.ep-en{background:#2563eb;color:#fff}
+.ep-hi{background:#eef3ff;color:#24457e}
+@media(max-width:800px){.ep-chapters{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <header class="site-header">
@@ -93,42 +115,104 @@ body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135d
 <span>4 Marks<small>Case-Based Study</small></span>
 <span>5 Marks<small>Detailed &amp; HOTS</small></span>
 </div>
-<div style="position:relative;z-index:1;margin:10px 0 14px;">
-<label for="examChapter" style="display:block;font-size:13px;font-weight:800;color:#172554;margin-bottom:7px;">Select Chapter</label>
-<select id="examChapter" style="width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172554;font-weight:800;font-size:14px;">
-<option value="1">Chapter 1</option>
-<option value="2" selected>Chapter 2</option>
-<option value="3">Chapter 3</option>
-<option value="4">Chapter 4</option>
-<option value="5">Chapter 5</option>
-<option value="6">Chapter 6</option>
-<option value="7">Chapter 7</option>
-<option value="8">Chapter 8</option>
-<option value="9">Chapter 9</option>
-<option value="10">Chapter 10</option>
-<option value="11">Chapter 11</option>
-<option value="12">Chapter 12</option>
-</select>
+<div class="ep-chapters"><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 1</div>
+<div class="ep-chapter-en">The Ever-Evolving World of Science</div>
+<div class="ep-chapter-hi">विज्ञान की निरंतर विकसित होती दुनिया</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-1-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-1-hindi.html">हिंदी</a>
 </div>
-<div class="btns">
-<a id="examEnglishBtn" class="btn" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-english.html">English</a>
-<a id="examHindiBtn" class="btn alt" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-hindi.html">हिंदी</a>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 2</div>
+<div class="ep-chapter-en">Exploring Substances: Acidic, Basic, and Neutral</div>
+<div class="ep-chapter-hi">पदार्थों का अन्वेषण — अम्लीय, क्षारीय एवं उदासीन</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 3</div>
+<div class="ep-chapter-en">Electricity: Circuits and their Components</div>
+<div class="ep-chapter-hi">विद्युत — परिपथ एवं उनके घटक</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-3-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-3-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 4</div>
+<div class="ep-chapter-en">The World of Metals and Non-metals</div>
+<div class="ep-chapter-hi">धातुओं और अधातुओं की दुनिया</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-4-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-4-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 5</div>
+<div class="ep-chapter-en">Changes Around Us: Physical and Chemical</div>
+<div class="ep-chapter-hi">हमारे आस-पास के परिवर्तन — भौतिक एवं रासायनिक</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-5-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-5-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 6</div>
+<div class="ep-chapter-en">Adolescence: A Stage of Growth and Change</div>
+<div class="ep-chapter-hi">किशोरावस्था — वृद्धि एवं परिवर्तन की अवस्था</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-6-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-6-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 7</div>
+<div class="ep-chapter-en">Heat Transfer in Nature</div>
+<div class="ep-chapter-hi">प्रकृति में ऊष्मा का स्थानांतरण</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-7-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-7-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 8</div>
+<div class="ep-chapter-en">Measurement of Time and Motion</div>
+<div class="ep-chapter-hi">समय एवं गति का मापन</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-8-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-8-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 9</div>
+<div class="ep-chapter-en">Life Processes in Animals</div>
+<div class="ep-chapter-hi">जंतुओं में जैव प्रक्रम</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-9-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-9-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 10</div>
+<div class="ep-chapter-en">Life Processes in Plants</div>
+<div class="ep-chapter-hi">पौधों में जीवन प्रक्रियाएँ</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-10-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-10-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 11</div>
+<div class="ep-chapter-en">Light: Shadows and Reflections</div>
+<div class="ep-chapter-hi">प्रकाश — छाया एवं परावर्तन</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-11-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-11-hindi.html">हिंदी</a>
+</div>
+</div><div class="ep-chapter">
+<div class="ep-chapter-no">Chapter 12</div>
+<div class="ep-chapter-en">Earth, Moon, and the Sun</div>
+<div class="ep-chapter-hi">पृथ्वी, चंद्रमा और सूर्य</div>
+<div class="ep-chapter-btns">
+<a class="ep-en" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-12-english.html">English</a>
+<a class="ep-hi" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-12-hindi.html">हिंदी</a>
 </div>
 </div></div>
-<script>
-(function(){
-  const select = document.getElementById('examChapter');
-  const english = document.getElementById('examEnglishBtn');
-  const hindi = document.getElementById('examHindiBtn');
-  const base = 'https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-';
-  function updateLinks(){
-    const ch = select.value;
-    english.href = base + ch + '-english.html';
-    hindi.href = base + ch + '-hindi.html';
-  }
-  select.addEventListener('change', updateLinks);
-  updateLinks();
-})();
-</script>
+</div></div>
+
 </body>
 </html>
