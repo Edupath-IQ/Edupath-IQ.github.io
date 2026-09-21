@@ -83,7 +83,52 @@ body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135d
 <div class="wrap">
 <a class="back" href="index.html">← Back to Home</a>
 <section class="hero"><div class="hero-icon">🪐</div><h1>Class 7 Science</h1><p>Choose your learning resource</p></section>
-<div class="grid"><div class="card"><div class="icon">📘</div><h2>Creative Class Notes</h2><p>Science Notes in English and Hindi</p><div class="btns"><a class="btn" href="7th_science_english.html">English</a><a class="btn alt" href="7th_science_hindi.html">Hindi</a></div></div><div class="card"><div class="icon">📝</div><h2>Exercise Solutions</h2><p>Chapter-wise Science Solutions</p><div class="btns"><a class="btn" href="7th_science_english_S.html">English</a><a class="btn alt" href="7th_science_hindi_S.html">Hindi</a></div></div><div class="card"><div class="icon">🧪</div><h2>Test Series</h2><p>Practice and test your preparation</p><div class="btns"><a class="btn" href="test-series.html">Open Tests</a></div></div><div class="card"><div class="icon">🧪</div><h2>Activity Explanation &amp; Questions</h2><p>NCERT Activities with explanations and activity-based questions</p><div class="btns"><a class="btn" href="class-7-activity.html">Open Activities</a></div></div><div class="card ep-exam-card"><div class="icon">🎯</div><h2>Exam-Focused Questions</h2><p class="exam-sub">Latest Pattern • With Solutions</p><div class="ep-marks-mini"><span>2 Marks<small>Quick Concept Check</small></span><span>3 Marks<small>Concept &amp; Understanding</small></span><span>4 Marks<small>Case-Based Study</small></span><span>5 Marks<small>Detailed &amp; HOTS</small></span></div><div class="btns"><a class="btn" href="exam-focused-class-7-english.html">English</a><a class="btn alt" href="exam-focused-class-7-hindi.html">हिंदी</a></div></div></div>
+<div class="grid"><div class="card"><div class="icon">📘</div><h2>Creative Class Notes</h2><p>Science Notes in English and Hindi</p><div class="btns"><a class="btn" href="7th_science_english.html">English</a><a class="btn alt" href="7th_science_hindi.html">Hindi</a></div></div><div class="card"><div class="icon">📝</div><h2>Exercise Solutions</h2><p>Chapter-wise Science Solutions</p><div class="btns"><a class="btn" href="7th_science_english_S.html">English</a><a class="btn alt" href="7th_science_hindi_S.html">Hindi</a></div></div><div class="card"><div class="icon">🧪</div><h2>Test Series</h2><p>Practice and test your preparation</p><div class="btns"><a class="btn" href="test-series.html">Open Tests</a></div></div><div class="card"><div class="icon">🧪</div><h2>Activity Explanation &amp; Questions</h2><p>NCERT Activities with explanations and activity-based questions</p><div class="btns"><a class="btn" href="class-7-activity.html">Open Activities</a></div></div><div class="card ep-exam-card">
+<div class="icon">🎯</div>
+<h2>Exam-Focused Questions</h2>
+<p class="exam-sub">Chapter-wise • Latest Pattern • With Solutions</p>
+<div class="ep-marks-mini">
+<span>2 Marks<small>Quick Concept Check</small></span>
+<span>3 Marks<small>Concept &amp; Understanding</small></span>
+<span>4 Marks<small>Case-Based Study</small></span>
+<span>5 Marks<small>Detailed &amp; HOTS</small></span>
 </div>
+<div style="position:relative;z-index:1;margin:10px 0 14px;">
+<label for="examChapter" style="display:block;font-size:13px;font-weight:800;color:#172554;margin-bottom:7px;">Select Chapter</label>
+<select id="examChapter" style="width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#172554;font-weight:800;font-size:14px;">
+<option value="1">Chapter 1</option>
+<option value="2" selected>Chapter 2</option>
+<option value="3">Chapter 3</option>
+<option value="4">Chapter 4</option>
+<option value="5">Chapter 5</option>
+<option value="6">Chapter 6</option>
+<option value="7">Chapter 7</option>
+<option value="8">Chapter 8</option>
+<option value="9">Chapter 9</option>
+<option value="10">Chapter 10</option>
+<option value="11">Chapter 11</option>
+<option value="12">Chapter 12</option>
+</select>
+</div>
+<div class="btns">
+<a id="examEnglishBtn" class="btn" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-english.html">English</a>
+<a id="examHindiBtn" class="btn alt" href="https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-2-hindi.html">हिंदी</a>
+</div>
+</div></div>
+<script>
+(function(){
+  const select = document.getElementById('examChapter');
+  const english = document.getElementById('examEnglishBtn');
+  const hindi = document.getElementById('examHindiBtn');
+  const base = 'https://pub-a381c2de36564bf9938df8e892649d12.r2.dev/exam-focused-class-7-chapter-';
+  function updateLinks(){
+    const ch = select.value;
+    english.href = base + ch + '-english.html';
+    hindi.href = base + ch + '-hindi.html';
+  }
+  select.addEventListener('change', updateLinks);
+  updateLinks();
+})();
+</script>
 </body>
 </html>
