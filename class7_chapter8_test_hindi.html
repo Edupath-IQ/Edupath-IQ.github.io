@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EduPath IQ | Class 7 Science Chapter 8 Live Test</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff4d6 0%,#e9f7ff 38%,#f7eaff 72%,#eafff5 100%);color:#172033}
+.wrap{max-width:900px;margin:auto;padding:18px} .hero{background:linear-gradient(135deg,#ffffff,#fff7fb);border-radius:24px;padding:22px;box-shadow:0 10px 30px #0002;text-align:center;border:3px solid #d9c7ff}
+h1{margin:0;background:linear-gradient(90deg,#7b2cbf,#e83e8c,#0ea5a4);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:29px} .sub{color:#475569;margin:8px 0 16px}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} .pill{padding:10px;border-radius:14px;font-weight:700} .p1{background:#ffe08a}.p2{background:#bde0fe}.p3{background:#cdeccf}.p4{background:#f7c6e7}
+.timer{position:sticky;top:10px;z-index:5;margin:14px 0;background:linear-gradient(90deg,#172033,#40366e);color:white;border-radius:18px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 22px #0003;border:2px solid #756cf2}
+#time{font-size:24px;font-weight:800;color:#ffe08a;text-shadow:0 0 10px #ffe08a66} button{border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer} #submit{background:#7b2cbf;color:white} .q{margin:14px 0;background:linear-gradient(135deg,#ffffff,#fffaff);border-radius:18px;padding:16px;border-left:8px solid var(--c);box-shadow:0 6px 20px #00000014;border-top:2px solid #ffffff} .q h3{margin:0 0 12px;font-size:17px} label{display:block;padding:11px 12px;margin:7px 0;background:linear-gradient(90deg,#f8fafc,#ffffff);border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:.15s} label:hover{background:#fff0f8;border-color:#c084fc;transform:translateX(2px)} input{margin-right:9px} .result{display:none;background:white;border-radius:22px;padding:22px;margin-top:18px;box-shadow:0 10px 30px #0002} .score{font-size:34px;font-weight:900;color:#7b2cbf} .review{margin-top:16px} .correct{background:#ecfdf5;border-left:6px solid #16a34a;padding:10px;border-radius:10px;margin:8px 0} .wrong{background:#fff1f2;border-left:6px solid #e11d48;padding:10px;border-radius:10px;margin:8px 0} .ex{color:#334155;margin-top:4px} @media(max-width:600px){.info{grid-template-columns:repeat(2,1fr)}h1{font-size:23px}.wrap{padding:10px}}
+
+.q:nth-child(4n+1){background:linear-gradient(135deg,#fffdf5,#fff1f6)}
+.q:nth-child(4n+2){background:linear-gradient(135deg,#f4fbff,#eef7ff)}
+.q:nth-child(4n+3){background:linear-gradient(135deg,#faf7ff,#f2edff)}
+.q:nth-child(4n){background:linear-gradient(135deg,#f4fff9,#ecfff5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<h1>🎯 कक्षा 7 विज्ञान — अध्याय 8</h1>
+<div class="sub">समय एवं गति का मापन</div>
+<div class="info"><div class="pill p1">30 बहुविकल्पीय प्रश्न</div><div class="pill p2">15 मिनट</div><div class="pill p3">30 अंक</div><div class="pill p4">प्रत्येक 1 अंक</div></div>
+</div>
+<div class="timer"><span>⏱️ शेष समय</span><span id="time">15:00</span></div>
+<form id="quiz"></form>
+<button id="submit" type="button">परीक्षण जमा करें और परिणाम देखें</button>
+<div id="result" class="result"></div>
+</div>
+<script>
+const questions = [{"q":"धूप-घड़ी से समय का मापन मुख्यतः किसकी बदलती हुई स्थिति को देखकर किया जाता है?","options":["परछाई","जल का स्तर","रेत का स्तर","लोलक"],"answer":"A","explanation":"धूप-घड़ी में सूर्य के प्रकाश से किसी वस्तु की परछाई की परिवर्तनीय स्थिति के आधार पर समय का निर्धारण किया जाता है।"},{"q":"रेत-घड़ी में समय का मापन किसके प्रवाह के आधार पर किया जाता है?","options":["रेत","जल","हवा","मोम"],"answer":"A","explanation":"रेत-घड़ी में एक बल्ब से दूसरे बल्ब में रेत के प्रवाह के आधार पर समय का मापन किया जाता है।"},{"q":"जल-घड़ी में जल के स्तर को स्पष्ट रूप से देखने के लिए जल में स्याही की कुछ बूँदें क्यों मिलाई जाती हैं?","options":["जल का स्तर आसानी से दिखाई देने के लिए","जल का प्रवाह तेज करने के लिए","जल को भारी बनाने के लिए","वाष्पीकरण रोकने के लिए"],"answer":"A","explanation":"क्रियाकलाप 8.1 में जल का स्तर स्पष्ट रूप से दिखाई देने के लिए जल में स्याही की कुछ बूँदें या रंग मिलाया जाता है।"},{"q":"यदि किसी जल-घड़ी पर प्रत्येक 1 मिनट के अंतराल पर चिह्न लगाए गए हैं, तो चौथा चिह्न कितने समय को दर्शाएगा?","options":["1 मिनट","2 मिनट","3 मिनट","4 मिनट"],"answer":"D","explanation":"प्रत्येक चिह्न 1 मिनट के अंतराल को दर्शाता है, इसलिए चौथा चिह्न 4 मिनट को दर्शाएगा।"},{"q":"ऐसी प्रक्रिया जो लगभग समान समय-अंतराल के बाद बार-बार दोहराई जाती है, कहलाती है:","options":["आवर्ती प्रक्रम","अनियमित गति","विरामावस्था","असमान गति"],"answer":"A","explanation":"पाठ के अनुसार सतत आवर्ती प्रक्रम का उपयोग समान समयावधियों को अंकित करने के लिए किया जा सकता है।"},{"q":"एक लोलक माध्य स्थिति ‘अ’ से चरम स्थिति ‘ब’, फिर दूसरी चरम स्थिति ‘स’ और वापस ‘अ’ पर आता है। यह कितने दोलन के बराबर है?","options":["आधा दोलन","एक दोलन","दो दोलन","तीन दोलन"],"answer":"B","explanation":"माध्य स्थिति से एक ओर की चरम स्थिति, दूसरी चरम स्थिति और फिर माध्य स्थिति पर लौटना एक दोलन है।"},{"q":"एक लोलक 18 सेकंड में 10 दोलन पूरे करता है। उसका दोलनकाल कितना होगा?","options":["0.18 s","1.8 s","18 s","180 s"],"answer":"B","explanation":"दोलनकाल = कुल समय ÷ दोलनों की संख्या = 18 ÷ 10 = 1.8 s।"},{"q":"दो सरल लोलकों की लंबाई समान है, लेकिन उनके गोलकों के द्रव्यमान अलग-अलग हैं। उनके दोलनकाल के बारे में क्या सही है?","options":["लगभग समान होंगे","हमेशा अलग होंगे","शून्य होंगे","केवल द्रव्यमान पर निर्भर करेंगे"],"answer":"A","explanation":"सरल लोलक का दोलनकाल उसकी लंबाई पर निर्भर करता है, गोलक के द्रव्यमान पर नहीं।"},{"q":"यदि किसी सरल लोलक की लंबाई बदल दी जाए, तो निम्नलिखित में से कौन-सी राशि बदलती है?","options":["दोलनकाल","समय का SI मात्रक","गोलक का केवल द्रव्यमान","1 मिनट में सेकंडों की संख्या"],"answer":"A","explanation":"सरल लोलक का दोलनकाल उसकी लंबाई पर निर्भर करता है।"},{"q":"यदि लोलक समान दोलन लगभग समान समय में पूरे करता है, तो इससे पता चलता है कि उसका:","options":["दोलनकाल लगभग अचर है","कोई दोलन नहीं हो रहा","द्रव्यमान बढ़ रहा है","गति अनियमित है"],"answer":"A","explanation":"नियत लंबाई के सरल लोलक का दोलनकाल एक ही स्थान पर लगभग अचर रहता है।"},{"q":"समय का SI मात्रक किस प्रतीक से व्यक्त किया जाता है?","options":["m","s","h","min"],"answer":"B","explanation":"समय का SI मात्रक सेकंड है और इसका प्रतीक s है।"},{"q":"60 सेकंड बराबर होते हैं:","options":["1 मिनट","10 मिनट","1 घंटा","30 मिनट"],"answer":"A","explanation":"60 सेकंड = 1 मिनट।"},{"q":"एक कार 30 सेकंड में 300 m दूरी तय करती है। उसकी चाल कितनी है?","options":["5 m/s","10 m/s","30 m/s","90 m/s"],"answer":"B","explanation":"चाल = चली गई कुल दूरी ÷ दूरी तय करने में लगा कुल समय = 300 ÷ 30 = 10 m/s।"},{"q":"एक साइकिल चालक 15 मिनट में 3.6 km दूरी तय करता है। उसकी चाल कितनी है?","options":["2 m/s","4 m/s","6 m/s","15 m/s"],"answer":"B","explanation":"3.6 km = 3600 m और 15 min = 900 s, इसलिए चाल = 3600 ÷ 900 = 4 m/s।"},{"q":"दो विद्यार्थी समान दूरी तय करते हैं। जो विद्यार्थी कम समय लेता है, वह:","options":["अधिक तेज चल रहा है","धीमा चल रहा है","विरामावस्था में है","आवश्यक रूप से एकसमान गति में है"],"answer":"A","explanation":"समान दूरी के लिए कम समय लेने वाला विद्यार्थी अधिक तेज है।"},{"q":"एक वाहन 50 km/h की चाल से 2 h चलता है। वह कितनी दूरी तय करेगा?","options":["25 km","50 km","100 km","150 km"],"answer":"C","explanation":"कुल चली गई दूरी = चाल × कुल समय = 50 × 2 = 100 km।"},{"q":"एक रेलगाड़ी 90 km/h की चाल से 360 km दूरी तय करती है। उसे कितना समय लगेगा?","options":["2 h","3 h","4 h","5 h"],"answer":"C","explanation":"लिया गया कुल समय = कुल चली गई दूरी ÷ चाल = 360 ÷ 90 = 4 h।"},{"q":"एक रेलगाड़ी की चाल 18 m/s है और दूसरी की 72 km/h। कौन-सा कथन सही है?","options":["पहली 2 m/s अधिक तेज है","दूसरी 2 m/s अधिक तेज है","दोनों की चाल समान है","पहली 4 m/s अधिक तेज है"],"answer":"B","explanation":"72 km/h = 20 m/s, इसलिए दूसरी रेलगाड़ी की चाल 2 m/s अधिक है।"},{"q":"यदि कोई वस्तु समान समय-अंतरालों में असमान दूरियाँ तय करती है, तो उसकी गति है:","options":["एकसमान रेखीय गति","असमान रेखीय गति","विरामावस्था","केवल आवर्ती गति"],"answer":"B","explanation":"एकसमान समय-अंतरालों में भिन्न-भिन्न दूरियाँ तय करना असमान रेखीय गति की विशेषता है।"},{"q":"यदि कोई वस्तु प्रत्येक 10 मिनट के समय-अंतराल में 20 km दूरी तय करती है, तो उसकी गति है:","options":["एकसमान रेखीय गति","असमान रेखीय गति","अनियमित गति","विरामावस्था"],"answer":"A","explanation":"समान समय-अंतरालों में समान दूरियाँ तय करना एकसमान रेखीय गति को दर्शाता है।"},{"q":"एक धावक समान समय-अंतरालों में क्रमशः 20, 15, 15, 25, 20 और 25 km दूरी तय करता है। उसकी गति है:","options":["एकसमान रेखीय गति","असमान रेखीय गति","आवर्ती गति","विरामावस्था"],"answer":"B","explanation":"समान समय-अंतरालों में दूरियाँ समान नहीं हैं, इसलिए गति असमान रेखीय है।"},{"q":"एक वस्तु 10 सेकंड में 150 m दूरी तय करती है। उसकी चाल km/h में कितनी है?","options":["15 km/h","36 km/h","54 km/h","60 km/h"],"answer":"C","explanation":"चाल = 150 ÷ 10 = 15 m/s = 15 × 3.6 = 54 km/h।"},{"q":"सीधी रेखा में चल रही कोई वस्तु किस प्रकार की गति कर सकती है?","options":["असमान रेखीय गति","केवल एकसमान रेखीय गति","केवल आवर्ती गति","कोई गति नहीं"],"answer":"A","explanation":"सीधी रेखा में चलने वाली वस्तु की चाल बदल सकती है; ऐसी गति असमान रेखीय गति हो सकती है।"},{"q":"सीधी रेखा में नियत चाल से चल रही वस्तु की गति कहलाती है:","options":["एकसमान रेखीय गति","असमान रेखीय गति","अनियमित गति","दोलन गति"],"answer":"A","explanation":"नियत चाल से सरल रेखा में गतिमान वस्तु एकसमान रेखीय गति कर रही होती है।"},{"q":"वाहन की चाल सीधे मापने वाला उपकरण कौन-सा है?","options":["पथमापी","चालमापी","घड़ी","तापमापी"],"answer":"B","explanation":"चालमापी (स्पीडोमीटर) वाहन की चाल मापता है और उसे km/h में प्रदर्शित करता है।"},{"q":"एक वाहन 500 m दूरी 10 m/s की चाल से और अगली 500 m दूरी 5 m/s की चाल से तय करता है। कुल समय कितना होगा?","options":["50 s","100 s","150 s","200 s"],"answer":"C","explanation":"पहली 500 m के लिए समय 50 s और अगली 500 m के लिए 100 s है। कुल समय 150 s है।"},{"q":"2 km की यात्रा में कुल 200 s लगते हैं। यदि पहली 1 km दूरी तय करने में 150 s लगे, तो शेष 1 km के लिए समय कितना होगा?","options":["25 s","50 s","100 s","150 s"],"answer":"B","explanation":"शेष समय = 200 − 150 = 50 s।"},{"q":"किसी वस्तु के दो अलग-अलग समयों पर किए गए केवल दो प्रेक्षणों से एकसमान रेखीय गति निर्धारित नहीं की जा सकती, क्योंकि:","options":["समान समय-अंतरालों में तय की गई दूरी ज्ञात नहीं है","समय मापा नहीं जा सकता","वस्तु विरामावस्था में ही होगी","चाल हमेशा शून्य होगी"],"answer":"A","explanation":"एकसमान रेखीय गति की पहचान के लिए समान समय-अंतरालों में तय की गई दूरियों की तुलना आवश्यक है।"},{"q":"औसत चाल ज्ञात करने के लिए किस सूत्र का उपयोग किया जाता है?","options":["कुल चली गई दूरी ÷ कुल समय","कुल समय ÷ कुल चली गई दूरी","दूरी × समय","चाल ÷ समय"],"answer":"A","explanation":"औसत चाल = कुल चली गई दूरी ÷ कुल लिया गया समय।"},{"q":"अलग-अलग दूरियाँ तय करने वाली दो वस्तुओं की तेजी की तुलना करने के लिए हमें किसकी तुलना करनी चाहिए?","options":["इकाई समय में तय की गई दूरी","केवल कुल दूरी","केवल कुल समय","द्रव्यमान"],"answer":"A","explanation":"इकाई समय में तय की गई दूरी को चाल कहते हैं; इसी से वस्तुओं की तेजी की तुलना की जा सकती है।"}]
+const colors=["#f59e0b","#3b82f6","#8b5cf6","#22c55e","#ec4899","#06b6d4","#f97316","#14b8a6"];
+const quiz=document.getElementById("quiz");
+questions.forEach((x,i)=>{
+ const box=document.createElement("div"); box.className="q"; box.style.setProperty("--c",colors[i%colors.length]);
+ box.innerHTML=`<h3>Q${i+1}. ${x.q}</h3>`+x.options.map((o,j)=>`<label><input type="radio" name="q${i}" value="${letters[j]}"> <b>${letters[j]}.</b> ${o}</label>`).join("");
+ quiz.appendChild(box);
+});
+let seconds=15*60, submitted=false;
+const timeEl=document.getElementById("time");
+function tick(){
+ if(submitted)return;
+ const m=Math.floor(seconds/60),s=seconds%60;
+ timeEl.textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+ if(seconds<=0){submitTest(true);return;}
+ seconds--;
+}
+setInterval(tick,1000); tick();
+
+document.getElementById("submit").addEventListener("click",()=>submitTest(false));
+function submitTest(auto){
+ if(submitted)return; submitted=true;
+ let score=0, review="";
+ questions.forEach((x,i)=>{
+   const chosen=document.querySelector(`input[name="q${i}"]:checked`);
+   const got=chosen?chosen.value:"Not answered";
+   const ok=got===x.answer; if(ok)score++;
+   review+=`<div class="${ok?"correct":"wrong"}"><b>Q${i+1} — ${ok?"Correct":"Review"}</b><br>
+   Your answer: ${got}<br>Correct answer: <b>${x.answer}</b>
+   <div class="ex"><b>Explanation:</b> ${x.explanation}</div></div>`;
+ });
+ const pct=Math.round(score/30*100);
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").innerHTML=`<div>🏆 Test ${auto?"submitted automatically because the 15-minute timer ended.":"submitted successfully."}</div>
+ <div class="score">${score} / 30</div><div><b>प्रतिशत: ${pct}%</b></div><div class="review"><h2>📘 उत्तर समीक्षा</h2>${review}</div>`;
+ document.getElementById("submit").disabled=true;
+ document.getElementById("submit").textContent="परीक्षण जमा किया गया";
+ window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+</script>
+</body></html>
